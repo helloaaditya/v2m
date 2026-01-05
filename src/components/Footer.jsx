@@ -36,7 +36,7 @@ const Footer = () => {
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8"
         >
           <motion.div variants={itemVariants} className="footer-section">
-            <img src="https://ibb.co/NnHWJCtV" alt="V2 Marketing" className="h-10 w-auto sm:h-20 sm:w-auto" />
+            <img src="https://i.ibb.co/7N6rZCjY/logo-com.png" className="h-10 w-auto sm:h-20 sm:w-auto" />
             <p className="text-gray-400 mt-2">Authorized Fosroc Dealer</p>
             <p className="text-gray-400 flex items-center gap-2">
               <FaMapMarkerAlt /> KR Puram, Bangalore
