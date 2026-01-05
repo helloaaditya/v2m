@@ -82,7 +82,7 @@ const Navbar = () => {
               className="flex items-center transition-transform duration-300 hover:scale-105"
             >
               <img 
-                src="src/assets/logo-com.png" 
+                src="https://ibb.co/NnHWJCtV" 
                 alt="V2 Marketing" 
                 className="h-10 w-auto sm:h-12 lg:h-14"
               />
