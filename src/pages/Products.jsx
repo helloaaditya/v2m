@@ -24,10 +24,14 @@ const Products = () => {
         const backendProducts = await api.getProducts();
         if (backendProducts && backendProducts.length > 0) {
           setProducts(backendProducts);
+        } else {
+          // If API returns empty array, use default products
+          setProducts(defaultProducts);
         }
       } catch (error) {
-        console.log('Using default products from file');
-        // Keep using defaultProducts
+        console.log('Backend API not available, using default products from file:', error.message);
+        // Keep using defaultProducts when API fails
+        setProducts(defaultProducts);
       } finally {
         setLoading(false);
       }
