@@ -213,31 +213,31 @@ const AdminDashboard = () => {
       {/* Header */}
       <header className="bg-white dark:bg-gray-800 shadow-sm border-b border-gray-200 dark:border-gray-700">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center py-4">
+          <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 py-4">
             <div>
-              <h1 className="text-2xl font-bold text-gray-900 dark:text-white"> V2 Admin</h1>
-              <p className="text-sm text-gray-500 dark:text-gray-400">Welcome, {user?.username}</p>
+              <h1 className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white">V2 Admin</h1>
+              <p className="text-xs sm:text-sm text-gray-500 dark:text-gray-400">Welcome, {user?.username}</p>
             </div>
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-2 sm:gap-3 w-full sm:w-auto">
               <button
                 onClick={toggleDarkMode}
-                className="p-2 rounded-lg bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-200 hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors"
+                className="p-2 sm:p-2 rounded-lg bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-200 hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors min-w-[44px] min-h-[44px] flex items-center justify-center"
                 title={isDarkMode ? 'Switch to Light Mode' : 'Switch to Dark Mode'}
               >
                 {isDarkMode ? <FaSun /> : <FaMoon />}
               </button>
               <button
                 onClick={() => setShowSettingsModal(true)}
-                className="p-2 rounded-lg bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-200 hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors"
+                className="p-2 sm:p-2 rounded-lg bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-200 hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors min-w-[44px] min-h-[44px] flex items-center justify-center"
                 title="Settings"
               >
                 <FaCog />
               </button>
               <button
                 onClick={handleLogout}
-                className="flex items-center gap-2 px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-colors"
+                className="flex items-center gap-2 px-3 sm:px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-colors text-sm sm:text-base min-h-[44px] flex-1 sm:flex-initial"
               >
-                <FaSignOutAlt /> Logout
+                <FaSignOutAlt /> <span className="hidden sm:inline">Logout</span>
               </button>
             </div>
           </div>
@@ -261,11 +261,11 @@ const AdminDashboard = () => {
         )}
 
         {/* Tabs */}
-        <div className="mb-6 border-b border-gray-200">
-          <nav className="flex space-x-8">
+        <div className="mb-6 border-b border-gray-200 dark:border-gray-700 overflow-x-auto">
+          <nav className="flex space-x-4 sm:space-x-8 min-w-max sm:min-w-0">
             <button
               onClick={() => setActiveTab('inventory')}
-              className={`py-4 px-1 border-b-2 font-medium text-sm ${
+              className={`py-3 sm:py-4 px-2 sm:px-1 border-b-2 font-medium text-sm whitespace-nowrap min-h-[44px] ${
                 activeTab === 'inventory'
                   ? 'border-blue-500 text-blue-600 dark:text-blue-400'
                   : 'border-transparent text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300 hover:border-gray-300 dark:hover:border-gray-600'
@@ -276,7 +276,7 @@ const AdminDashboard = () => {
             </button>
             <button
               onClick={() => setActiveTab('history')}
-              className={`py-4 px-1 border-b-2 font-medium text-sm ${
+              className={`py-3 sm:py-4 px-2 sm:px-1 border-b-2 font-medium text-sm whitespace-nowrap min-h-[44px] ${
                 activeTab === 'history'
                   ? 'border-blue-500 text-blue-600 dark:text-blue-400'
                   : 'border-transparent text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300 hover:border-gray-300 dark:hover:border-gray-600'
@@ -287,7 +287,7 @@ const AdminDashboard = () => {
             </button>
             <button
               onClick={() => setActiveTab('products')}
-              className={`py-4 px-1 border-b-2 font-medium text-sm ${
+              className={`py-3 sm:py-4 px-2 sm:px-1 border-b-2 font-medium text-sm whitespace-nowrap min-h-[44px] ${
                 activeTab === 'products'
                   ? 'border-blue-500 text-blue-600 dark:text-blue-400'
                   : 'border-transparent text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300 hover:border-gray-300 dark:hover:border-gray-600'
@@ -303,7 +303,7 @@ const AdminDashboard = () => {
         {activeTab === 'inventory' && (
           <div>
             {/* Search and Filters */}
-            <div className="mb-6 flex flex-col sm:flex-row gap-4">
+            <div className="mb-6 flex flex-col gap-3 sm:gap-4">
               <div className="flex-1 relative">
                 <FaSearch className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
                 <input
@@ -311,14 +311,14 @@ const AdminDashboard = () => {
                   placeholder="Search items..."
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
-                  className="w-full pl-10 pr-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 bg-white dark:bg-gray-700 text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500"
+                  className="w-full pl-10 pr-4 py-3 sm:py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 bg-white dark:bg-gray-700 text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500 text-base sm:text-sm"
                 />
               </div>
-              <div className="flex gap-2">
+              <div className="flex flex-col sm:flex-row gap-2">
                 <select
                   value={filterType}
                   onChange={(e) => setFilterType(e.target.value)}
-                  className="px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
+                  className="flex-1 sm:flex-initial px-4 py-3 sm:py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 bg-white dark:bg-gray-700 text-gray-900 dark:text-white text-base sm:text-sm min-h-[44px]"
                 >
                   <option value="all">All Items</option>
                   <option value="low">Low Stock</option>
@@ -326,28 +326,118 @@ const AdminDashboard = () => {
                 </select>
                 <button
                   onClick={handleAddItem}
-                  className="flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
+                  className="flex items-center justify-center gap-2 px-4 py-3 sm:py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors text-base sm:text-sm min-h-[44px] w-full sm:w-auto"
                 >
                   <FaPlus /> Add Item
                 </button>
               </div>
             </div>
 
-            {/* Inventory Table */}
-            <div className="bg-white rounded-lg shadow overflow-hidden">
-              <div className="overflow-x-auto">
-                <table className="min-w-full divide-y divide-gray-200">
-                  <thead className="bg-gray-50">
+            {/* Inventory - Mobile Cards / Desktop Table */}
+            <div className="bg-white dark:bg-gray-800 rounded-lg shadow overflow-hidden">
+              {/* Mobile Card View */}
+              <div className="block md:hidden">
+                {filteredInventory.length === 0 ? (
+                  <div className="px-4 py-8 text-center text-gray-500 dark:text-gray-400">
+                    No items found. Add your first item to get started.
+                  </div>
+                ) : (
+                  <div className="divide-y divide-gray-200 dark:divide-gray-700">
+                    {filteredInventory.map((item) => {
+                      const status = getStockStatus(item);
+                      return (
+                        <div key={item.id} className="p-4 space-y-3">
+                          <div className="flex justify-between items-start">
+                            <div className="flex-1">
+                              <h3 className="text-base font-medium text-gray-900 dark:text-white">{item.name}</h3>
+                              {item.description && (
+                                <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">{item.description}</p>
+                              )}
+                            </div>
+                            <span className={`px-2 py-1 inline-flex text-xs leading-5 font-semibold rounded-full ${status.color}`}>
+                              {status.text}
+                            </span>
+                          </div>
+                          <div className="grid grid-cols-2 gap-3 text-sm">
+                            <div>
+                              <span className="text-gray-500 dark:text-gray-400">Category:</span>
+                              <span className="ml-2 text-gray-900 dark:text-gray-100">{item.category || '-'}</span>
+                            </div>
+                            <div>
+                              <span className="text-gray-500 dark:text-gray-400">Location:</span>
+                              <span className="ml-2 text-gray-900 dark:text-gray-100">{item.location || '-'}</span>
+                            </div>
+                            <div className="col-span-2">
+                              <span className="text-gray-500 dark:text-gray-400">Quantity:</span>
+                              <span className="ml-2 text-gray-900 dark:text-gray-100 font-medium">
+                                {item.quantity} {item.unit}
+                              </span>
+                              {item.minStock && (
+                                <span className="ml-2 text-xs text-gray-500 dark:text-gray-400">(Min: {item.minStock} {item.unit})</span>
+                              )}
+                            </div>
+                          </div>
+                          <div className="flex flex-wrap gap-2 pt-2">
+                            <button
+                              onClick={() => handleInOut(item, 'in')}
+                              className="flex-1 min-w-[80px] flex items-center justify-center gap-1 px-3 py-2 text-sm text-green-700 dark:text-green-400 bg-green-50 dark:bg-green-900/30 rounded-lg hover:bg-green-100 dark:hover:bg-green-900/50 transition-colors min-h-[44px]"
+                              title="Stock In"
+                            >
+                              <FaArrowUp /> In
+                            </button>
+                            <button
+                              onClick={() => handleInOut(item, 'out')}
+                              className="flex-1 min-w-[80px] flex items-center justify-center gap-1 px-3 py-2 text-sm text-orange-700 dark:text-orange-400 bg-orange-50 dark:bg-orange-900/30 rounded-lg hover:bg-orange-100 dark:hover:bg-orange-900/50 transition-colors min-h-[44px]"
+                              title="Stock Out"
+                            >
+                              <FaArrowDown /> Out
+                            </button>
+                            <button
+                              onClick={() => handleEditItem(item)}
+                              className="flex-1 min-w-[80px] flex items-center justify-center gap-1 px-3 py-2 text-sm text-blue-700 dark:text-blue-400 bg-blue-50 dark:bg-blue-900/30 rounded-lg hover:bg-blue-100 dark:hover:bg-blue-900/50 transition-colors min-h-[44px]"
+                              title="Edit"
+                            >
+                              <FaEdit /> Edit
+                            </button>
+                            <button
+                              onClick={() => {
+                                setSelectedItemForHistory(item);
+                                setShowItemHistoryModal(true);
+                              }}
+                              className="flex-1 min-w-[80px] flex items-center justify-center gap-1 px-3 py-2 text-sm text-purple-700 dark:text-purple-400 bg-purple-50 dark:bg-purple-900/30 rounded-lg hover:bg-purple-100 dark:hover:bg-purple-900/50 transition-colors min-h-[44px]"
+                              title="View History"
+                            >
+                              <FaHistory /> History
+                            </button>
+                            <button
+                              onClick={() => handleDeleteItem(item.id)}
+                              className="flex-1 min-w-[80px] flex items-center justify-center gap-1 px-3 py-2 text-sm text-red-700 dark:text-red-400 bg-red-50 dark:bg-red-900/30 rounded-lg hover:bg-red-100 dark:hover:bg-red-900/50 transition-colors min-h-[44px]"
+                              title="Delete"
+                            >
+                              <FaTrash /> Delete
+                            </button>
+                          </div>
+                        </div>
+                      );
+                    })}
+                  </div>
+                )}
+              </div>
+
+              {/* Desktop Table View */}
+              <div className="hidden md:block overflow-x-auto">
+                <table className="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
+                  <thead className="bg-gray-50 dark:bg-gray-700">
                     <tr>
-                      <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Item</th>
-                      <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Category</th>
-                      <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Quantity</th>
-                      <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Location</th>
-                      <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
-                      <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">Actions</th>
+                      <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">Item</th>
+                      <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">Category</th>
+                      <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">Quantity</th>
+                      <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">Location</th>
+                      <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">Status</th>
+                      <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">Actions</th>
                     </tr>
                   </thead>
-                  <tbody className="bg-white divide-y divide-gray-200">
+                  <tbody className="bg-white dark:bg-gray-800 divide-y divide-gray-200 dark:divide-gray-700">
                     {filteredInventory.length === 0 ? (
                       <tr>
                         <td colSpan="6" className="px-6 py-8 text-center text-gray-500 dark:text-gray-400">
@@ -388,28 +478,28 @@ const AdminDashboard = () => {
                               <div className="flex justify-end gap-2">
                                 <button
                                   onClick={() => handleInOut(item, 'in')}
-                                  className="text-green-600 hover:text-green-900 p-2 hover:bg-green-50 rounded"
+                                  className="text-green-600 dark:text-green-400 hover:text-green-900 dark:hover:text-green-300 p-2 hover:bg-green-50 dark:hover:bg-green-900/30 rounded min-w-[44px] min-h-[44px] flex items-center justify-center"
                                   title="Stock In"
                                 >
                                   <FaArrowUp />
                                 </button>
                                 <button
                                   onClick={() => handleInOut(item, 'out')}
-                                  className="text-orange-600 hover:text-orange-900 p-2 hover:bg-orange-50 rounded"
+                                  className="text-orange-600 dark:text-orange-400 hover:text-orange-900 dark:hover:text-orange-300 p-2 hover:bg-orange-50 dark:hover:bg-orange-900/30 rounded min-w-[44px] min-h-[44px] flex items-center justify-center"
                                   title="Stock Out"
                                 >
                                   <FaArrowDown />
                                 </button>
                                 <button
                                   onClick={() => handleEditItem(item)}
-                                  className="text-blue-600 hover:text-blue-900 p-2 hover:bg-blue-50 rounded"
+                                  className="text-blue-600 dark:text-blue-400 hover:text-blue-900 dark:hover:text-blue-300 p-2 hover:bg-blue-50 dark:hover:bg-blue-900/30 rounded min-w-[44px] min-h-[44px] flex items-center justify-center"
                                   title="Edit"
                                 >
                                   <FaEdit />
                                 </button>
                                 <button
                                   onClick={() => handleDeleteItem(item.id)}
-                                  className="text-red-600 hover:text-red-900 p-2 hover:bg-red-50 rounded"
+                                  className="text-red-600 dark:text-red-400 hover:text-red-900 dark:hover:text-red-300 p-2 hover:bg-red-50 dark:hover:bg-red-900/30 rounded min-w-[44px] min-h-[44px] flex items-center justify-center"
                                   title="Delete"
                                 >
                                   <FaTrash />
@@ -419,7 +509,7 @@ const AdminDashboard = () => {
                                     setSelectedItemForHistory(item);
                                     setShowItemHistoryModal(true);
                                   }}
-                                  className="text-purple-600 hover:text-purple-900 p-2 hover:bg-purple-50 rounded"
+                                  className="text-purple-600 dark:text-purple-400 hover:text-purple-900 dark:hover:text-purple-300 p-2 hover:bg-purple-50 dark:hover:bg-purple-900/30 rounded min-w-[44px] min-h-[44px] flex items-center justify-center"
                                   title="View History"
                                 >
                                   <FaHistory />
@@ -455,21 +545,67 @@ const AdminDashboard = () => {
               </select>
             </div>
 
-            <div className="bg-white rounded-lg shadow overflow-hidden">
-              <div className="overflow-x-auto">
-                <table className="min-w-full divide-y divide-gray-200">
-                  <thead className="bg-gray-50">
+            <div className="bg-white dark:bg-gray-800 rounded-lg shadow overflow-hidden">
+              {/* Mobile Card View */}
+              <div className="block md:hidden">
+                {filteredActivities.length === 0 ? (
+                  <div className="px-4 py-8 text-center text-gray-500 dark:text-gray-400">
+                    No activity history found.
+                  </div>
+                ) : (
+                  <div className="divide-y divide-gray-200 dark:divide-gray-700">
+                    {filteredActivities.map((activity) => {
+                      const date = new Date(activity.timestamp);
+                      const getActionColor = (type) => {
+                        switch (type) {
+                          case 'add': return 'bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-300';
+                          case 'update': return 'bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-300';
+                          case 'delete': return 'bg-red-100 dark:bg-red-900/30 text-red-800 dark:text-red-300';
+                          case 'stock_in': return 'bg-emerald-100 dark:bg-emerald-900/30 text-emerald-800 dark:text-emerald-300';
+                          case 'stock_out': return 'bg-orange-100 dark:bg-orange-900/30 text-orange-800 dark:text-orange-300';
+                          default: return 'bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-300';
+                        }
+                      };
+                      return (
+                        <div key={activity.id} className="p-4 space-y-2">
+                          <div className="flex justify-between items-start">
+                            <span className={`px-2 py-1 inline-flex text-xs leading-5 font-semibold rounded-full ${getActionColor(activity.type)}`}>
+                              {activity.action}
+                            </span>
+                            <span className="text-xs text-gray-500 dark:text-gray-400">{date.toLocaleDateString()}</span>
+                          </div>
+                          <div className="text-sm font-medium text-gray-900 dark:text-white">{activity.itemName}</div>
+                          <div className="text-sm text-gray-500 dark:text-gray-400">
+                            {activity.details}
+                            {activity.quantityChange !== undefined && activity.quantityChange !== 0 && (
+                              <span className={`ml-2 ${activity.quantityChange > 0 ? 'text-green-600 dark:text-green-400' : 'text-red-600 dark:text-red-400'}`}>
+                                ({activity.quantityChange > 0 ? '+' : ''}{activity.quantityChange} {activity.unit})
+                              </span>
+                            )}
+                          </div>
+                          <div className="text-xs text-gray-400 dark:text-gray-500">{date.toLocaleTimeString()}</div>
+                        </div>
+                      );
+                    })}
+                  </div>
+                )}
+              </div>
+
+              {/* Desktop Table View */}
+              <div className="hidden md:block overflow-x-auto">
+                <table className="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
+                  <thead className="bg-gray-50 dark:bg-gray-700">
                     <tr>
-                      <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Timestamp</th>
-                      <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Action</th>
-                      <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Item</th>
-                      <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Details</th>
+                      <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">Timestamp</th>
+                      <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">Action</th>
+                      <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">Item</th>
+                      <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">Details</th>
                     </tr>
                   </thead>
-                  <tbody className="bg-white divide-y divide-gray-200">
+                  <tbody className="bg-white dark:bg-gray-800 divide-y divide-gray-200 dark:divide-gray-700">
                     {filteredActivities.length === 0 ? (
                       <tr>
-                        <td colSpan="4" className="px-6 py-8 text-center text-gray-500">
+                        <td colSpan="4" className="px-6 py-8 text-center text-gray-500 dark:text-gray-400">
                           No activity history found.
                         </td>
                       </tr>
@@ -478,17 +614,17 @@ const AdminDashboard = () => {
                         const date = new Date(activity.timestamp);
                         const getActionColor = (type) => {
                           switch (type) {
-                            case 'add': return 'bg-green-100 text-green-800';
-                            case 'update': return 'bg-blue-100 text-blue-800';
-                            case 'delete': return 'bg-red-100 text-red-800';
-                            case 'stock_in': return 'bg-emerald-100 text-emerald-800';
-                            case 'stock_out': return 'bg-orange-100 text-orange-800';
-                            default: return 'bg-gray-100 text-gray-800';
+                            case 'add': return 'bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-300';
+                            case 'update': return 'bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-300';
+                            case 'delete': return 'bg-red-100 dark:bg-red-900/30 text-red-800 dark:text-red-300';
+                            case 'stock_in': return 'bg-emerald-100 dark:bg-emerald-900/30 text-emerald-800 dark:text-emerald-300';
+                            case 'stock_out': return 'bg-orange-100 dark:bg-orange-900/30 text-orange-800 dark:text-orange-300';
+                            default: return 'bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-300';
                           }
                         };
                         return (
-                          <tr key={activity.id} className="hover:bg-gray-50">
-                            <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                          <tr key={activity.id} className="hover:bg-gray-50 dark:hover:bg-gray-700/50">
+                            <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900 dark:text-gray-100">
                               {date.toLocaleString()}
                             </td>
                             <td className="px-6 py-4 whitespace-nowrap">
@@ -496,13 +632,13 @@ const AdminDashboard = () => {
                                 {activity.action}
                               </span>
                             </td>
-                            <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                            <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 dark:text-white">
                               {activity.itemName}
                             </td>
-                            <td className="px-6 py-4 text-sm text-gray-500">
+                            <td className="px-6 py-4 text-sm text-gray-500 dark:text-gray-400">
                               {activity.details}
                               {activity.quantityChange !== undefined && activity.quantityChange !== 0 && (
-                                <span className={`ml-2 ${activity.quantityChange > 0 ? 'text-green-600' : 'text-red-600'}`}>
+                                <span className={`ml-2 ${activity.quantityChange > 0 ? 'text-green-600 dark:text-green-400' : 'text-red-600 dark:text-red-400'}`}>
                                   ({activity.quantityChange > 0 ? '+' : ''}{activity.quantityChange} {activity.unit})
                                 </span>
                               )}
@@ -528,11 +664,11 @@ const AdminDashboard = () => {
               </div>
             )}
             {!loading && products.length === 0 && (
-              <div className="mb-4 bg-yellow-50 border border-yellow-200 text-yellow-700 px-4 py-3 rounded-lg flex items-center justify-between">
-                <span>No products found. Make sure the backend server is running and products.json exists.</span>
+              <div className="mb-4 bg-yellow-50 dark:bg-yellow-900/30 border border-yellow-200 dark:border-yellow-800 text-yellow-700 dark:text-yellow-300 px-4 py-3 rounded-lg flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+                <span className="text-sm sm:text-base">No products found. Make sure the backend server is running and products.json exists.</span>
                 <button
                   onClick={loadData}
-                  className="ml-4 px-4 py-2 bg-yellow-600 text-white rounded-lg hover:bg-yellow-700"
+                  className="px-4 py-2 bg-yellow-600 text-white rounded-lg hover:bg-yellow-700 transition-colors text-sm sm:text-base min-h-[44px] w-full sm:w-auto"
                 >
                   Reload
                 </button>
@@ -543,7 +679,7 @@ const AdminDashboard = () => {
                 Showing {products.length} product{products.length !== 1 ? 's' : ''}
               </div>
             )}
-            <div className="mb-6 flex flex-col sm:flex-row gap-4">
+            <div className="mb-6 flex flex-col gap-3 sm:gap-4">
               <div className="flex-1 relative">
                 <FaSearch className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
                 <input
@@ -551,14 +687,14 @@ const AdminDashboard = () => {
                   placeholder="Search products..."
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
-                  className="w-full pl-10 pr-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 bg-white dark:bg-gray-700 text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500"
+                  className="w-full pl-10 pr-4 py-3 sm:py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 bg-white dark:bg-gray-700 text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500 text-base sm:text-sm"
                 />
               </div>
-              <div className="flex gap-2">
+              <div className="flex flex-col sm:flex-row gap-2">
                 <select
                   value={filterType}
                   onChange={(e) => setFilterType(e.target.value)}
-                  className="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                  className="flex-1 sm:flex-initial px-4 py-3 sm:py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 bg-white dark:bg-gray-700 text-gray-900 dark:text-white text-base sm:text-sm min-h-[44px]"
                 >
                   <option value="all">All Categories</option>
                   {productCategories.map(cat => (
@@ -577,26 +713,114 @@ const AdminDashboard = () => {
                     });
                     setShowProductModal(true);
                   }}
-                  className="flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
+                  className="flex items-center justify-center gap-2 px-4 py-3 sm:py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors text-base sm:text-sm min-h-[44px] w-full sm:w-auto"
                 >
                   <FaPlus /> Add Product
                 </button>
               </div>
             </div>
 
-            <div className="bg-white rounded-lg shadow overflow-hidden">
-              <div className="overflow-x-auto">
-                <table className="min-w-full divide-y divide-gray-200">
-                  <thead className="bg-gray-50">
+            <div className="bg-white dark:bg-gray-800 rounded-lg shadow overflow-hidden">
+              {/* Mobile Card View */}
+              <div className="block md:hidden">
+                {(() => {
+                  const filtered = products.filter(p => {
+                    if (!p || !p.name) return false;
+                    const matchesSearch = (p.name || '').toLowerCase().includes(searchTerm.toLowerCase()) ||
+                                         (p.description || '').toLowerCase().includes(searchTerm.toLowerCase());
+                    const matchesCategory = filterType === 'all' || p.category === filterType;
+                    return matchesSearch && matchesCategory;
+                  });
+                  
+                  if (filtered.length === 0) {
+                    return (
+                      <div className="px-4 py-8 text-center text-gray-500 dark:text-gray-400">
+                        {products.length === 0 
+                          ? 'No products found. Add your first product to get started.'
+                          : 'No products match your search criteria.'}
+                      </div>
+                    );
+                  }
+                  
+                  return (
+                    <div className="divide-y divide-gray-200 dark:divide-gray-700">
+                      {filtered.map((product) => (
+                        <div key={product.id} className="p-4 space-y-3">
+                          <div className="flex justify-between items-start">
+                            <h3 className="text-base font-medium text-gray-900 dark:text-white flex-1">{product.name}</h3>
+                            <div className="flex gap-2 ml-2">
+                              <button
+                                onClick={() => {
+                                  setEditingProduct(product);
+                                  setProductFormData({
+                                    name: product.name,
+                                    category: product.category,
+                                    description: product.description,
+                                    applications: Array.isArray(product.applications) ? product.applications.join('\n') : product.applications || '',
+                                    specifications: product.specifications || '',
+                                    packaging: product.packaging || ''
+                                  });
+                                  setShowProductModal(true);
+                                }}
+                                className="text-blue-600 dark:text-blue-400 hover:text-blue-900 dark:hover:text-blue-300 p-2 hover:bg-blue-50 dark:hover:bg-blue-900/30 rounded min-w-[44px] min-h-[44px] flex items-center justify-center"
+                                title="Edit"
+                              >
+                                <FaEdit />
+                              </button>
+                              <button
+                                onClick={async () => {
+                                  if (window.confirm('Are you sure you want to delete this product?')) {
+                                    try {
+                                      await api.deleteProduct(product.id);
+                                      await loadData();
+                                    } catch (err) {
+                                      alert('Failed to delete product: ' + err.message);
+                                    }
+                                  }
+                                }}
+                                className="text-red-600 dark:text-red-400 hover:text-red-900 dark:hover:text-red-300 p-2 hover:bg-red-50 dark:hover:bg-red-900/30 rounded min-w-[44px] min-h-[44px] flex items-center justify-center"
+                                title="Delete"
+                              >
+                                <FaTrash />
+                              </button>
+                            </div>
+                          </div>
+                          <div className="space-y-2 text-sm">
+                            <div>
+                              <span className="text-gray-500 dark:text-gray-400">Category:</span>
+                              <span className="ml-2 text-gray-900 dark:text-gray-100">
+                                {productCategories.find(c => c.id === product.category)?.name || product.category}
+                              </span>
+                            </div>
+                            <div>
+                              <span className="text-gray-500 dark:text-gray-400">Packaging:</span>
+                              <span className="ml-2 text-gray-900 dark:text-gray-100">{product.packaging || '-'}</span>
+                            </div>
+                            <div>
+                              <span className="text-gray-500 dark:text-gray-400">Description:</span>
+                              <p className="mt-1 text-gray-700 dark:text-gray-300">{product.description}</p>
+                            </div>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  );
+                })()}
+              </div>
+
+              {/* Desktop Table View */}
+              <div className="hidden md:block overflow-x-auto">
+                <table className="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
+                  <thead className="bg-gray-50 dark:bg-gray-700">
                     <tr>
-                      <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Product Name</th>
-                      <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Category</th>
-                      <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Description</th>
-                      <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Packaging</th>
-                      <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">Actions</th>
+                      <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">Product Name</th>
+                      <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">Category</th>
+                      <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">Description</th>
+                      <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">Packaging</th>
+                      <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">Actions</th>
                     </tr>
                   </thead>
-                  <tbody className="bg-white divide-y divide-gray-200">
+                  <tbody className="bg-white dark:bg-gray-800 divide-y divide-gray-200 dark:divide-gray-700">
                     {(() => {
                       const filtered = products.filter(p => {
                         if (!p || !p.name) return false;
@@ -609,7 +833,7 @@ const AdminDashboard = () => {
                       if (filtered.length === 0) {
                         return (
                           <tr>
-                            <td colSpan="5" className="px-6 py-8 text-center text-gray-500">
+                            <td colSpan="5" className="px-6 py-8 text-center text-gray-500 dark:text-gray-400">
                               {products.length === 0 
                                 ? 'No products found. Add your first product to get started.'
                                 : 'No products match your search criteria.'}
@@ -619,20 +843,20 @@ const AdminDashboard = () => {
                       }
                       
                       return filtered.map((product) => (
-                        <tr key={product.id} className="hover:bg-gray-50">
+                        <tr key={product.id} className="hover:bg-gray-50 dark:hover:bg-gray-700/50">
                           <td className="px-6 py-4 whitespace-nowrap">
-                            <div className="text-sm font-medium text-gray-900">{product.name}</div>
+                            <div className="text-sm font-medium text-gray-900 dark:text-white">{product.name}</div>
                           </td>
                           <td className="px-6 py-4 whitespace-nowrap">
-                            <div className="text-sm text-gray-900">
+                            <div className="text-sm text-gray-900 dark:text-gray-100">
                               {productCategories.find(c => c.id === product.category)?.name || product.category}
                             </div>
                           </td>
                           <td className="px-6 py-4">
-                            <div className="text-sm text-gray-500 max-w-md truncate">{product.description}</div>
+                            <div className="text-sm text-gray-500 dark:text-gray-400 max-w-md truncate">{product.description}</div>
                           </td>
                           <td className="px-6 py-4 whitespace-nowrap">
-                            <div className="text-sm text-gray-900">{product.packaging || '-'}</div>
+                            <div className="text-sm text-gray-900 dark:text-gray-100">{product.packaging || '-'}</div>
                           </td>
                           <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                             <div className="flex justify-end gap-2">
@@ -649,7 +873,7 @@ const AdminDashboard = () => {
                                   });
                                   setShowProductModal(true);
                                 }}
-                                className="text-blue-600 hover:text-blue-900 p-2 hover:bg-blue-50 rounded"
+                                className="text-blue-600 dark:text-blue-400 hover:text-blue-900 dark:hover:text-blue-300 p-2 hover:bg-blue-50 dark:hover:bg-blue-900/30 rounded min-w-[44px] min-h-[44px] flex items-center justify-center"
                                 title="Edit"
                               >
                                 <FaEdit />
@@ -665,7 +889,7 @@ const AdminDashboard = () => {
                                     }
                                   }
                                 }}
-                                className="text-red-600 hover:text-red-900 p-2 hover:bg-red-50 rounded"
+                                className="text-red-600 dark:text-red-400 hover:text-red-900 dark:hover:text-red-300 p-2 hover:bg-red-50 dark:hover:bg-red-900/30 rounded min-w-[44px] min-h-[44px] flex items-center justify-center"
                                 title="Delete"
                               >
                                 <FaTrash />
@@ -685,8 +909,8 @@ const AdminDashboard = () => {
 
       {/* Add/Edit Product Modal */}
       {showProductModal && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
-          <div className="bg-white rounded-lg max-w-2xl w-full max-h-[90vh] overflow-y-auto p-6">
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4 overflow-y-auto">
+          <div className="bg-white dark:bg-gray-800 rounded-lg max-w-2xl w-full max-h-[90vh] overflow-y-auto p-4 sm:p-6 my-auto">
             <div className="flex justify-between items-center mb-4">
               <h3 className="text-lg font-semibold">{editingProduct ? 'Edit Product' : 'Add New Product'}</h3>
               <button onClick={() => {
@@ -697,7 +921,7 @@ const AdminDashboard = () => {
               </button>
             </div>
             <ProductForm formData={productFormData} setFormData={setProductFormData} />
-            <div className="flex gap-3 mt-6">
+            <div className="flex flex-col sm:flex-row gap-3 mt-6">
               <button
                 onClick={async () => {
                   if (!productFormData.name || !productFormData.description) {
@@ -728,7 +952,7 @@ const AdminDashboard = () => {
                     alert('Failed to save product: ' + err.message);
                   }
                 }}
-                className="flex-1 flex items-center justify-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700"
+                className="flex-1 flex items-center justify-center gap-2 px-4 py-3 sm:py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors min-h-[44px] text-base sm:text-sm"
               >
                 <FaSave /> {editingProduct ? 'Update' : 'Save'}
               </button>
@@ -737,7 +961,7 @@ const AdminDashboard = () => {
                   setShowProductModal(false);
                   setEditingProduct(null);
                 }}
-                className="flex-1 flex items-center justify-center gap-2 px-4 py-2 bg-gray-200 text-gray-700 rounded-lg hover:bg-gray-300"
+                className="flex-1 flex items-center justify-center gap-2 px-4 py-3 sm:py-2 bg-gray-200 dark:bg-gray-600 text-gray-700 dark:text-gray-200 rounded-lg hover:bg-gray-300 dark:hover:bg-gray-500 transition-colors min-h-[44px] text-base sm:text-sm"
               >
                 <FaTimesCircle /> Cancel
               </button>
@@ -848,13 +1072,13 @@ const AdminDashboard = () => {
                 );
               })()}
             </div>
-            <div className="p-6 border-t border-gray-200 bg-gray-50">
+            <div className="p-4 sm:p-6 border-t border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-700/50">
               <button
                 onClick={() => {
                   setShowItemHistoryModal(false);
                   setSelectedItemForHistory(null);
                 }}
-                className="w-full px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
+                className="w-full px-4 py-3 sm:py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors min-h-[44px] text-base sm:text-sm"
               >
                 Close
               </button>
@@ -865,8 +1089,8 @@ const AdminDashboard = () => {
 
       {/* Settings Modal */}
       {showSettingsModal && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
-          <div className="bg-white dark:bg-gray-800 rounded-lg max-w-md w-full p-6">
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4 overflow-y-auto">
+          <div className="bg-white dark:bg-gray-800 rounded-lg max-w-md w-full p-4 sm:p-6 my-auto">
             <div className="flex justify-between items-center mb-4">
               <h3 className="text-lg font-semibold text-gray-900 dark:text-white">Settings</h3>
               <button
@@ -915,8 +1139,8 @@ const AdminDashboard = () => {
 
       {/* Add Item Modal */}
       {showAddModal && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
-          <div className="bg-white dark:bg-gray-800 rounded-lg max-w-md w-full p-6">
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4 overflow-y-auto">
+          <div className="bg-white dark:bg-gray-800 rounded-lg max-w-md w-full p-4 sm:p-6 my-auto">
             <div className="flex justify-between items-center mb-4">
               <h3 className="text-lg font-semibold text-gray-900 dark:text-white">Add New Item</h3>
               <button onClick={() => setShowAddModal(false)} className="text-gray-400 hover:text-gray-600 dark:hover:text-gray-300">
@@ -924,16 +1148,16 @@ const AdminDashboard = () => {
               </button>
             </div>
             <ItemForm formData={formData} setFormData={setFormData} />
-            <div className="flex gap-3 mt-6">
+            <div className="flex flex-col sm:flex-row gap-3 mt-6">
               <button
                 onClick={handleSaveItem}
-                className="flex-1 flex items-center justify-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700"
+                className="flex-1 flex items-center justify-center gap-2 px-4 py-3 sm:py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors min-h-[44px] text-base sm:text-sm"
               >
                 <FaSave /> Save
               </button>
               <button
                 onClick={() => setShowAddModal(false)}
-                className="flex-1 flex items-center justify-center gap-2 px-4 py-2 bg-gray-200 text-gray-700 rounded-lg hover:bg-gray-300"
+                className="flex-1 flex items-center justify-center gap-2 px-4 py-3 sm:py-2 bg-gray-200 dark:bg-gray-600 text-gray-700 dark:text-gray-200 rounded-lg hover:bg-gray-300 dark:hover:bg-gray-500 transition-colors min-h-[44px] text-base sm:text-sm"
               >
                 <FaTimesCircle /> Cancel
               </button>
@@ -944,8 +1168,8 @@ const AdminDashboard = () => {
 
       {/* Edit Item Modal */}
       {showEditModal && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
-          <div className="bg-white dark:bg-gray-800 rounded-lg max-w-md w-full p-6">
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4 overflow-y-auto">
+          <div className="bg-white dark:bg-gray-800 rounded-lg max-w-md w-full p-4 sm:p-6 my-auto">
             <div className="flex justify-between items-center mb-4">
               <h3 className="text-lg font-semibold text-gray-900 dark:text-white">Edit Item</h3>
               <button onClick={() => {
@@ -956,10 +1180,10 @@ const AdminDashboard = () => {
               </button>
             </div>
             <ItemForm formData={formData} setFormData={setFormData} />
-            <div className="flex gap-3 mt-6">
+            <div className="flex flex-col sm:flex-row gap-3 mt-6">
               <button
                 onClick={handleSaveItem}
-                className="flex-1 flex items-center justify-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700"
+                className="flex-1 flex items-center justify-center gap-2 px-4 py-3 sm:py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors min-h-[44px] text-base sm:text-sm"
               >
                 <FaSave /> Update
               </button>
@@ -968,7 +1192,7 @@ const AdminDashboard = () => {
                   setShowEditModal(false);
                   setEditingItem(null);
                 }}
-                className="flex-1 flex items-center justify-center gap-2 px-4 py-2 bg-gray-200 text-gray-700 rounded-lg hover:bg-gray-300"
+                className="flex-1 flex items-center justify-center gap-2 px-4 py-3 sm:py-2 bg-gray-200 dark:bg-gray-600 text-gray-700 dark:text-gray-200 rounded-lg hover:bg-gray-300 dark:hover:bg-gray-500 transition-colors min-h-[44px] text-base sm:text-sm"
               >
                 <FaTimesCircle /> Cancel
               </button>
