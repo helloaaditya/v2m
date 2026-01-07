@@ -1,43 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import { FaSearch, FaPhone, FaWhatsapp, FaTimes, FaCheck } from 'react-icons/fa';
-
-// Sample product data - replace with your actual data
-const productCategories = [
-  { id: 'waterproofing', name: 'Waterproofing', icon: '💧', description: 'Complete waterproofing systems for all applications' },
-  { id: 'admixtures', name: 'Concrete Admixtures', icon: '🏗️', description: 'High-performance admixtures for superior concrete' },
-  { id: 'grouts', name: 'Grouts & Repair', icon: '🔩', description: 'High-strength grouts and repair materials' },
-  { id: 'sealants', name: 'Sealants', icon: '🔗', description: 'Sealants and jointing compounds' },
-  { id: 'protection', name: 'Concrete Protection', icon: '🛡️', description: 'Protective coatings and systems' },
-  { id: 'flooring', name: 'Industrial Flooring', icon: '🏭', description: 'Durable flooring solutions' }
-];
-
-const sampleProducts = [
-  {
-    id: 1,
-    name: 'Nitoproof 170',
-    category: 'waterproofing',
-    description: 'Single component waterproofing membrane for basements and terraces',
-    applications: ['Basement waterproofing', 'Terrace waterproofing', 'Water tank protection'],
-    specifications: 'Coverage: 1.5-2.0 kg/sqm per coat',
-    packaging: '20kg bags'
-  },
-  {
-    id: 2,
-    name: 'Conplast SP430',
-    category: 'admixtures',
-    description: 'Superplasticizer for high workability and strength',
-    applications: ['Ready mix concrete', 'Precast concrete', 'High-rise construction'],
-    specifications: 'Dosage: 0.5-1.5% by weight of cement',
-    packaging: '20L, 200L drums'
-  },
-  // Add more products as needed
-];
+import { products as defaultProducts, productCategories } from '../data/products';
+import { api } from '../utils/api';
 
 const Products = () => {
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedProduct, setSelectedProduct] = useState(null);
   const [scrollY, setScrollY] = useState(0);
+  const [products, setProducts] = useState(defaultProducts);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const handleScroll = () => setScrollY(window.scrollY);
@@ -45,10 +17,31 @@ const Products = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const filteredProducts = sampleProducts.filter(product => {
+  useEffect(() => {
+    // Try to load products from backend API, fallback to default products
+    const loadProducts = async () => {
+      try {
+        const backendProducts = await api.getProducts();
+        if (backendProducts && backendProducts.length > 0) {
+          setProducts(backendProducts);
+        }
+      } catch (error) {
+        console.log('Using default products from file');
+        // Keep using defaultProducts
+      } finally {
+        setLoading(false);
+      }
+    };
+    loadProducts();
+  }, []);
+
+  const filteredProducts = products.filter(product => {
     const matchesCategory = selectedCategory === 'all' || product.category === selectedCategory;
     const matchesSearch = product.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                         product.description.toLowerCase().includes(searchQuery.toLowerCase());
+                         product.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                         (product.applications && product.applications.some(app => 
+                           app.toLowerCase().includes(searchQuery.toLowerCase())
+                         ));
     return matchesCategory && matchesSearch;
   });
 
@@ -149,7 +142,12 @@ const Products = () => {
       {/* Products Grid */}
       <section className="py-12 bg-white">
         <div className="container mx-auto px-4 max-w-7xl">
-          {filteredProducts.length > 0 ? (
+          {loading ? (
+            <div className="text-center py-16">
+              <div className="inline-block animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600"></div>
+              <p className="mt-4 text-gray-600">Loading products...</p>
+            </div>
+          ) : filteredProducts.length > 0 ? (
             <>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
                 {filteredProducts.map((product) => (

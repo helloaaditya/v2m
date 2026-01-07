@@ -22,6 +22,7 @@ const dataDir = path.join(__dirname, 'data');
 const inventoryFile = path.join(dataDir, 'inventory.json');
 const activityFile = path.join(dataDir, 'activityHistory.json');
 const usersFile = path.join(dataDir, 'users.json');
+const productsFile = path.join(dataDir, 'products.json');
 
 // Ensure data directory exists
 if (!fs.existsSync(dataDir)) {
@@ -45,6 +46,9 @@ const initializeDataFiles = () => {
       createdAt: new Date().toISOString()
     };
     fs.writeFileSync(usersFile, JSON.stringify([defaultUser]));
+  }
+  if (!fs.existsSync(productsFile)) {
+    fs.writeFileSync(productsFile, JSON.stringify([]));
   }
 };
 
@@ -86,6 +90,19 @@ const readUsers = () => {
   } catch (error) {
     return [];
   }
+};
+
+const readProducts = () => {
+  try {
+    const data = fs.readFileSync(productsFile, 'utf8');
+    return JSON.parse(data);
+  } catch (error) {
+    return [];
+  }
+};
+
+const writeProducts = (data) => {
+  fs.writeFileSync(productsFile, JSON.stringify(data, null, 2));
 };
 
 // Authentication middleware
@@ -353,6 +370,138 @@ app.get('/api/activities', authenticateToken, (req, res) => {
   } catch (error) {
     console.error('Error reading activities:', error);
     res.status(500).json({ error: 'Failed to read activities' });
+  }
+});
+
+// Products routes (for website - public)
+app.get('/api/products', (req, res) => {
+  try {
+    const products = readProducts();
+    res.json(products);
+  } catch (error) {
+    console.error('Error reading products:', error);
+    res.status(500).json({ error: 'Failed to read products' });
+  }
+});
+
+app.get('/api/products/:id', (req, res) => {
+  try {
+    const products = readProducts();
+    const product = products.find(p => p.id === req.params.id);
+    if (!product) {
+      return res.status(404).json({ error: 'Product not found' });
+    }
+    res.json(product);
+  } catch (error) {
+    console.error('Error reading product:', error);
+    res.status(500).json({ error: 'Failed to read product' });
+  }
+});
+
+// Admin product management
+app.post('/api/products', authenticateToken, (req, res) => {
+  try {
+    const products = readProducts();
+    const newProduct = {
+      id: Date.now().toString(),
+      ...req.body,
+      createdAt: new Date().toISOString(),
+      updatedAt: new Date().toISOString()
+    };
+    products.push(newProduct);
+    writeProducts(products);
+
+    // Log activity
+    const activities = readActivities();
+    activities.unshift({
+      id: Date.now().toString(),
+      timestamp: new Date().toISOString(),
+      type: 'add',
+      action: 'Product Added',
+      itemName: newProduct.name,
+      details: `Added product: ${newProduct.name}`,
+      userId: req.user.id,
+      username: req.user.username
+    });
+    writeActivities(activities);
+
+    res.status(201).json(newProduct);
+  } catch (error) {
+    console.error('Error creating product:', error);
+    res.status(500).json({ error: 'Failed to create product' });
+  }
+});
+
+app.put('/api/products/:id', authenticateToken, (req, res) => {
+  try {
+    const products = readProducts();
+    const index = products.findIndex(p => p.id === req.params.id);
+
+    if (index === -1) {
+      return res.status(404).json({ error: 'Product not found' });
+    }
+
+    const updatedProduct = {
+      ...products[index],
+      ...req.body,
+      id: req.params.id,
+      updatedAt: new Date().toISOString()
+    };
+    products[index] = updatedProduct;
+    writeProducts(products);
+
+    // Log activity
+    const activities = readActivities();
+    activities.unshift({
+      id: Date.now().toString(),
+      timestamp: new Date().toISOString(),
+      type: 'update',
+      action: 'Product Updated',
+      itemName: updatedProduct.name,
+      details: `Updated product: ${updatedProduct.name}`,
+      userId: req.user.id,
+      username: req.user.username
+    });
+    writeActivities(activities);
+
+    res.json(updatedProduct);
+  } catch (error) {
+    console.error('Error updating product:', error);
+    res.status(500).json({ error: 'Failed to update product' });
+  }
+});
+
+app.delete('/api/products/:id', authenticateToken, (req, res) => {
+  try {
+    const products = readProducts();
+    const index = products.findIndex(p => p.id === req.params.id);
+
+    if (index === -1) {
+      return res.status(404).json({ error: 'Product not found' });
+    }
+
+    const deletedProduct = products[index];
+    products.splice(index, 1);
+    writeProducts(products);
+
+    // Log activity
+    const activities = readActivities();
+    activities.unshift({
+      id: Date.now().toString(),
+      timestamp: new Date().toISOString(),
+      type: 'delete',
+      action: 'Product Deleted',
+      itemName: deletedProduct.name,
+      details: `Deleted product: ${deletedProduct.name}`,
+      userId: req.user.id,
+      username: req.user.username
+    });
+    writeActivities(activities);
+
+    res.json({ success: true, message: 'Product deleted' });
+  } catch (error) {
+    console.error('Error deleting product:', error);
+    res.status(500).json({ error: 'Failed to delete product' });
   }
 });
 
