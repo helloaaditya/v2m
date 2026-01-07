@@ -1,13 +1,14 @@
 import express from 'express';
 import cors from 'cors';
-import fs from 'fs';
-import path from 'path';
-import { fileURLToPath } from 'url';
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+import { connectDB } from './db.js';
+import { 
+  readInventory, writeInventory, 
+  readActivities, writeActivities, 
+  readUsers, readProducts, writeProducts,
+  initializeDataFiles 
+} from './data-helpers.js';
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -43,93 +44,8 @@ app.options('*', cors());
 
 app.use(express.json());
 
-// Data file paths
-const dataDir = path.join(__dirname, 'data');
-const inventoryFile = path.join(dataDir, 'inventory.json');
-const activityFile = path.join(dataDir, 'activityHistory.json');
-const usersFile = path.join(dataDir, 'users.json');
-const productsFile = path.join(dataDir, 'products.json');
-
-// Ensure data directory exists
-if (!fs.existsSync(dataDir)) {
-  fs.mkdirSync(dataDir, { recursive: true });
-}
-
-// Initialize data files if they don't exist
-const initializeDataFiles = () => {
-  if (!fs.existsSync(inventoryFile)) {
-    fs.writeFileSync(inventoryFile, JSON.stringify([]));
-  }
-  if (!fs.existsSync(activityFile)) {
-    fs.writeFileSync(activityFile, JSON.stringify([]));
-  }
-  if (!fs.existsSync(usersFile)) {
-    // Create default admin user
-    const defaultUser = {
-      id: '1',
-      username: 'admin',
-      password: bcrypt.hashSync('admin123', 10), // Hashed password
-      createdAt: new Date().toISOString()
-    };
-    fs.writeFileSync(usersFile, JSON.stringify([defaultUser]));
-  }
-  if (!fs.existsSync(productsFile)) {
-    fs.writeFileSync(productsFile, JSON.stringify([]));
-  }
-};
-
+// Initialize data files (for file-based fallback)
 initializeDataFiles();
-
-// Helper functions to read/write data
-const readInventory = () => {
-  try {
-    const data = fs.readFileSync(inventoryFile, 'utf8');
-    return JSON.parse(data);
-  } catch (error) {
-    return [];
-  }
-};
-
-const writeInventory = (data) => {
-  fs.writeFileSync(inventoryFile, JSON.stringify(data, null, 2));
-};
-
-const readActivities = () => {
-  try {
-    const data = fs.readFileSync(activityFile, 'utf8');
-    return JSON.parse(data);
-  } catch (error) {
-    return [];
-  }
-};
-
-const writeActivities = (data) => {
-  // Keep only last 1000 activities
-  const limited = data.slice(0, 1000);
-  fs.writeFileSync(activityFile, JSON.stringify(limited, null, 2));
-};
-
-const readUsers = () => {
-  try {
-    const data = fs.readFileSync(usersFile, 'utf8');
-    return JSON.parse(data);
-  } catch (error) {
-    return [];
-  }
-};
-
-const readProducts = () => {
-  try {
-    const data = fs.readFileSync(productsFile, 'utf8');
-    return JSON.parse(data);
-  } catch (error) {
-    return [];
-  }
-};
-
-const writeProducts = (data) => {
-  fs.writeFileSync(productsFile, JSON.stringify(data, null, 2));
-};
 
 // Authentication middleware
 const authenticateToken = (req, res, next) => {
@@ -165,7 +81,7 @@ app.post('/api/auth/login', async (req, res) => {
       return res.status(400).json({ error: 'Username and password required' });
     }
 
-    const users = readUsers();
+    const users = await readUsers();
     const user = users.find(u => u.username === username);
 
     if (!user) {
@@ -203,9 +119,9 @@ app.get('/api/auth/verify', authenticateToken, (req, res) => {
 });
 
 // Inventory routes
-app.get('/api/inventory', authenticateToken, (req, res) => {
+app.get('/api/inventory', authenticateToken, async (req, res) => {
   try {
-    const inventory = readInventory();
+    const inventory = await readInventory();
     res.json(inventory);
   } catch (error) {
     console.error('Error reading inventory:', error);
@@ -213,9 +129,9 @@ app.get('/api/inventory', authenticateToken, (req, res) => {
   }
 });
 
-app.post('/api/inventory', authenticateToken, (req, res) => {
+app.post('/api/inventory', authenticateToken, async (req, res) => {
   try {
-    const inventory = readInventory();
+    const inventory = await readInventory();
     const newItem = {
       id: Date.now().toString(),
       ...req.body,
@@ -223,10 +139,10 @@ app.post('/api/inventory', authenticateToken, (req, res) => {
       updatedAt: new Date().toISOString()
     };
     inventory.push(newItem);
-    writeInventory(inventory);
+    await writeInventory(inventory);
 
     // Log activity
-    const activities = readActivities();
+    const activities = await readActivities();
     activities.unshift({
       id: Date.now().toString(),
       timestamp: new Date().toISOString(),
@@ -239,7 +155,7 @@ app.post('/api/inventory', authenticateToken, (req, res) => {
       userId: req.user.id,
       username: req.user.username
     });
-    writeActivities(activities);
+    await writeActivities(activities);
 
     res.status(201).json(newItem);
   } catch (error) {
@@ -248,9 +164,9 @@ app.post('/api/inventory', authenticateToken, (req, res) => {
   }
 });
 
-app.put('/api/inventory/:id', authenticateToken, (req, res) => {
+app.put('/api/inventory/:id', authenticateToken, async (req, res) => {
   try {
-    const inventory = readInventory();
+    const inventory = await readInventory();
     const index = inventory.findIndex(item => item.id === req.params.id);
 
     if (index === -1) {
@@ -265,10 +181,10 @@ app.put('/api/inventory/:id', authenticateToken, (req, res) => {
       updatedAt: new Date().toISOString()
     };
     inventory[index] = updatedItem;
-    writeInventory(inventory);
+    await writeInventory(inventory);
 
     // Log activity
-    const activities = readActivities();
+    const activities = await readActivities();
     const quantityChange = updatedItem.quantity - oldItem.quantity;
     activities.unshift({
       id: Date.now().toString(),
@@ -286,7 +202,7 @@ app.put('/api/inventory/:id', authenticateToken, (req, res) => {
       userId: req.user.id,
       username: req.user.username
     });
-    writeActivities(activities);
+    await writeActivities(activities);
 
     res.json(updatedItem);
   } catch (error) {
@@ -295,9 +211,9 @@ app.put('/api/inventory/:id', authenticateToken, (req, res) => {
   }
 });
 
-app.delete('/api/inventory/:id', authenticateToken, (req, res) => {
+app.delete('/api/inventory/:id', authenticateToken, async (req, res) => {
   try {
-    const inventory = readInventory();
+    const inventory = await readInventory();
     const index = inventory.findIndex(item => item.id === req.params.id);
 
     if (index === -1) {
@@ -306,10 +222,10 @@ app.delete('/api/inventory/:id', authenticateToken, (req, res) => {
 
     const deletedItem = inventory[index];
     inventory.splice(index, 1);
-    writeInventory(inventory);
+    await writeInventory(inventory);
 
     // Log activity
-    const activities = readActivities();
+    const activities = await readActivities();
     activities.unshift({
       id: Date.now().toString(),
       timestamp: new Date().toISOString(),
@@ -320,7 +236,7 @@ app.delete('/api/inventory/:id', authenticateToken, (req, res) => {
       userId: req.user.id,
       username: req.user.username
     });
-    writeActivities(activities);
+    await writeActivities(activities);
 
     res.json({ success: true, message: 'Item deleted' });
   } catch (error) {
@@ -330,7 +246,7 @@ app.delete('/api/inventory/:id', authenticateToken, (req, res) => {
 });
 
 // Stock In/Out
-app.post('/api/inventory/:id/stock', authenticateToken, (req, res) => {
+app.post('/api/inventory/:id/stock', authenticateToken, async (req, res) => {
   try {
     const { type, quantity, note, reference } = req.body; // type: 'in' or 'out'
     if (!type || !quantity || (type !== 'in' && type !== 'out')) {
@@ -341,7 +257,7 @@ app.post('/api/inventory/:id/stock', authenticateToken, (req, res) => {
       return res.status(400).json({ error: 'Note is required' });
     }
 
-    const inventory = readInventory();
+    const inventory = await readInventory();
     const index = inventory.findIndex(item => item.id === req.params.id);
 
     if (index === -1) {
@@ -365,10 +281,10 @@ app.post('/api/inventory/:id/stock', authenticateToken, (req, res) => {
       quantity: newQuantity,
       updatedAt: new Date().toISOString()
     };
-    writeInventory(inventory);
+    await writeInventory(inventory);
 
     // Log activity
-    const activities = readActivities();
+    const activities = await readActivities();
     const activityDetails = `${type === 'in' ? 'Added' : 'Removed'} ${changeAmount} ${item.unit} of ${item.name}`;
     const fullDetails = reference 
       ? `${activityDetails}. Note: ${note}. Reference: ${reference}`
@@ -390,7 +306,7 @@ app.post('/api/inventory/:id/stock', authenticateToken, (req, res) => {
       userId: req.user.id,
       username: req.user.username
     });
-    writeActivities(activities);
+    await writeActivities(activities);
 
     res.json(inventory[index]);
   } catch (error) {
@@ -400,9 +316,9 @@ app.post('/api/inventory/:id/stock', authenticateToken, (req, res) => {
 });
 
 // Activity history
-app.get('/api/activities', authenticateToken, (req, res) => {
+app.get('/api/activities', authenticateToken, async (req, res) => {
   try {
-    const activities = readActivities();
+    const activities = await readActivities();
     res.json(activities);
   } catch (error) {
     console.error('Error reading activities:', error);
@@ -411,9 +327,9 @@ app.get('/api/activities', authenticateToken, (req, res) => {
 });
 
 // Products routes (for website - public)
-app.get('/api/products', (req, res) => {
+app.get('/api/products', async (req, res) => {
   try {
-    const products = readProducts();
+    const products = await readProducts();
     res.json(products);
   } catch (error) {
     console.error('Error reading products:', error);
@@ -421,9 +337,9 @@ app.get('/api/products', (req, res) => {
   }
 });
 
-app.get('/api/products/:id', (req, res) => {
+app.get('/api/products/:id', async (req, res) => {
   try {
-    const products = readProducts();
+    const products = await readProducts();
     const product = products.find(p => p.id === req.params.id);
     if (!product) {
       return res.status(404).json({ error: 'Product not found' });
@@ -436,9 +352,9 @@ app.get('/api/products/:id', (req, res) => {
 });
 
 // Admin product management
-app.post('/api/products', authenticateToken, (req, res) => {
+app.post('/api/products', authenticateToken, async (req, res) => {
   try {
-    const products = readProducts();
+    const products = await readProducts();
     const newProduct = {
       id: Date.now().toString(),
       ...req.body,
@@ -446,10 +362,10 @@ app.post('/api/products', authenticateToken, (req, res) => {
       updatedAt: new Date().toISOString()
     };
     products.push(newProduct);
-    writeProducts(products);
+    await writeProducts(products);
 
     // Log activity
-    const activities = readActivities();
+    const activities = await readActivities();
     activities.unshift({
       id: Date.now().toString(),
       timestamp: new Date().toISOString(),
@@ -460,7 +376,7 @@ app.post('/api/products', authenticateToken, (req, res) => {
       userId: req.user.id,
       username: req.user.username
     });
-    writeActivities(activities);
+    await writeActivities(activities);
 
     res.status(201).json(newProduct);
   } catch (error) {
@@ -469,9 +385,9 @@ app.post('/api/products', authenticateToken, (req, res) => {
   }
 });
 
-app.put('/api/products/:id', authenticateToken, (req, res) => {
+app.put('/api/products/:id', authenticateToken, async (req, res) => {
   try {
-    const products = readProducts();
+    const products = await readProducts();
     const index = products.findIndex(p => p.id === req.params.id);
 
     if (index === -1) {
@@ -485,10 +401,10 @@ app.put('/api/products/:id', authenticateToken, (req, res) => {
       updatedAt: new Date().toISOString()
     };
     products[index] = updatedProduct;
-    writeProducts(products);
+    await writeProducts(products);
 
     // Log activity
-    const activities = readActivities();
+    const activities = await readActivities();
     activities.unshift({
       id: Date.now().toString(),
       timestamp: new Date().toISOString(),
@@ -499,7 +415,7 @@ app.put('/api/products/:id', authenticateToken, (req, res) => {
       userId: req.user.id,
       username: req.user.username
     });
-    writeActivities(activities);
+    await writeActivities(activities);
 
     res.json(updatedProduct);
   } catch (error) {
@@ -508,9 +424,9 @@ app.put('/api/products/:id', authenticateToken, (req, res) => {
   }
 });
 
-app.delete('/api/products/:id', authenticateToken, (req, res) => {
+app.delete('/api/products/:id', authenticateToken, async (req, res) => {
   try {
-    const products = readProducts();
+    const products = await readProducts();
     const index = products.findIndex(p => p.id === req.params.id);
 
     if (index === -1) {
@@ -519,10 +435,10 @@ app.delete('/api/products/:id', authenticateToken, (req, res) => {
 
     const deletedProduct = products[index];
     products.splice(index, 1);
-    writeProducts(products);
+    await writeProducts(products);
 
     // Log activity
-    const activities = readActivities();
+    const activities = await readActivities();
     activities.unshift({
       id: Date.now().toString(),
       timestamp: new Date().toISOString(),
@@ -533,7 +449,7 @@ app.delete('/api/products/:id', authenticateToken, (req, res) => {
       userId: req.user.id,
       username: req.user.username
     });
-    writeActivities(activities);
+    await writeActivities(activities);
 
     res.json({ success: true, message: 'Product deleted' });
   } catch (error) {
@@ -543,8 +459,11 @@ app.delete('/api/products/:id', authenticateToken, (req, res) => {
 });
 
 // Start server
-app.listen(PORT, () => {
+app.listen(PORT, async () => {
   console.log(`🚀 Backend server running on http://localhost:${PORT}`);
   console.log(`📊 API endpoints available at http://localhost:${PORT}/api`);
+  
+  // Try to connect to MongoDB
+  await connectDB();
 });
 
