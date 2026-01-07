@@ -8,6 +8,11 @@ const getToken = () => {
 
 // Helper function to make API requests
 const apiRequest = async (endpoint, options = {}) => {
+  // Check if API URL is localhost in production (won't work)
+  if (API_BASE_URL.includes('localhost') && window.location.hostname !== 'localhost' && window.location.hostname !== '127.0.0.1') {
+    throw new Error('Backend API not configured. Please set VITE_API_URL environment variable in Vercel.');
+  }
+
   const token = getToken();
   const headers = {
     'Content-Type': 'application/json',
@@ -31,7 +36,10 @@ const apiRequest = async (endpoint, options = {}) => {
 
     return await response.json();
   } catch (error) {
-    console.error('API request error:', error);
+    // Don't log connection errors in production to avoid console spam
+    if (error.message && !error.message.includes('Backend API not configured')) {
+      console.error('API request error:', error.message);
+    }
     throw error;
   }
 };

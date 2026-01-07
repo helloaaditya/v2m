@@ -140,3 +140,4 @@ If you can't deploy the backend right now, the frontend will automatically use p
 ⏳ Backend: Needs to be deployed  
 📝 Next Step: Deploy backend and configure `VITE_API_URL` in Vercel
 
+
