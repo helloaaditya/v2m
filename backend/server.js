@@ -332,9 +332,13 @@ app.delete('/api/inventory/:id', authenticateToken, (req, res) => {
 // Stock In/Out
 app.post('/api/inventory/:id/stock', authenticateToken, (req, res) => {
   try {
-    const { type, quantity } = req.body; // type: 'in' or 'out'
+    const { type, quantity, note, reference } = req.body; // type: 'in' or 'out'
     if (!type || !quantity || (type !== 'in' && type !== 'out')) {
       return res.status(400).json({ error: 'Invalid request. Type must be "in" or "out" and quantity is required' });
+    }
+
+    if (!note || note.trim() === '') {
+      return res.status(400).json({ error: 'Note is required' });
     }
 
     const inventory = readInventory();
@@ -365,6 +369,11 @@ app.post('/api/inventory/:id/stock', authenticateToken, (req, res) => {
 
     // Log activity
     const activities = readActivities();
+    const activityDetails = `${type === 'in' ? 'Added' : 'Removed'} ${changeAmount} ${item.unit} of ${item.name}`;
+    const fullDetails = reference 
+      ? `${activityDetails}. Note: ${note}. Reference: ${reference}`
+      : `${activityDetails}. Note: ${note}`;
+    
     activities.unshift({
       id: Date.now().toString(),
       timestamp: new Date().toISOString(),
@@ -375,7 +384,9 @@ app.post('/api/inventory/:id/stock', authenticateToken, (req, res) => {
       oldQuantity: oldQuantity,
       newQuantity: newQuantity,
       unit: item.unit,
-      details: `${type === 'in' ? 'Added' : 'Removed'} ${changeAmount} ${item.unit} of ${item.name}`,
+      details: fullDetails,
+      note: note.trim(),
+      reference: reference ? reference.trim() : null,
       userId: req.user.id,
       username: req.user.username
     });

@@ -83,10 +83,10 @@ export const api = {
     });
   },
 
-  stockInOut: async (id, type, quantity) => {
+  stockInOut: async (id, type, quantity, note, reference) => {
     return apiRequest(`/inventory/${id}/stock`, {
       method: 'POST',
-      body: JSON.stringify({ type, quantity }),
+      body: JSON.stringify({ type, quantity, note, reference }),
     });
   },
 

@@ -28,6 +28,14 @@ const AdminDashboard = () => {
   const [showItemHistoryModal, setShowItemHistoryModal] = useState(false);
   const [selectedItemForHistory, setSelectedItemForHistory] = useState(null);
   const [showSettingsModal, setShowSettingsModal] = useState(false);
+  const [showStockModal, setShowStockModal] = useState(false);
+  const [stockFormData, setStockFormData] = useState({
+    type: 'in',
+    quantity: '',
+    note: '',
+    reference: ''
+  });
+  const [selectedItemForStock, setSelectedItemForStock] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
   const [formData, setFormData] = useState({
@@ -167,18 +175,40 @@ const AdminDashboard = () => {
     }
   };
 
-  const handleInOut = async (item, type) => {
-    const amount = prompt(`Enter ${type === 'in' ? 'quantity to add' : 'quantity to remove'}:`);
-    if (!amount) return;
+  const handleInOut = (item, type) => {
+    setSelectedItemForStock(item);
+    setStockFormData({
+      type: type,
+      quantity: '',
+      note: '',
+      reference: ''
+    });
+    setShowStockModal(true);
+  };
 
-    const changeAmount = parseFloat(amount);
-    if (isNaN(changeAmount) || changeAmount <= 0) {
-      alert('Please enter a valid positive number');
+  const handleStockSubmit = async () => {
+    if (!stockFormData.quantity || !stockFormData.note.trim()) {
+      alert('Please fill in required fields (Quantity and Note)');
+      return;
+    }
+
+    const quantity = parseFloat(stockFormData.quantity);
+    if (isNaN(quantity) || quantity <= 0) {
+      alert('Please enter a valid positive number for quantity');
       return;
     }
 
     try {
-      await api.stockInOut(item.id, type, changeAmount);
+      await api.stockInOut(
+        selectedItemForStock.id,
+        stockFormData.type,
+        quantity,
+        stockFormData.note.trim(),
+        stockFormData.reference.trim() || null
+      );
+      setShowStockModal(false);
+      setSelectedItemForStock(null);
+      setStockFormData({ type: 'in', quantity: '', note: '', reference: '' });
       await loadData();
     } catch (err) {
       alert('Failed to update stock: ' + err.message);
@@ -583,6 +613,22 @@ const AdminDashboard = () => {
                               </span>
                             )}
                           </div>
+                          {(activity.note || activity.reference) && (
+                            <div className="mt-2 space-y-1 text-xs">
+                              {activity.note && (
+                                <div>
+                                  <span className="text-gray-500 dark:text-gray-400 font-medium">Note:</span>
+                                  <span className="ml-1 text-gray-600 dark:text-gray-300">{activity.note}</span>
+                                </div>
+                              )}
+                              {activity.reference && (
+                                <div>
+                                  <span className="text-gray-500 dark:text-gray-400 font-medium">Ref:</span>
+                                  <span className="ml-1 text-gray-600 dark:text-gray-300">{activity.reference}</span>
+                                </div>
+                              )}
+                            </div>
+                          )}
                           <div className="text-xs text-gray-400 dark:text-gray-500">{date.toLocaleTimeString()}</div>
                         </div>
                       );
@@ -636,11 +682,27 @@ const AdminDashboard = () => {
                               {activity.itemName}
                             </td>
                             <td className="px-6 py-4 text-sm text-gray-500 dark:text-gray-400">
-                              {activity.details}
+                              <div>{activity.details}</div>
                               {activity.quantityChange !== undefined && activity.quantityChange !== 0 && (
                                 <span className={`ml-2 ${activity.quantityChange > 0 ? 'text-green-600 dark:text-green-400' : 'text-red-600 dark:text-red-400'}`}>
                                   ({activity.quantityChange > 0 ? '+' : ''}{activity.quantityChange} {activity.unit})
                                 </span>
+                              )}
+                              {(activity.note || activity.reference) && (
+                                <div className="mt-1 space-y-1 text-xs">
+                                  {activity.note && (
+                                    <div>
+                                      <span className="text-gray-500 dark:text-gray-400 font-medium">Note:</span>
+                                      <span className="ml-1 text-gray-600 dark:text-gray-300">{activity.note}</span>
+                                    </div>
+                                  )}
+                                  {activity.reference && (
+                                    <div>
+                                      <span className="text-gray-500 dark:text-gray-400 font-medium">Ref:</span>
+                                      <span className="ml-1 text-gray-600 dark:text-gray-300">{activity.reference}</span>
+                                    </div>
+                                  )}
+                                </div>
                               )}
                             </td>
                           </tr>
@@ -1039,22 +1101,38 @@ const AdminDashboard = () => {
                               </span>
                             )}
                           </div>
-                          <div className="text-sm text-gray-700 mb-2">
+                          <div className="text-sm text-gray-700 dark:text-gray-300 mb-2">
                             {activity.details}
                           </div>
+                          {(activity.note || activity.reference) && (
+                            <div className="mt-2 space-y-1">
+                              {activity.note && (
+                                <div className="text-sm">
+                                  <span className="text-gray-500 dark:text-gray-400 font-medium">Note:</span>
+                                  <span className="ml-2 text-gray-700 dark:text-gray-300">{activity.note}</span>
+                                </div>
+                              )}
+                              {activity.reference && (
+                                <div className="text-sm">
+                                  <span className="text-gray-500 dark:text-gray-400 font-medium">Reference:</span>
+                                  <span className="ml-2 text-gray-700 dark:text-gray-300">{activity.reference}</span>
+                                </div>
+                              )}
+                            </div>
+                          )}
                           {activity.quantityChange !== undefined && activity.quantityChange !== 0 && (
-                            <div className="flex items-center gap-4 text-sm mt-3 pt-3 border-t border-gray-200">
+                            <div className="flex flex-col sm:flex-row items-start sm:items-center gap-2 sm:gap-4 text-sm mt-3 pt-3 border-t border-gray-200 dark:border-gray-600">
                               <div className="flex-1">
-                                <span className="text-gray-500">Old Quantity:</span>
-                                <span className="ml-2 font-medium">{activity.oldQuantity} {activity.unit}</span>
+                                <span className="text-gray-500 dark:text-gray-400">Old Quantity:</span>
+                                <span className="ml-2 font-medium text-gray-900 dark:text-gray-100">{activity.oldQuantity} {activity.unit}</span>
                               </div>
                               <div className="flex-1">
-                                <span className="text-gray-500">New Quantity:</span>
-                                <span className="ml-2 font-medium">{activity.newQuantity} {activity.unit}</span>
+                                <span className="text-gray-500 dark:text-gray-400">New Quantity:</span>
+                                <span className="ml-2 font-medium text-gray-900 dark:text-gray-100">{activity.newQuantity} {activity.unit}</span>
                               </div>
                               <div className="flex-1">
-                                <span className="text-gray-500">Change:</span>
-                                <span className={`ml-2 font-medium ${activity.quantityChange > 0 ? 'text-green-600' : 'text-red-600'}`}>
+                                <span className="text-gray-500 dark:text-gray-400">Change:</span>
+                                <span className={`ml-2 font-medium ${activity.quantityChange > 0 ? 'text-green-600 dark:text-green-400' : 'text-red-600 dark:text-red-400'}`}>
                                   {activity.quantityChange > 0 ? '+' : ''}{activity.quantityChange} {activity.unit}
                                 </span>
                               </div>
@@ -1081,6 +1159,114 @@ const AdminDashboard = () => {
                 className="w-full px-4 py-3 sm:py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors min-h-[44px] text-base sm:text-sm"
               >
                 Close
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Stock In/Out Modal */}
+      {showStockModal && selectedItemForStock && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4 overflow-y-auto">
+          <div className="bg-white dark:bg-gray-800 rounded-lg max-w-md w-full p-4 sm:p-6 my-auto">
+            <div className="flex justify-between items-center mb-4">
+              <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
+                {stockFormData.type === 'in' ? 'Stock In' : 'Stock Out'} - {selectedItemForStock.name}
+              </h3>
+              <button
+                onClick={() => {
+                  setShowStockModal(false);
+                  setSelectedItemForStock(null);
+                  setStockFormData({ type: 'in', quantity: '', note: '', reference: '' });
+                }}
+                className="text-gray-400 hover:text-gray-600 dark:hover:text-gray-300 p-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded min-w-[44px] min-h-[44px] flex items-center justify-center"
+              >
+                <FaTimes />
+              </button>
+            </div>
+            <div className="space-y-4">
+              <div>
+                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+                  Current Stock
+                </label>
+                <div className="px-3 py-2 bg-gray-50 dark:bg-gray-700 rounded-lg text-gray-900 dark:text-white">
+                  {selectedItemForStock.quantity} {selectedItemForStock.unit}
+                </div>
+              </div>
+              <div>
+                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+                  Quantity {stockFormData.type === 'in' ? 'to Add' : 'to Remove'} *
+                </label>
+                <input
+                  type="number"
+                  min="0.01"
+                  step="0.01"
+                  value={stockFormData.quantity}
+                  onChange={(e) => setStockFormData({ ...stockFormData, quantity: e.target.value })}
+                  className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 bg-white dark:bg-gray-700 text-gray-900 dark:text-white text-base sm:text-sm"
+                  placeholder={`Enter quantity in ${selectedItemForStock.unit}`}
+                  required
+                />
+              </div>
+              <div>
+                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+                  Note *
+                </label>
+                <textarea
+                  value={stockFormData.note}
+                  onChange={(e) => setStockFormData({ ...stockFormData, note: e.target.value })}
+                  className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 bg-white dark:bg-gray-700 text-gray-900 dark:text-white text-base sm:text-sm resize-none"
+                  placeholder="Enter note (required)"
+                  rows="3"
+                  required
+                />
+              </div>
+              <div>
+                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+                  Reference <span className="text-gray-500 dark:text-gray-400 text-xs">(Optional)</span>
+                </label>
+                <input
+                  type="text"
+                  value={stockFormData.reference}
+                  onChange={(e) => setStockFormData({ ...stockFormData, reference: e.target.value })}
+                  className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 bg-white dark:bg-gray-700 text-gray-900 dark:text-white text-base sm:text-sm"
+                  placeholder="Enter reference (e.g., Invoice #, PO #, etc.)"
+                />
+              </div>
+              {stockFormData.quantity && !isNaN(parseFloat(stockFormData.quantity)) && (
+                <div className="p-3 bg-blue-50 dark:bg-blue-900/30 rounded-lg">
+                  <div className="text-sm text-gray-700 dark:text-gray-300">
+                    <span className="font-medium">New Quantity:</span>{' '}
+                    <span className={stockFormData.type === 'in' ? 'text-green-600 dark:text-green-400' : 'text-orange-600 dark:text-orange-400'}>
+                      {stockFormData.type === 'in'
+                        ? selectedItemForStock.quantity + parseFloat(stockFormData.quantity || 0)
+                        : Math.max(0, selectedItemForStock.quantity - parseFloat(stockFormData.quantity || 0))
+                      } {selectedItemForStock.unit}
+                    </span>
+                  </div>
+                </div>
+              )}
+            </div>
+            <div className="flex flex-col sm:flex-row gap-3 mt-6">
+              <button
+                onClick={handleStockSubmit}
+                className={`flex-1 flex items-center justify-center gap-2 px-4 py-3 sm:py-2 rounded-lg transition-colors min-h-[44px] text-base sm:text-sm ${
+                  stockFormData.type === 'in'
+                    ? 'bg-green-600 hover:bg-green-700 text-white'
+                    : 'bg-orange-600 hover:bg-orange-700 text-white'
+                }`}
+              >
+                <FaSave /> {stockFormData.type === 'in' ? 'Add Stock' : 'Remove Stock'}
+              </button>
+              <button
+                onClick={() => {
+                  setShowStockModal(false);
+                  setSelectedItemForStock(null);
+                  setStockFormData({ type: 'in', quantity: '', note: '', reference: '' });
+                }}
+                className="flex-1 flex items-center justify-center gap-2 px-4 py-3 sm:py-2 bg-gray-200 dark:bg-gray-600 text-gray-700 dark:text-gray-200 rounded-lg hover:bg-gray-300 dark:hover:bg-gray-500 transition-colors min-h-[44px] text-base sm:text-sm"
+              >
+                <FaTimesCircle /> Cancel
               </button>
             </div>
           </div>
