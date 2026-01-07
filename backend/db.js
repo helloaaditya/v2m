@@ -23,6 +23,9 @@ export const connectDB = async () => {
       
       // Initialize default admin user if users collection is empty
       await initializeDefaultUser();
+      
+      // Initialize all collections (create them if they don't exist)
+      await initializeCollections();
     }
     return true;
   } catch (error) {
@@ -49,6 +52,28 @@ const initializeDefaultUser = async () => {
     }
   } catch (error) {
     console.error('Error initializing default user:', error);
+  }
+};
+
+// Initialize all collections (create them if they don't exist)
+const initializeCollections = async () => {
+  try {
+    const collections = ['inventory', 'activities', 'products', 'users'];
+    
+    for (const collectionName of collections) {
+      const collection = db.collection(collectionName);
+      // Check if collection exists by trying to get stats
+      const stats = await db.listCollections({ name: collectionName }).toArray();
+      
+      if (stats.length === 0) {
+        // Collection doesn't exist, create it by inserting and deleting a temp document
+        await collection.insertOne({ _temp: true, _createdAt: new Date() });
+        await collection.deleteOne({ _temp: true });
+        console.log(`✅ Initialized collection: ${collectionName}`);
+      }
+    }
+  } catch (error) {
+    console.error('Error initializing collections:', error);
   }
 };
 
