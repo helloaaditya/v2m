@@ -285,7 +285,7 @@ const AdminDashboard = () => {
         {/* Loading Indicator */}
         {loading && (
           <div className="mb-4 text-center">
-            <div className="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600"></div>
+            <div className="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-fosroc-blue"></div>
             <p className="mt-2 text-gray-600">Loading...</p>
           </div>
         )}
@@ -297,7 +297,7 @@ const AdminDashboard = () => {
               onClick={() => setActiveTab('inventory')}
               className={`py-3 sm:py-4 px-2 sm:px-1 border-b-2 font-medium text-sm whitespace-nowrap min-h-[44px] ${
                 activeTab === 'inventory'
-                  ? 'border-blue-500 text-blue-600 dark:text-blue-400'
+                  ? 'border-fosroc-blue text-fosroc-blue dark:text-fosroc-blue-light'
                   : 'border-transparent text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300 hover:border-gray-300 dark:hover:border-gray-600'
               }`}
             >
@@ -308,7 +308,7 @@ const AdminDashboard = () => {
               onClick={() => setActiveTab('history')}
               className={`py-3 sm:py-4 px-2 sm:px-1 border-b-2 font-medium text-sm whitespace-nowrap min-h-[44px] ${
                 activeTab === 'history'
-                  ? 'border-blue-500 text-blue-600 dark:text-blue-400'
+                  ? 'border-fosroc-blue text-fosroc-blue dark:text-fosroc-blue-light'
                   : 'border-transparent text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300 hover:border-gray-300 dark:hover:border-gray-600'
               }`}
             >
@@ -319,7 +319,7 @@ const AdminDashboard = () => {
               onClick={() => setActiveTab('products')}
               className={`py-3 sm:py-4 px-2 sm:px-1 border-b-2 font-medium text-sm whitespace-nowrap min-h-[44px] ${
                 activeTab === 'products'
-                  ? 'border-blue-500 text-blue-600 dark:text-blue-400'
+                  ? 'border-fosroc-blue text-fosroc-blue dark:text-fosroc-blue-light'
                   : 'border-transparent text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300 hover:border-gray-300 dark:hover:border-gray-600'
               }`}
             >
@@ -341,14 +341,14 @@ const AdminDashboard = () => {
                   placeholder="Search items..."
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
-                  className="w-full pl-10 pr-4 py-3 sm:py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 bg-white dark:bg-gray-700 text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500 text-base sm:text-sm"
+                  className="w-full pl-10 pr-4 py-3 sm:py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-fosroc-blue focus:border-fosroc-blue bg-white dark:bg-gray-700 text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500 text-base sm:text-sm"
                 />
               </div>
               <div className="flex flex-col sm:flex-row gap-2">
                 <select
                   value={filterType}
                   onChange={(e) => setFilterType(e.target.value)}
-                  className="flex-1 sm:flex-initial px-4 py-3 sm:py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 bg-white dark:bg-gray-700 text-gray-900 dark:text-white text-base sm:text-sm min-h-[44px]"
+                  className="flex-1 sm:flex-initial px-4 py-3 sm:py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-fosroc-blue focus:border-fosroc-blue bg-white dark:bg-gray-700 text-gray-900 dark:text-white text-base sm:text-sm min-h-[44px]"
                 >
                   <option value="all">All Items</option>
                   <option value="low">Low Stock</option>
@@ -356,7 +356,7 @@ const AdminDashboard = () => {
                 </select>
                 <button
                   onClick={handleAddItem}
-                  className="flex items-center justify-center gap-2 px-4 py-3 sm:py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors text-base sm:text-sm min-h-[44px] w-full sm:w-auto"
+                  className="flex items-center justify-center gap-2 px-4 py-3 sm:py-2 bg-fosroc-blue text-white rounded-lg hover:bg-fosroc-blue-dark transition-colors text-base sm:text-sm min-h-[44px] w-full sm:w-auto"
                 >
                   <FaPlus /> Add Item
                 </button>
@@ -424,7 +424,7 @@ const AdminDashboard = () => {
                             </button>
                             <button
                               onClick={() => handleEditItem(item)}
-                              className="flex-1 min-w-[80px] flex items-center justify-center gap-1 px-3 py-2 text-sm text-blue-700 dark:text-blue-400 bg-blue-50 dark:bg-blue-900/30 rounded-lg hover:bg-blue-100 dark:hover:bg-blue-900/50 transition-colors min-h-[44px]"
+                              className="flex-1 min-w-[80px] flex items-center justify-center gap-1 px-3 py-2 text-sm text-fosroc-blue-dark dark:text-fosroc-blue-light bg-fosroc-blue-lightest dark:bg-fosroc-blue-dark/30 rounded-lg hover:bg-fosroc-blue-lightest dark:hover:bg-fosroc-blue-dark/50 transition-colors min-h-[44px]"
                               title="Edit"
                             >
                               <FaEdit /> Edit
@@ -522,7 +522,7 @@ const AdminDashboard = () => {
                                 </button>
                                 <button
                                   onClick={() => handleEditItem(item)}
-                                  className="text-blue-600 dark:text-blue-400 hover:text-blue-900 dark:hover:text-blue-300 p-2 hover:bg-blue-50 dark:hover:bg-blue-900/30 rounded min-w-[44px] min-h-[44px] flex items-center justify-center"
+                                  className="text-fosroc-blue dark:text-fosroc-blue-light hover:text-fosroc-blue-dark dark:hover:text-fosroc-blue-light p-2 hover:bg-fosroc-blue-lightest dark:hover:bg-fosroc-blue-dark/30 rounded min-w-[44px] min-h-[44px] flex items-center justify-center"
                                   title="Edit"
                                 >
                                   <FaEdit />
@@ -564,7 +564,7 @@ const AdminDashboard = () => {
               <select
                 value={filterType}
                 onChange={(e) => setFilterType(e.target.value)}
-                className="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                className="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-fosroc-blue focus:border-fosroc-blue"
               >
                 <option value="all">All Activities</option>
                 <option value="add">Item Added</option>
@@ -589,7 +589,7 @@ const AdminDashboard = () => {
                       const getActionColor = (type) => {
                         switch (type) {
                           case 'add': return 'bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-300';
-                          case 'update': return 'bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-300';
+                          case 'update': return 'bg-fosroc-blue-lightest dark:bg-fosroc-blue-dark/30 text-fosroc-blue-dark dark:text-fosroc-blue-light';
                           case 'delete': return 'bg-red-100 dark:bg-red-900/30 text-red-800 dark:text-red-300';
                           case 'stock_in': return 'bg-emerald-100 dark:bg-emerald-900/30 text-emerald-800 dark:text-emerald-300';
                           case 'stock_out': return 'bg-orange-100 dark:bg-orange-900/30 text-orange-800 dark:text-orange-300';
@@ -661,7 +661,7 @@ const AdminDashboard = () => {
                         const getActionColor = (type) => {
                           switch (type) {
                             case 'add': return 'bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-300';
-                            case 'update': return 'bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-300';
+                            case 'update': return 'bg-fosroc-blue-lightest dark:bg-fosroc-blue-dark/30 text-fosroc-blue-dark dark:text-fosroc-blue-light';
                             case 'delete': return 'bg-red-100 dark:bg-red-900/30 text-red-800 dark:text-red-300';
                             case 'stock_in': return 'bg-emerald-100 dark:bg-emerald-900/30 text-emerald-800 dark:text-emerald-300';
                             case 'stock_out': return 'bg-orange-100 dark:bg-orange-900/30 text-orange-800 dark:text-orange-300';
@@ -721,7 +721,7 @@ const AdminDashboard = () => {
           <div>
             {loading && (
               <div className="mb-4 text-center">
-                <div className="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600"></div>
+                <div className="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-fosroc-blue"></div>
                 <p className="mt-2 text-gray-600">Loading products...</p>
               </div>
             )}
@@ -749,14 +749,14 @@ const AdminDashboard = () => {
                   placeholder="Search products..."
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
-                  className="w-full pl-10 pr-4 py-3 sm:py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 bg-white dark:bg-gray-700 text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500 text-base sm:text-sm"
+                  className="w-full pl-10 pr-4 py-3 sm:py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-fosroc-blue focus:border-fosroc-blue bg-white dark:bg-gray-700 text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500 text-base sm:text-sm"
                 />
               </div>
               <div className="flex flex-col sm:flex-row gap-2">
                 <select
                   value={filterType}
                   onChange={(e) => setFilterType(e.target.value)}
-                  className="flex-1 sm:flex-initial px-4 py-3 sm:py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 bg-white dark:bg-gray-700 text-gray-900 dark:text-white text-base sm:text-sm min-h-[44px]"
+                  className="flex-1 sm:flex-initial px-4 py-3 sm:py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-fosroc-blue focus:border-fosroc-blue bg-white dark:bg-gray-700 text-gray-900 dark:text-white text-base sm:text-sm min-h-[44px]"
                 >
                   <option value="all">All Categories</option>
                   {productCategories.map(cat => (
@@ -775,7 +775,7 @@ const AdminDashboard = () => {
                     });
                     setShowProductModal(true);
                   }}
-                  className="flex items-center justify-center gap-2 px-4 py-3 sm:py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors text-base sm:text-sm min-h-[44px] w-full sm:w-auto"
+                  className="flex items-center justify-center gap-2 px-4 py-3 sm:py-2 bg-fosroc-blue text-white rounded-lg hover:bg-fosroc-blue-dark transition-colors text-base sm:text-sm min-h-[44px] w-full sm:w-auto"
                 >
                   <FaPlus /> Add Product
                 </button>
@@ -824,7 +824,7 @@ const AdminDashboard = () => {
                                   });
                                   setShowProductModal(true);
                                 }}
-                                className="text-blue-600 dark:text-blue-400 hover:text-blue-900 dark:hover:text-blue-300 p-2 hover:bg-blue-50 dark:hover:bg-blue-900/30 rounded min-w-[44px] min-h-[44px] flex items-center justify-center"
+                                className="text-fosroc-blue dark:text-fosroc-blue-light hover:text-fosroc-blue-dark dark:hover:text-fosroc-blue-light p-2 hover:bg-fosroc-blue-lightest dark:hover:bg-fosroc-blue-dark/30 rounded min-w-[44px] min-h-[44px] flex items-center justify-center"
                                 title="Edit"
                               >
                                 <FaEdit />
@@ -935,7 +935,7 @@ const AdminDashboard = () => {
                                   });
                                   setShowProductModal(true);
                                 }}
-                                className="text-blue-600 dark:text-blue-400 hover:text-blue-900 dark:hover:text-blue-300 p-2 hover:bg-blue-50 dark:hover:bg-blue-900/30 rounded min-w-[44px] min-h-[44px] flex items-center justify-center"
+                                className="text-fosroc-blue dark:text-fosroc-blue-light hover:text-fosroc-blue-dark dark:hover:text-fosroc-blue-light p-2 hover:bg-fosroc-blue-lightest dark:hover:bg-fosroc-blue-dark/30 rounded min-w-[44px] min-h-[44px] flex items-center justify-center"
                                 title="Edit"
                               >
                                 <FaEdit />
@@ -1014,7 +1014,7 @@ const AdminDashboard = () => {
                     alert('Failed to save product: ' + err.message);
                   }
                 }}
-                className="flex-1 flex items-center justify-center gap-2 px-4 py-3 sm:py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors min-h-[44px] text-base sm:text-sm"
+                className="flex-1 flex items-center justify-center gap-2 px-4 py-3 sm:py-2 bg-fosroc-blue text-white rounded-lg hover:bg-fosroc-blue-dark transition-colors min-h-[44px] text-base sm:text-sm"
               >
                 <FaSave /> {editingProduct ? 'Update' : 'Save'}
               </button>
@@ -1073,7 +1073,7 @@ const AdminDashboard = () => {
                       const getActionColor = (type) => {
                         switch (type) {
                           case 'add': return 'bg-green-100 text-green-800 border-green-200';
-                          case 'update': return 'bg-blue-100 text-blue-800 border-blue-200';
+                          case 'update': return 'bg-fosroc-blue-lightest text-fosroc-blue-dark border-fosroc-blue-lighter';
                           case 'delete': return 'bg-red-100 text-red-800 border-red-200';
                           case 'stock_in': return 'bg-emerald-100 text-emerald-800 border-emerald-200';
                           case 'stock_out': return 'bg-orange-100 text-orange-800 border-orange-200';
@@ -1156,7 +1156,7 @@ const AdminDashboard = () => {
                   setShowItemHistoryModal(false);
                   setSelectedItemForHistory(null);
                 }}
-                className="w-full px-4 py-3 sm:py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors min-h-[44px] text-base sm:text-sm"
+                className="w-full px-4 py-3 sm:py-2 bg-fosroc-blue text-white rounded-lg hover:bg-fosroc-blue-dark transition-colors min-h-[44px] text-base sm:text-sm"
               >
                 Close
               </button>
@@ -1203,7 +1203,7 @@ const AdminDashboard = () => {
                   step="0.01"
                   value={stockFormData.quantity}
                   onChange={(e) => setStockFormData({ ...stockFormData, quantity: e.target.value })}
-                  className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 bg-white dark:bg-gray-700 text-gray-900 dark:text-white text-base sm:text-sm"
+                  className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-fosroc-blue focus:border-fosroc-blue bg-white dark:bg-gray-700 text-gray-900 dark:text-white text-base sm:text-sm"
                   placeholder={`Enter quantity in ${selectedItemForStock.unit}`}
                   required
                 />
@@ -1215,7 +1215,7 @@ const AdminDashboard = () => {
                 <textarea
                   value={stockFormData.note}
                   onChange={(e) => setStockFormData({ ...stockFormData, note: e.target.value })}
-                  className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 bg-white dark:bg-gray-700 text-gray-900 dark:text-white text-base sm:text-sm resize-none"
+                  className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-fosroc-blue focus:border-fosroc-blue bg-white dark:bg-gray-700 text-gray-900 dark:text-white text-base sm:text-sm resize-none"
                   placeholder="Enter note (required)"
                   rows="3"
                   required
@@ -1229,12 +1229,12 @@ const AdminDashboard = () => {
                   type="text"
                   value={stockFormData.reference}
                   onChange={(e) => setStockFormData({ ...stockFormData, reference: e.target.value })}
-                  className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 bg-white dark:bg-gray-700 text-gray-900 dark:text-white text-base sm:text-sm"
+                  className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-fosroc-blue focus:border-fosroc-blue bg-white dark:bg-gray-700 text-gray-900 dark:text-white text-base sm:text-sm"
                   placeholder="Enter reference (e.g., Invoice #, PO #, etc.)"
                 />
               </div>
               {stockFormData.quantity && !isNaN(parseFloat(stockFormData.quantity)) && (
-                <div className="p-3 bg-blue-50 dark:bg-blue-900/30 rounded-lg">
+                <div className="p-3 bg-fosroc-blue-lightest dark:bg-fosroc-blue-dark/30 rounded-lg">
                   <div className="text-sm text-gray-700 dark:text-gray-300">
                     <span className="font-medium">New Quantity:</span>{' '}
                     <span className={stockFormData.type === 'in' ? 'text-green-600 dark:text-green-400' : 'text-orange-600 dark:text-orange-400'}>
@@ -1295,7 +1295,7 @@ const AdminDashboard = () => {
                 <button
                   onClick={toggleDarkMode}
                   className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors ${
-                    isDarkMode ? 'bg-blue-600' : 'bg-gray-300'
+                    isDarkMode ? 'bg-fosroc-blue' : 'bg-gray-300'
                   }`}
                 >
                   <span
@@ -1314,7 +1314,7 @@ const AdminDashboard = () => {
             <div className="mt-6">
               <button
                 onClick={() => setShowSettingsModal(false)}
-                className="w-full px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
+                className="w-full px-4 py-2 bg-fosroc-blue text-white rounded-lg hover:bg-fosroc-blue-dark transition-colors"
               >
                 Close
               </button>
@@ -1337,7 +1337,7 @@ const AdminDashboard = () => {
             <div className="flex flex-col sm:flex-row gap-3 mt-6">
               <button
                 onClick={handleSaveItem}
-                className="flex-1 flex items-center justify-center gap-2 px-4 py-3 sm:py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors min-h-[44px] text-base sm:text-sm"
+                className="flex-1 flex items-center justify-center gap-2 px-4 py-3 sm:py-2 bg-fosroc-blue text-white rounded-lg hover:bg-fosroc-blue-dark transition-colors min-h-[44px] text-base sm:text-sm"
               >
                 <FaSave /> Save
               </button>
@@ -1369,7 +1369,7 @@ const AdminDashboard = () => {
             <div className="flex flex-col sm:flex-row gap-3 mt-6">
               <button
                 onClick={handleSaveItem}
-                className="flex-1 flex items-center justify-center gap-2 px-4 py-3 sm:py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors min-h-[44px] text-base sm:text-sm"
+                className="flex-1 flex items-center justify-center gap-2 px-4 py-3 sm:py-2 bg-fosroc-blue text-white rounded-lg hover:bg-fosroc-blue-dark transition-colors min-h-[44px] text-base sm:text-sm"
               >
                 <FaSave /> Update
               </button>
@@ -1400,7 +1400,7 @@ const ItemForm = ({ formData, setFormData }) => {
           type="text"
           value={formData.name}
           onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-          className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
+          className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-fosroc-blue focus:border-fosroc-blue bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
           required
         />
       </div>
@@ -1410,7 +1410,7 @@ const ItemForm = ({ formData, setFormData }) => {
           type="text"
           value={formData.category}
           onChange={(e) => setFormData({ ...formData, category: e.target.value })}
-          className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
+          className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-fosroc-blue focus:border-fosroc-blue bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
         />
       </div>
       <div className="grid grid-cols-2 gap-4">
@@ -1421,7 +1421,7 @@ const ItemForm = ({ formData, setFormData }) => {
             step="0.01"
             value={formData.quantity}
             onChange={(e) => setFormData({ ...formData, quantity: e.target.value })}
-            className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
+            className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-fosroc-blue focus:border-fosroc-blue bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
             required
           />
         </div>
@@ -1430,7 +1430,7 @@ const ItemForm = ({ formData, setFormData }) => {
           <select
             value={formData.unit}
             onChange={(e) => setFormData({ ...formData, unit: e.target.value })}
-            className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
+            className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-fosroc-blue focus:border-fosroc-blue bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
           >
             <option value="units">Units</option>
             <option value="kg">Kg</option>
@@ -1447,7 +1447,7 @@ const ItemForm = ({ formData, setFormData }) => {
           type="text"
           value={formData.location}
           onChange={(e) => setFormData({ ...formData, location: e.target.value })}
-          className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
+          className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-fosroc-blue focus:border-fosroc-blue bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
         />
       </div>
       <div>
@@ -1457,7 +1457,7 @@ const ItemForm = ({ formData, setFormData }) => {
           step="0.01"
           value={formData.minStock}
           onChange={(e) => setFormData({ ...formData, minStock: e.target.value })}
-          className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
+          className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-fosroc-blue focus:border-fosroc-blue bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
           placeholder="Alert when stock falls below this"
         />
       </div>
@@ -1467,7 +1467,7 @@ const ItemForm = ({ formData, setFormData }) => {
           value={formData.description}
           onChange={(e) => setFormData({ ...formData, description: e.target.value })}
           rows="3"
-          className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
+          className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-fosroc-blue focus:border-fosroc-blue bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
         />
       </div>
     </div>
@@ -1484,7 +1484,7 @@ const ProductForm = ({ formData, setFormData }) => {
           type="text"
           value={formData.name}
           onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-          className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
+          className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-fosroc-blue focus:border-fosroc-blue bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
           required
         />
       </div>
@@ -1493,7 +1493,7 @@ const ProductForm = ({ formData, setFormData }) => {
         <select
           value={formData.category}
           onChange={(e) => setFormData({ ...formData, category: e.target.value })}
-          className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
+          className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-fosroc-blue focus:border-fosroc-blue bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
         >
           {productCategories.map(cat => (
             <option key={cat.id} value={cat.id}>{cat.name}</option>
@@ -1506,7 +1506,7 @@ const ProductForm = ({ formData, setFormData }) => {
           value={formData.description}
           onChange={(e) => setFormData({ ...formData, description: e.target.value })}
           rows="4"
-          className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
+          className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-fosroc-blue focus:border-fosroc-blue bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
           required
         />
       </div>
@@ -1516,7 +1516,7 @@ const ProductForm = ({ formData, setFormData }) => {
           value={formData.applications}
           onChange={(e) => setFormData({ ...formData, applications: e.target.value })}
           rows="4"
-          className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
+          className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-fosroc-blue focus:border-fosroc-blue bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
           placeholder="Basement waterproofing&#10;Terrace waterproofing&#10;Water tank protection"
         />
         <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">Enter each application on a new line</p>
@@ -1527,7 +1527,7 @@ const ProductForm = ({ formData, setFormData }) => {
           type="text"
           value={formData.specifications}
           onChange={(e) => setFormData({ ...formData, specifications: e.target.value })}
-          className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
+          className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-fosroc-blue focus:border-fosroc-blue bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
           placeholder="Coverage: 1.5-2.0 kg/sqm per coat"
         />
       </div>
@@ -1537,7 +1537,7 @@ const ProductForm = ({ formData, setFormData }) => {
           type="text"
           value={formData.packaging}
           onChange={(e) => setFormData({ ...formData, packaging: e.target.value })}
-          className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
+          className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-fosroc-blue focus:border-fosroc-blue bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
           placeholder="20L, 200L"
         />
       </div>

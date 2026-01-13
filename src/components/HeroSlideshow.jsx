@@ -1,286 +1,334 @@
 import React, { useState, useEffect } from 'react';
-import { FaPhone, FaWhatsapp, FaCheck, FaChevronLeft, FaChevronRight } from 'react-icons/fa';
+import { FaPhone, FaWhatsapp, FaChevronLeft, FaChevronRight, FaQuoteLeft, FaAward, FaShieldAlt, FaClock } from 'react-icons/fa';
 
 const HeroSlideshow = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [isTransitioning, setIsTransitioning] = useState(false);
+  const [progress, setProgress] = useState(0);
 
   const slides = [
     {
       id: 1,
-      backgroundImage: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
-      title: 'Quality Construction Chemicals for Your Projects',
-      subtitle: 'Advanced Solutions',
-      description: '100% Genuine Fosroc Products | Expert Consultation | Reliable Delivery | Competitive Pricing',
-      features: [
-        '100% Genuine Products',
-        'Technical Expertise',
-        'Wide Stock Availability',
-        'Timely Delivery'
-      ]
+      headline: 'World Leaders in Construction Chemicals',
+      subheadline: 'Trusted Partner Since 2009',
+      description: 'A world leader in tailored constructive solutions for the construction industry backed by excellent technical support and expert customer service.',
+      cta: 'Explore Solutions',
+      image: 'https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=1600&auto=format&fit=crop&q=80'
     },
     {
       id: 2,
-      backgroundImage: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80',
-      title: 'Waterproofing Solutions for Lasting Protection',
-      subtitle: 'Complete Systems',
-      description: 'Advanced waterproofing products for basements, terraces, and structures',
-      features: [
-        'Superior Protection',
-        'Long-lasting Results',
-        'Expert Installation',
-        'Warranty Support'
-      ]
+      headline: 'Premium Construction Chemicals',
+      subheadline: 'Authenticity Guaranteed',
+      description: '100% Genuine Fosroc Products with expert consultation, reliable delivery, and competitive pricing. Your trusted partner for authentic construction chemical solutions that deliver superior results.',
+      cta: 'View Products',
+      image: 'https://images.unsplash.com/photo-1590650153855-d9e808231d41?w=1600&auto=format&fit=crop&q=80'
     },
     {
       id: 3,
-      backgroundImage: 'https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80',
-      title: 'Concrete Admixtures for Superior Performance',
-      subtitle: 'High-Performance',
-      description: 'Superplasticizers, accelerators, and retarders for exceptional concrete quality',
-      features: [
-        'Enhanced Strength',
-        'Improved Workability',
-        'Reduced Water Content',
-        'Faster Construction'
-      ]
+      headline: 'Technical Excellence Meets Quality',
+      subheadline: 'Engineering Innovation',
+      description: 'Deep technical expertise and comprehensive product knowledge help construction professionals achieve exceptional results through genuine Fosroc solutions and dedicated support.',
+      cta: 'Technical Support',
+      image: 'https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=1600&auto=format&fit=crop&q=80'
     },
     {
       id: 4,
-      backgroundImage: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80',
-      title: 'Industrial Flooring & Coatings',
-      subtitle: 'Durable Solutions',
-      description: 'Premium flooring solutions for industrial applications with exceptional durability',
-      features: [
-        'Heavy-duty Performance',
-        'Chemical Resistance',
-        'Easy Maintenance',
-        'Long-term Value'
-      ]
+      headline: 'Complete Construction Solutions',
+      subheadline: 'Comprehensive Range',
+      description: 'From waterproofing to concrete admixtures, industrial flooring to repair solutions. We provide the complete range of Fosroc products for your construction needs.',
+      cta: 'Get Started',
+      image: 'https://images.unsplash.com/photo-1566576721346-d4a3b4eaeb55?w=1600&auto=format&fit=crop&q=80'
     }
   ];
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setCurrentSlide((prevSlide) => (prevSlide + 1) % slides.length);
-    }, 5000);
-
+      setProgress((prev) => {
+        if (prev >= 100) {
+          setCurrentSlide((prevSlide) => (prevSlide + 1) % slides.length);
+          return 0;
+        }
+        return prev + 1.67;
+      });
+    }, 100);
     return () => clearInterval(interval);
   }, [slides.length]);
 
   const nextSlide = () => {
+    if (isTransitioning) return;
+    setIsTransitioning(true);
+    setProgress(0);
     setCurrentSlide((prevSlide) => (prevSlide + 1) % slides.length);
+    setTimeout(() => setIsTransitioning(false), 800);
   };
 
   const prevSlide = () => {
+    if (isTransitioning) return;
+    setIsTransitioning(true);
+    setProgress(0);
     setCurrentSlide((prevSlide) => (prevSlide - 1 + slides.length) % slides.length);
+    setTimeout(() => setIsTransitioning(false), 800);
   };
 
+  const goToSlide = (index) => {
+    if (isTransitioning || index === currentSlide) return;
+    setIsTransitioning(true);
+    setProgress(0);
+    setCurrentSlide(index);
+    setTimeout(() => setIsTransitioning(false), 800);
+  };
+
+  const trustBadges = [
+    { icon: <FaAward className="w-5 h-5" />, label: '15+ Years', sublabel: 'Experience' },
+    { icon: <FaShieldAlt className="w-5 h-5" />, label: '100%', sublabel: 'Genuine' },
+    { icon: <FaClock className="w-5 h-5" />, label: '24/7', sublabel: 'Support' }
+  ];
+
   return (
-    <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden">
-      {/* Background Slides */}
-      <div className="absolute inset-0">
-        {slides.map((slide, index) => (
-          <div
-            key={slide.id}
-            className="absolute inset-0 transition-opacity duration-[1500ms] ease-in-out"
-            style={{
-              opacity: index === currentSlide ? 1 : 0,
-              zIndex: index === currentSlide ? 1 : 0
+    <div className="relative w-full min-h-screen sm:h-screen bg-slate-900 overflow-hidden">
+      {/* Background Images with Ken Burns Effect */}
+      {slides.map((slide, index) => (
+        <div
+          key={slide.id}
+          className={`absolute inset-0 transition-all duration-1000 ease-out ${
+            index === currentSlide
+              ? 'opacity-100 scale-100'
+              : 'opacity-0 scale-105'
+          }`}
+        >
+          <div 
+            className="w-full h-full bg-cover bg-center transition-transform duration-[20000ms] ease-linear"
+            style={{ 
+              backgroundImage: `url(${slide.image})`,
+              transform: index === currentSlide ? 'scale(1.1)' : 'scale(1)'
             }}
-          >
-            <div 
-              className="absolute inset-0 bg-cover bg-center bg-no-repeat transition-transform duration-[8000ms] ease-out"
-              style={{
-                backgroundImage: `url('${slide.backgroundImage}')`,
-                transform: index === currentSlide ? 'scale(1.1)' : 'scale(1)'
-              }}
-            >
-              <div className="absolute inset-0 bg-gradient-to-r from-blue-900/90 via-blue-800/85 to-blue-900/90"></div>
-              <div className="absolute inset-0 bg-black/30"></div>
-            </div>
+          />
+          {/* Sophisticated Gradient Overlay */}
+          <div className="absolute inset-0 bg-gradient-to-r from-slate-900/95 via-slate-900/85 to-slate-900/60" />
+          <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-transparent to-transparent" />
+        </div>
+      ))}
 
-            {/* Animated Floating Orbs */}
-            <div className="absolute inset-0 overflow-hidden pointer-events-none">
+      {/* Main Content Container */}
+      <div className="relative h-full min-h-screen sm:h-screen max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center pt-12 sm:pt-16 lg:pt-20 pb-16 sm:pb-20">
+        <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center w-full">
+          
+          {/* Left Content Section */}
+          <div className="space-y-6 sm:space-y-8 z-10 w-full">
+            {slides.map((slide, index) => (
               <div
-                className="absolute top-20 left-10 w-72 h-72 bg-orange-500/20 rounded-full blur-3xl animate-float-slow"
-                style={{
-                  animation: 'float 8s ease-in-out infinite'
-                }}
-              />
-              <div
-                className="absolute bottom-20 right-10 w-96 h-96 bg-blue-500/20 rounded-full blur-3xl animate-float-slower"
-                style={{
-                  animation: 'float 10s ease-in-out infinite reverse'
-                }}
-              />
-            </div>
-          </div>
-        ))}
-      </div>
-
-      {/* Content Slides */}
-      <div className="container relative z-10 text-center text-white px-4 max-w-7xl mx-auto">
-        {slides.map((slide, index) => (
-          <div
-            key={`content-${slide.id}`}
-            className="transition-all duration-[800ms] ease-out"
-            style={{
-              opacity: index === currentSlide ? 1 : 0,
-              transform: index === currentSlide ? 'translateY(0) scale(1)' : 'translateY(20px) scale(0.95)',
-              position: index === currentSlide ? 'relative' : 'absolute',
-              inset: index === currentSlide ? 'auto' : 0,
-              pointerEvents: index === currentSlide ? 'auto' : 'none'
-            }}
-          >
-            {/* Badge */}
-            <div 
-              className="inline-block bg-white/20 backdrop-blur-md px-4 py-2 rounded-full mb-6 border border-white/30 transition-all duration-700 delay-100"
-              style={{
-                opacity: index === currentSlide ? 1 : 0,
-                transform: index === currentSlide ? 'translateY(0)' : 'translateY(-10px)'
-              }}
-            >
-              <span className="text-sm font-semibold">Authorized Fosroc Dealer</span>
-            </div>
-            
-            {/* Title */}
-            <h1 
-              className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-6 leading-tight transition-all duration-700 delay-200"
-              style={{
-                opacity: index === currentSlide ? 1 : 0,
-                transform: index === currentSlide ? 'translateY(0)' : 'translateY(-10px)'
-              }}
-            >
-              {slide.title.split(' ').map((word, i) => (
-                <span key={i} className={i === 2 ? 'text-orange-400' : ''}>
-                  {word}{' '}
-                </span>
-              ))}
-            </h1>
-            
-            {/* Description */}
-            <p 
-              className="text-lg md:text-xl lg:text-2xl mb-8 text-gray-200 max-w-4xl mx-auto transition-all duration-700 delay-300"
-              style={{
-                opacity: index === currentSlide ? 1 : 0,
-                transform: index === currentSlide ? 'translateY(0)' : 'translateY(-10px)'
-              }}
-            >
-              {slide.description}
-            </p>
-            
-            {/* CTA Buttons */}
-            <div 
-              className="flex flex-wrap gap-4 justify-center mb-12 transition-all duration-700 delay-400"
-              style={{
-                opacity: index === currentSlide ? 1 : 0,
-                transform: index === currentSlide ? 'translateY(0)' : 'translateY(-10px)'
-              }}
-            >
-              <button className="group relative px-8 py-4 bg-orange-500 text-white font-semibold rounded-lg overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:bg-orange-600">
-                <span className="relative z-10">Get Quote</span>
-              </button>
-              <a
-                href="tel:+917829531999"
-                className="group px-8 py-4 bg-white/20 backdrop-blur-md text-white font-semibold rounded-lg border-2 border-white transition-all duration-300 hover:bg-white hover:text-blue-900 hover:scale-105 flex items-center gap-2"
+                key={slide.id}
+                className={`transition-all duration-700 ${
+                  index === currentSlide
+                    ? 'opacity-100 translate-x-0 relative'
+                    : 'opacity-0 -translate-x-12 absolute inset-0'
+                }`}
               >
-                <FaPhone /> Call Now
-              </a>
-              <a
-                href="https://wa.me/917829531999?text=Hello, I'm interested in Fosroc products"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group px-8 py-4 bg-[#25d366] text-white font-semibold rounded-lg transition-all duration-300 hover:bg-[#20ba5a] hover:scale-105 flex items-center gap-2"
-              >
-                <FaWhatsapp /> WhatsApp
-              </a>
-            </div>
-            
-            {/* Features */}
-            <div 
-              className="flex flex-wrap gap-6 justify-center max-w-3xl mx-auto"
-              style={{
-                opacity: index === currentSlide ? 1 : 0,
-                transition: 'all 700ms ease-out 500ms',
-                transform: index === currentSlide ? 'translateY(0)' : 'translateY(-10px)'
-              }}
-            >
-              {slide.features.map((feature, featureIndex) => (
-                <div
-                  key={featureIndex}
-                  className="flex items-center gap-2 bg-white/10 backdrop-blur-md px-4 py-2 rounded-full border border-white/20 transition-all duration-300 hover:bg-white/20 hover:scale-105"
-                  style={{
-                    opacity: index === currentSlide ? 1 : 0,
-                    transform: index === currentSlide ? 'scale(1)' : 'scale(0.9)',
-                    transition: `all 400ms ease-out ${600 + featureIndex * 50}ms`
-                  }}
-                >
-                  <span className="text-orange-400"><FaCheck /></span>
-                  <span className="text-sm font-medium">{feature}</span>
+                {/* Subheadline with Icon */}
+                <div className="flex items-center gap-2 sm:gap-3 mb-3 sm:mb-4">
+                  <div className="w-8 sm:w-12 h-0.5 bg-fosroc-orange" />
+                  <span className="text-fosroc-orange font-semibold tracking-wider uppercase text-xs sm:text-sm">
+                    {slide.subheadline}
+                  </span>
                 </div>
-              ))}
+
+                {/* Main Headline */}
+                <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-white leading-tight mb-4 sm:mb-6">
+                  {slide.headline.split(' ').map((word, i) => (
+                    <span
+                      key={i}
+                      className="inline-block mr-2 sm:mr-3 animate-fade-in"
+                      style={{ animationDelay: `${i * 0.05}s` }}
+                    >
+                      {word}
+                    </span>
+                  ))}
+                </h1>
+
+                {/* Description */}
+                <p className="text-sm sm:text-base lg:text-lg text-slate-300 leading-relaxed max-w-2xl mb-6 sm:mb-8">
+                  {slide.description}
+                </p>
+
+                {/* CTA Buttons */}
+                <div className="flex flex-wrap gap-3 sm:gap-4 mb-6 sm:mb-8">
+                  <a
+                    href="/contact"
+                    className="group px-5 sm:px-6 lg:px-8 py-2.5 sm:py-3 lg:py-4 bg-fosroc-orange text-white font-semibold text-sm sm:text-base rounded-lg hover:shadow-2xl hover:shadow-orange-500/50 transition-all duration-300 hover:scale-105 flex items-center gap-2"
+                  >
+                    {slide.cta}
+                    <span className="group-hover:translate-x-1 transition-transform">→</span>
+                  </a>
+                  <a
+                    href="/contact"
+                    className="px-5 sm:px-6 lg:px-8 py-2.5 sm:py-3 lg:py-4 bg-white/10 backdrop-blur-sm text-white font-semibold text-sm sm:text-base rounded-lg border-2 border-white/20 hover:bg-white/20 hover:border-white/40 transition-all duration-300"
+                  >
+                    Contact Us
+                  </a>
+                </div>
+
+                {/* Trust Badges */}
+                <div className="flex flex-wrap gap-4 sm:gap-6 pt-4 sm:pt-6 border-t border-white/10">
+                  {trustBadges.map((badge, i) => (
+                    <div key={i} className="flex items-center gap-2 sm:gap-3">
+                      <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-fosroc-orange/10 border border-fosroc-orange/30 flex items-center justify-center text-fosroc-orange flex-shrink-0">
+                        {badge.icon}
+                      </div>
+                      <div>
+                        <div className="text-white font-bold text-base sm:text-lg">{badge.label}</div>
+                        <div className="text-slate-400 text-xs sm:text-sm">{badge.sublabel}</div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* Right Content Section - Stats Card */}
+          <div className="block">
+            <div className="relative">
+              {/* Floating Stats Card */}
+              <div className="relative bg-white/10 backdrop-blur-xl rounded-2xl border border-white/20 p-6 xl:p-8 shadow-2xl">
+                <div className="absolute -top-3 -right-3 w-24 h-24 bg-gradient-to-br from-fosroc-orange to-fosroc-orange-dark rounded-full blur-3xl opacity-50" />
+                <div className="absolute -bottom-3 -left-3 w-32 h-32 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full blur-3xl opacity-30" />
+                
+                <div className="relative space-y-5 xl:space-y-6">
+                  {/* Header */}
+                  <div className="flex items-center gap-3 pb-5 xl:pb-6 border-b border-white/10">
+                    <FaQuoteLeft className="text-fosroc-orange text-xl xl:text-2xl" />
+                    <h3 className="text-xl xl:text-2xl font-bold text-white">Our Impact</h3>
+                  </div>
+
+                  {/* Stats Grid */}
+                  <div className="grid grid-cols-2 gap-4 xl:gap-6">
+                    <div className="text-center p-4 xl:p-6 bg-white/5 rounded-xl border border-white/10 hover:bg-white/10 transition-all duration-300">
+                      <div className="text-3xl xl:text-4xl font-bold text-fosroc-orange mb-2">500+</div>
+                      <div className="text-slate-300 text-xs xl:text-sm font-medium">Projects Delivered</div>
+                    </div>
+                    <div className="text-center p-4 xl:p-6 bg-white/5 rounded-xl border border-white/10 hover:bg-white/10 transition-all duration-300">
+                      <div className="text-3xl xl:text-4xl font-bold text-fosroc-orange mb-2">15+</div>
+                      <div className="text-slate-300 text-xs xl:text-sm font-medium">Years Excellence</div>
+                    </div>
+                    <div className="text-center p-4 xl:p-6 bg-white/5 rounded-xl border border-white/10 hover:bg-white/10 transition-all duration-300">
+                      <div className="text-3xl xl:text-4xl font-bold text-fosroc-orange mb-2">100%</div>
+                      <div className="text-slate-300 text-xs xl:text-sm font-medium">Genuine Products</div>
+                    </div>
+                    <div className="text-center p-4 xl:p-6 bg-white/5 rounded-xl border border-white/10 hover:bg-white/10 transition-all duration-300">
+                      <div className="text-3xl xl:text-4xl font-bold text-fosroc-orange mb-2">24/7</div>
+                      <div className="text-slate-300 text-xs xl:text-sm font-medium">Expert Support</div>
+                    </div>
+                  </div>
+
+                  {/* Contact Card */}
+                  <div className="mt-6 xl:mt-8 p-5 xl:p-6 bg-gradient-to-br from-fosroc-orange/20 to-fosroc-orange-dark/10 rounded-xl border border-fosroc-orange/30">
+                    <p className="text-white font-semibold mb-4 text-center text-sm xl:text-base">Get Expert Consultation</p>
+                    <div className="flex gap-3">
+                      <a href="tel:+917829531999" className="flex-1 py-2.5 xl:py-3 bg-white/90 hover:bg-white text-slate-900 font-semibold rounded-lg transition-all duration-300 flex items-center justify-center gap-2 hover:scale-105 text-sm xl:text-base">
+                        <FaPhone className="text-sm" />
+                        Call
+                      </a>
+                      <a href="https://wa.me/917829531999" className="flex-1 py-2.5 xl:py-3 bg-green-500 hover:bg-green-600 text-white font-semibold rounded-lg transition-all duration-300 flex items-center justify-center gap-2 hover:scale-105 text-sm xl:text-base">
+                        <FaWhatsapp />
+                        WhatsApp
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
-        ))}
+        </div>
       </div>
 
-      {/* Navigation Arrows */}
+      {/* Navigation Controls */}
+      <div className="absolute bottom-4 sm:bottom-6 lg:bottom-8 left-1/2 transform -translate-x-1/2 z-20 w-full px-4">
+        <div className="flex items-center justify-center gap-4 sm:gap-6 max-w-md mx-auto bg-white/10 backdrop-blur-md rounded-full px-4 sm:px-6 py-2 sm:py-3">
+          {/* Navigation Arrows - Mobile */}
+          <button
+            onClick={prevSlide}
+            disabled={isTransitioning}
+            className="lg:hidden bg-white/20 hover:bg-white/30 text-white p-2 rounded-full transition-all duration-300 disabled:opacity-50"
+            aria-label="Previous slide"
+          >
+            <FaChevronLeft className="text-sm" />
+          </button>
+
+          {/* Slide Indicators with Progress */}
+          <div className="flex gap-2 sm:gap-3 flex-1 justify-center">
+            {slides.map((_, index) => (
+              <button
+                key={index}
+                onClick={() => goToSlide(index)}
+                disabled={isTransitioning}
+                className="relative group flex-1 max-w-16"
+                aria-label={`Go to slide ${index + 1}`}
+              >
+                <div
+                  className={`h-1.5 sm:h-2 rounded-full transition-all duration-500 w-full ${
+                    index === currentSlide
+                      ? 'bg-fosroc-orange'
+                      : 'bg-white/30 group-hover:bg-white/50'
+                  }`}
+                />
+                {index === currentSlide && (
+                  <div
+                    className="absolute top-0 left-0 h-1.5 sm:h-2 bg-fosroc-orange-dark rounded-full transition-all duration-100"
+                    style={{ width: `${progress}%` }}
+                  />
+                )}
+              </button>
+            ))}
+          </div>
+
+          {/* Navigation Arrows - Mobile */}
+          <button
+            onClick={nextSlide}
+            disabled={isTransitioning}
+            className="lg:hidden bg-white/20 hover:bg-white/30 text-white p-2 rounded-full transition-all duration-300 disabled:opacity-50"
+            aria-label="Next slide"
+          >
+            <FaChevronRight className="text-sm" />
+          </button>
+        </div>
+      </div>
+
+      {/* Desktop Navigation Arrows */}
       <button
         onClick={prevSlide}
-        className="absolute left-4 top-1/2 transform -translate-y-1/2 z-20 bg-white/20 backdrop-blur-md text-white p-4 rounded-full hover:bg-white/30 transition-all duration-300 hover:scale-110"
+        disabled={isTransitioning}
+        className="hidden lg:flex absolute left-4 xl:left-8 top-1/2 transform -translate-y-1/2 z-20 bg-white/20 backdrop-blur-md text-white p-3 xl:p-4 rounded-full hover:bg-white/30 transition-all duration-300 hover:scale-110 disabled:opacity-50"
         aria-label="Previous slide"
       >
-        <FaChevronLeft className="text-xl" />
+        <FaChevronLeft className="text-lg xl:text-xl" />
       </button>
       
       <button
         onClick={nextSlide}
-        className="absolute right-4 top-1/2 transform -translate-y-1/2 z-20 bg-white/20 backdrop-blur-md text-white p-4 rounded-full hover:bg-white/30 transition-all duration-300 hover:scale-110"
+        disabled={isTransitioning}
+        className="hidden lg:flex absolute right-4 xl:right-8 top-1/2 transform -translate-y-1/2 z-20 bg-white/20 backdrop-blur-md text-white p-3 xl:p-4 rounded-full hover:bg-white/30 transition-all duration-300 hover:scale-110 disabled:opacity-50"
         aria-label="Next slide"
       >
-        <FaChevronRight className="text-xl" />
+        <FaChevronRight className="text-lg xl:text-xl" />
       </button>
 
-      {/* Slide Indicators */}
-      <div className="absolute bottom-24 left-1/2 transform -translate-x-1/2 z-20 flex gap-3">
-        {slides.map((_, index) => (
-          <button
-            key={index}
-            onClick={() => setCurrentSlide(index)}
-            className={`h-2 rounded-full transition-all duration-500 ${
-              index === currentSlide 
-                ? 'bg-white w-12 shadow-lg' 
-                : 'bg-white/50 w-2 hover:bg-white/70 hover:w-8'
-            }`}
-            aria-label={`Go to slide ${index + 1}`}
-          />
-        ))}
-      </div>
-
-      {/* Scroll Indicator */}
-      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-20">
-        <div className="w-6 h-10 border-2 border-white/50 rounded-full flex justify-center animate-bounce">
-          <div className="w-1.5 h-1.5 bg-white/50 rounded-full mt-2" />
-        </div>
-      </div>
-
       <style jsx>{`
-        @keyframes float {
-          0%, 100% {
-            transform: translate(0, 0) scale(1);
+        @keyframes fade-in {
+          from {
+            opacity: 0;
+            transform: translateY(10px);
           }
-          25% {
-            transform: translate(30px, -20px) scale(1.1);
-          }
-          50% {
-            transform: translate(50px, 10px) scale(1.05);
-          }
-          75% {
-            transform: translate(20px, 30px) scale(1.15);
+          to {
+            opacity: 1;
+            transform: translateY(0);
           }
         }
+        .animate-fade-in {
+          animation: fade-in 0.8s ease-out forwards;
+          opacity: 0;
+        }
       `}</style>
-    </section>
+    </div>
   );
 };
 

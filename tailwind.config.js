@@ -8,14 +8,32 @@ module.exports = {
   theme: {
     extend: {
       colors: {
+        // Fosroc Brand Colors
+        fosroc: {
+          blue: {
+            DEFAULT: '#003366',
+            dark: '#002244',
+            light: '#004080',
+            lighter: '#0055AA',
+            lightest: '#E6F0F7',
+          },
+          orange: {
+            DEFAULT: '#D22B2B',
+            dark: '#CC5200',
+            light: '#FF8533',
+            lighter: '#FFA366',
+            lightest: '#FFF4E6',
+          },
+        },
         primary: {
-          DEFAULT: '#1e40af',
-          dark: '#1e3a8a',
-          light: '#3b82f6',
+          DEFAULT: '#003366', // Fosroc Dark Blue
+          dark: '#002244',
+          light: '#004080',
         },
         secondary: {
-          DEFAULT: '#f59e0b',
-          dark: '#d97706',
+          DEFAULT: '#D22B2B', // Fosroc Orange
+          dark: '#CC5200',
+          light: '#FF8533',
         },
       },
       animation: {

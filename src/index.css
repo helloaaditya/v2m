@@ -17,6 +17,12 @@
   }
 }
 
+/* Smooth scroll behavior */
+html {
+  scroll-behavior: smooth;
+}
+
+
 @layer components {
   .container {
     @apply max-w-7xl mx-auto px-5;

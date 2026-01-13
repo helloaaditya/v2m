@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { FaPhone, FaWhatsapp, FaCheck, FaArrowRight, FaStar, FaAward, FaShieldAlt } from 'react-icons/fa';
 import HeroSlideshow from '../components/HeroSlideshow';
+import SolutionsSection from '../components/SolutionsSection';
 import BenefitsSection from '../components/BenefitsSection';
 import CTASection from '../components/CTASection';
 
@@ -28,6 +29,7 @@ const Home = () => {
   return (
     <div className="home bg-white">
       <HeroSlideshow/>
+      <SolutionsSection/>
       <BenefitsSection/>
       <CTASection/>
       
