@@ -31,7 +31,7 @@ const SolutionsSection = () => {
       image: 'https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=800&auto=format&fit=crop&q=80',
       category: 'Coatings',
       features: ['Dekguard Technology', 'UV Resistant', 'Long-lasting'],
-      color: 'from-blue-500 to-blue-600'
+      color: 'from-red-500 to-red-600'
     },
     {
       id: 2,
@@ -125,7 +125,7 @@ const SolutionsSection = () => {
       {/* Background Elements */}
       <div className="absolute inset-0 opacity-30">
         <div className="absolute top-40 right-20 w-96 h-96 bg-orange-200 rounded-full blur-3xl" />
-        <div className="absolute bottom-20 left-20 w-96 h-96 bg-blue-200 rounded-full blur-3xl" />
+        <div className="absolute bottom-20 left-20 w-96 h-96 bg-red-200 rounded-full blur-3xl" />
       </div>
 
       {/* Decorative pattern */}

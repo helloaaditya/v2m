@@ -26,7 +26,7 @@ const CTASection = () => {
   ];
 
   return (
-    <section className="relative py-8 lg:py-12 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 overflow-hidden">
+    <section className="relative py-8 lg:py-12 bg-gradient-to-br from-white overflow-hidden">
       {/* Sophisticated Background Elements */}
       <div className="absolute inset-0">
         {/* Animated gradient orbs */}
@@ -54,7 +54,7 @@ const CTASection = () => {
             </div>
 
             {/* Main Headline */}
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-black mb-6 leading-tight">
               Ready to Start Your{' '}
               <span className="text-transparent bg-clip-text bg-fosroc-orange">
                 Project?
@@ -62,7 +62,7 @@ const CTASection = () => {
             </h2>
 
             {/* Description */}
-            <p className="text-lg lg:text-xl text-slate-300 leading-relaxed max-w-3xl mx-auto">
+            <p className="text-lg lg:text-xl text-slate-500 leading-relaxed max-w-3xl mx-auto">
               Get expert consultation and competitive quotes for your construction chemical needs. Our team is ready to help you choose the right Fosroc products.
             </p>
           </div>
@@ -81,7 +81,7 @@ const CTASection = () => {
 
             <a
               href="tel:+917829531999"
-              className="group inline-flex items-center justify-center gap-3 px-8 py-5 bg-white/10 backdrop-blur-xl text-fosroc-orange font-bold text-lg rounded-xl border-2 border-white/20 hover:bg-white hover:text-slate-900 transition-all duration-300 hover:scale-105 hover:shadow-2xl"
+              className="group inline-flex items-center justify-center gap-3 px-8 py-5 bg-fosroc-white backdrop-blur-xl text-fosroc-orange font-bold text-lg rounded-xl border-2 border-white/20 hover:bg-white hover:text-slate-900 transition-all duration-300 hover:scale-105 hover:shadow-2xl"
             >
               <FaPhone className="group-hover:rotate-12 transition-transform" />
               <span className="hidden sm:inline">Call:</span>
@@ -118,13 +118,13 @@ const CTASection = () => {
                 </div>
 
                 {/* Value */}
-                <div className="text-4xl font-bold text-white mb-2 group-hover:text-orange-500 transition-colors duration-300">
+                <div className="text-4xl font-bold text-black mb-2 group-hover:text-orange-500 transition-colors duration-300">
                   {feature.value}
                 </div>
 
                 {/* Label */}
-                <h3 className="text-lg font-semibold text-white mb-2">
-                  {feature.label}
+                <h3 className="text-lg font-semibold text-black mb-2">
+                  {feature.label} 
                 </h3>
 
                 {/* Description */}

@@ -45,7 +45,7 @@ const Navbar = () => {
   return (
     <>
       {/* Top Bar - Hidden on mobile, visible on desktop, hides on scroll */}
-      <div className={`hidden lg:block bg-fosroc-blue text-white py-2 fixed top-0 left-0 right-0 z-[60] transition-all duration-300 ${
+      <div className={`hidden lg:block bg-fosroc-red text-white py-2 fixed top-0 left-0 right-0 z-[60] transition-all duration-300 ${
         isScrolled ? '-translate-y-full opacity-0' : 'translate-y-0 opacity-100'
       }`}>
         <div className="container mx-auto px-4">
@@ -53,14 +53,14 @@ const Navbar = () => {
             <div className="flex items-center gap-6">
               <a 
                 href="tel:+917829531999" 
-                className="flex items-center gap-2 hover:text-fosroc-orange-light transition-colors duration-300"
+                className="flex items-center gap-2 hover:text-fosroc-red-light transition-colors duration-300"
               >
                 <FaPhone className="text-xs" />
                 <span>+91 78295 31999</span>
               </a>
               <a 
                 href="mailto:info@v2marketing.com" 
-                className="flex items-center gap-2 hover:text-fosroc-orange-light transition-colors duration-300"
+                className="flex items-center gap-2 hover:text-fosroc-red-light transition-colors duration-300"
               >
                 <FaEnvelope className="text-xs" />
                 <span>info@v2marketing.com</span>
@@ -109,15 +109,15 @@ const Navbar = () => {
                     onClick={handleLinkClick}
                     className={`relative px-4 xl:px-6 py-2 font-medium text-base transition-all duration-300 group ${
                       activeLink === link.path
-                        ? 'text-fosroc-blue'
-                        : 'text-gray-700 hover:text-fosroc-blue'
+                        ? 'text-fosroc-red'
+                        : 'text-gray-700 hover:text-fosroc-red'
                     }`}
                   >
                     <span className="relative z-10">{link.label}</span>
                     
                     {/* Animated underline */}
                     <span 
-                      className={`absolute bottom-0 left-1/2 h-0.5 bg-fosroc-orange transition-all duration-300 ${
+                      className={`absolute bottom-0 left-1/2 h-0.5 bg-fosroc-red transition-all duration-300 ${
                         activeLink === link.path
                           ? 'w-full -translate-x-1/2'
                           : 'w-0 group-hover:w-full -translate-x-1/2'
@@ -125,7 +125,7 @@ const Navbar = () => {
                     />
                     
                     {/* Hover background */}
-                    <span className="absolute inset-0 bg-fosroc-blue-lightest rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10" />
+                    <span className="absolute inset-0 bg-fosroc-red-lightest rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10" />
                   </Link>
                 </li>
               ))}
@@ -136,7 +136,7 @@ const Navbar = () => {
               <Link
                 to="/contact"
                 onClick={handleLinkClick}
-                className="px-6 py-2.5 bg-fosroc-orange hover:bg-fosroc-orange-dark text-white font-semibold rounded-lg transition-all duration-300 hover:shadow-xl hover:scale-105"
+                className="px-6 py-2.5 bg-fosroc-red hover:bg-fosroc-red-dark text-white font-semibold rounded-lg transition-all duration-300 hover:shadow-xl hover:scale-105"
               >
                 Get Quote
               </Link>
@@ -172,8 +172,8 @@ const Navbar = () => {
                     onClick={handleLinkClick}
                     className={`flex items-center justify-between px-4 py-3 rounded-lg font-medium transition-all duration-300 ${
                       activeLink === link.path
-                        ? 'bg-fosroc-orange text-white shadow-lg'
-                        : 'bg-gray-50 text-gray-700 hover:bg-fosroc-blue-lightest hover:text-fosroc-blue'
+                        ? 'bg-fosroc-red text-white shadow-lg'
+                        : 'bg-gray-50 text-gray-700 hover:bg-fosroc-red-lightest hover:text-fosroc-red'
                     }`}
                   >
                     <span>{link.label}</span>
@@ -196,7 +196,7 @@ const Navbar = () => {
             <div className="container mx-auto px-4 pb-6 space-y-3">
               <a
                 href="tel:+917829531999"
-                className="flex items-center gap-3 px-4 py-3 bg-fosroc-orange hover:bg-fosroc-orange-dark text-white rounded-lg font-medium shadow-lg hover:shadow-xl transition-all duration-300"
+                className="flex items-center gap-3 px-4 py-3 bg-fosroc-red hover:bg-fosroc-red-dark text-white rounded-lg font-medium shadow-lg hover:shadow-xl transition-all duration-300"
               >
                 <FaPhone />
                 <span>Call: +91 78295 31999</span>
@@ -204,7 +204,7 @@ const Navbar = () => {
               <Link
                 to="/contact"
                 onClick={handleLinkClick}
-                className="flex items-center justify-center gap-3 px-4 py-3 bg-white border-2 border-fosroc-blue text-fosroc-blue hover:bg-fosroc-blue hover:text-white rounded-lg font-medium shadow-lg hover:shadow-xl transition-all duration-300"
+                className="flex items-center justify-center gap-3 px-4 py-3 bg-white border-2 border-fosroc-red text-fosroc-red hover:bg-fosroc-red hover:text-white rounded-lg font-medium shadow-lg hover:shadow-xl transition-all duration-300"
               >
                 <span>Get Free Quote</span>
               </Link>

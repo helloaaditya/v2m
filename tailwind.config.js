@@ -8,32 +8,40 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        // Fosroc Brand Colors
+        // Red, White, Black Theme
         fosroc: {
-          blue: {
-            DEFAULT: '#003366',
-            dark: '#002244',
-            light: '#004080',
-            lighter: '#0055AA',
-            lightest: '#E6F0F7',
+          red: {
+            DEFAULT: '#DC2626', // Primary Red
+            dark: '#991B1B', // Dark Red
+            light: '#EF4444', // Light Red
+            lighter: '#F87171', // Lighter Red
+            lightest: '#FEE2E2', // Lightest Red
           },
+          // Keep orange as alias for red for backward compatibility
           orange: {
-            DEFAULT: '#D22B2B',
-            dark: '#CC5200',
-            light: '#FF8533',
-            lighter: '#FFA366',
-            lightest: '#FFF4E6',
+            DEFAULT: '#DC2626',
+            dark: '#991B1B',
+            light: '#EF4444',
+            lighter: '#F87171',
+            lightest: '#FEE2E2',
+          },
+          white: {
+            DEFAULT: '#FFFFFF',
+            dark: '#000000',
+            light: '#000000',
+            lighter: '#000000',
+            lightest: '#000000',
           },
         },
         primary: {
-          DEFAULT: '#003366', // Fosroc Dark Blue
-          dark: '#002244',
-          light: '#004080',
+          DEFAULT: '#DC2626', // Red
+          dark: '#991B1B',
+          light: '#EF4444',
         },
         secondary: {
-          DEFAULT: '#D22B2B', // Fosroc Orange
-          dark: '#CC5200',
-          light: '#FF8533',
+          DEFAULT: '#DC2626', // Red
+          dark: '#991B1B',
+          light: '#EF4444',
         },
       },
       animation: {

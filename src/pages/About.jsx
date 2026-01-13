@@ -9,8 +9,8 @@ const About = () => {
       icon: <FaAward />,
       title: 'Authorized Dealer',
       description: 'Official authorization from Fosroc ensures you receive 100% genuine products with full warranty and technical support.',
-      color: 'from-blue-500 to-blue-600',
-      bgColor: 'from-blue-500/10 to-blue-600/5'
+      color: 'from-red-500 to-red-600',
+      bgColor: 'from-red-500/10 to-red-600/5'
     },
     {
       icon: <FaShieldAlt />,
@@ -39,7 +39,7 @@ const About = () => {
       icon: <FaShieldAlt />,
       title: 'Expertise',
       description: 'Deep technical knowledge to guide you in product selection and application',
-      color: 'from-blue-500 to-blue-600'
+      color: 'from-red-500 to-red-600'
     },
     {
       icon: <FaTruck />,
@@ -73,7 +73,7 @@ const About = () => {
   return (
     <div className="about bg-white">
       {/* Hero Section */}
-      <section className="relative h-[35vh] sm:h-[40vh] md:h-[45vh] flex items-center justify-center overflow-hidden bg-gradient-to-br from-fosroc-blue via-fosroc-blue-light to-fosroc-blue-dark">
+      <section className="relative h-[35vh] sm:h-[40vh] md:h-[45vh] flex items-center justify-center overflow-hidden bg-gradient-to-br from-fosroc-red via-fosroc-red-dark to-fosroc-red-dark">
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <div className="absolute top-20 left-10 w-48 sm:w-72 h-48 sm:h-72 bg-fosroc-orange/20 rounded-full blur-3xl" />
           <div className="absolute bottom-20 right-10 w-64 sm:w-96 h-64 sm:h-96 bg-white/10 rounded-full blur-3xl" />
@@ -108,7 +108,7 @@ const About = () => {
         {/* Background Elements */}
         <div className="absolute inset-0 opacity-30">
           <div className="absolute top-40 right-20 w-96 h-96 bg-orange-200 rounded-full blur-3xl" />
-          <div className="absolute bottom-20 left-20 w-96 h-96 bg-blue-200 rounded-full blur-3xl" />
+          <div className="absolute bottom-20 left-20 w-96 h-96 bg-red-200 rounded-full blur-3xl" />
         </div>
 
         {/* Decorative pattern */}
@@ -159,7 +159,7 @@ const About = () => {
 
             {/* Right: Info Card */}
             <div className="relative">
-              <div className="relative rounded-2xl overflow-hidden shadow-2xl bg-gradient-to-br from-fosroc-blue via-fosroc-blue-light to-fosroc-blue-dark p-8 sm:p-10 lg:p-12">
+              <div className="relative rounded-2xl overflow-hidden shadow-2xl bg-gradient-to-br from-fosroc-red via-fosroc-red-dark to-fosroc-red-dark p-8 sm:p-10 lg:p-12">
                 <div className="absolute inset-0 bg-gradient-to-br from-fosroc-orange/10 to-transparent"></div>
                 <div className="relative z-10 text-center text-white">
                   <div className="w-20 h-20 sm:w-24 sm:h-24 bg-gradient-to-br from-fosroc-orange to-fosroc-orange-dark rounded-2xl flex items-center justify-center text-white text-4xl sm:text-5xl mx-auto mb-6 shadow-xl transform hover:scale-110 transition-transform duration-300">
@@ -183,7 +183,7 @@ const About = () => {
         {/* Background Elements */}
         <div className="absolute inset-0 opacity-40">
           <div className="absolute top-20 right-20 w-72 h-72 bg-orange-200 rounded-full blur-3xl" />
-          <div className="absolute bottom-20 left-20 w-96 h-96 bg-blue-200 rounded-full blur-3xl" />
+          <div className="absolute bottom-20 left-20 w-96 h-96 bg-red-200 rounded-full blur-3xl" />
         </div>
 
         <div className="absolute inset-0 bg-[linear-gradient(to_right,#8080800a_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] bg-[size:32px_32px]" />
@@ -245,7 +245,7 @@ const About = () => {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
           {/* Mission */}
           <div className="grid lg:grid-cols-2 gap-8 sm:gap-12 items-center mb-16 sm:mb-20">
-            <div className="relative rounded-2xl overflow-hidden shadow-2xl bg-gradient-to-br from-fosroc-blue via-fosroc-blue-light to-fosroc-blue-dark h-[350px] sm:h-[400px] flex items-center justify-center group">
+            <div className="relative rounded-2xl overflow-hidden shadow-2xl bg-gradient-to-br from-fosroc-red via-fosroc-red-dark to-fosroc-red-dark h-[350px] sm:h-[400px] flex items-center justify-center group">
               <div className="absolute inset-0 bg-gradient-to-br from-fosroc-orange/20 to-transparent"></div>
               <div className="relative z-10 text-center text-white">
                 <div className="w-20 h-20 bg-fosroc-orange rounded-2xl flex items-center justify-center text-white text-4xl mx-auto mb-6 shadow-xl transform group-hover:scale-110 transition-transform duration-300">
@@ -299,9 +299,9 @@ const About = () => {
               </p>
             </div>
             <div className="relative rounded-2xl overflow-hidden shadow-2xl order-1 lg:order-2 bg-gradient-to-br from-fosroc-orange via-fosroc-orange-light to-fosroc-orange-dark h-[350px] sm:h-[400px] flex items-center justify-center group">
-              <div className="absolute inset-0 bg-gradient-to-br from-fosroc-blue/20 to-transparent"></div>
+              <div className="absolute inset-0 bg-gradient-to-br from-fosroc-red/20 to-transparent"></div>
               <div className="relative z-10 text-center text-white">
-                <div className="w-20 h-20 bg-fosroc-blue rounded-2xl flex items-center justify-center text-white text-4xl mx-auto mb-6 shadow-xl transform group-hover:scale-110 transition-transform duration-300">
+                <div className="w-20 h-20 bg-fosroc-red rounded-2xl flex items-center justify-center text-white text-4xl mx-auto mb-6 shadow-xl transform group-hover:scale-110 transition-transform duration-300">
                   <FaRocket />
                 </div>
                 <p className="text-xl sm:text-2xl font-bold">Future Forward</p>
@@ -315,7 +315,7 @@ const About = () => {
       <section className="relative py-12 sm:py-16 lg:py-20 bg-gradient-to-b from-slate-50 via-white to-slate-50 overflow-hidden">
         <div className="absolute inset-0 opacity-40">
           <div className="absolute top-20 right-20 w-72 h-72 bg-orange-200 rounded-full blur-3xl" />
-          <div className="absolute bottom-20 left-20 w-96 h-96 bg-blue-200 rounded-full blur-3xl" />
+          <div className="absolute bottom-20 left-20 w-96 h-96 bg-red-200 rounded-full blur-3xl" />
         </div>
 
         <div className="absolute inset-0 bg-[linear-gradient(to_right,#8080800a_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] bg-[size:32px_32px]" />
@@ -379,9 +379,9 @@ const About = () => {
             {/* Left: Info Card */}
             <div className="relative">
               <div className="relative rounded-2xl overflow-hidden shadow-2xl bg-gradient-to-br from-fosroc-orange via-fosroc-orange-light to-fosroc-orange-dark h-[400px] sm:h-[500px] flex items-center justify-center group">
-                <div className="absolute inset-0 bg-gradient-to-br from-fosroc-blue/20 to-transparent"></div>
+                <div className="absolute inset-0 bg-gradient-to-br from-fosroc-red/20 to-transparent"></div>
                 <div className="relative z-10 text-center text-white p-8">
-                  <div className="w-24 h-24 bg-fosroc-blue rounded-2xl flex items-center justify-center text-white text-5xl mx-auto mb-6 shadow-xl transform group-hover:scale-110 transition-transform duration-300">
+                  <div className="w-24 h-24 bg-fosroc-red rounded-2xl flex items-center justify-center text-white text-5xl mx-auto mb-6 shadow-xl transform group-hover:scale-110 transition-transform duration-300">
                     <FaStar />
                   </div>
                   <h3 className="text-2xl sm:text-3xl font-bold mb-4">Why Choose Us?</h3>
@@ -436,7 +436,7 @@ const About = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="relative py-12 sm:py-16 lg:py-20 bg-gradient-to-br from-fosroc-blue via-fosroc-blue-light to-fosroc-blue-dark text-white overflow-hidden">
+      <section className="relative py-12 sm:py-16 lg:py-20 bg-gradient-to-br from-fosroc-red via-fosroc-red-dark to-fosroc-red-dark text-white overflow-hidden">
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <div className="absolute top-20 left-10 w-72 h-72 bg-fosroc-orange/20 rounded-full blur-3xl" />
           <div className="absolute bottom-20 right-10 w-96 h-96 bg-white/10 rounded-full blur-3xl" />
@@ -468,7 +468,7 @@ const About = () => {
             </a>
             <a
               href="/products"
-              className="group inline-flex items-center gap-3 px-6 sm:px-8 py-3 sm:py-4 bg-white/20 backdrop-blur-md text-white font-bold text-sm sm:text-base rounded-xl border-2 border-white/30 hover:bg-white hover:text-fosroc-blue transition-all duration-300 hover:scale-105 hover:shadow-xl"
+              className="group inline-flex items-center gap-3 px-6 sm:px-8 py-3 sm:py-4 bg-white/20 backdrop-blur-md text-white font-bold text-sm sm:text-base rounded-xl border-2 border-white/30 hover:bg-white hover:text-fosroc-red transition-all duration-300 hover:scale-105 hover:shadow-xl"
             >
               <span>View Products</span>
               <FaArrowRight className="group-hover:translate-x-1 transition-transform" />

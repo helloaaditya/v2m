@@ -48,7 +48,7 @@ const Products = () => {
   return (
     <div className="products min-h-screen bg-white">
       {/* Hero Section */}
-      <section className="relative h-[35vh] sm:h-[40vh] md:h-[45vh] flex items-center justify-center overflow-hidden bg-gradient-to-br from-fosroc-blue via-fosroc-blue-light to-fosroc-blue-dark">
+      <section className="relative h-[35vh] sm:h-[40vh] md:h-[45vh] flex items-center justify-center overflow-hidden bg-gradient-to-br from-fosroc-red via-fosroc-red-dark to-fosroc-red-dark">
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <div className="absolute top-20 left-10 w-48 sm:w-72 h-48 sm:h-72 bg-fosroc-orange/20 rounded-full blur-3xl" />
           <div className="absolute bottom-20 right-10 w-64 sm:w-96 h-64 sm:h-96 bg-white/10 rounded-full blur-3xl" />
@@ -83,7 +83,7 @@ const Products = () => {
         {/* Background Elements */}
         <div className="absolute inset-0 opacity-30">
           <div className="absolute top-40 right-20 w-96 h-96 bg-orange-200 rounded-full blur-3xl" />
-          <div className="absolute bottom-20 left-20 w-96 h-96 bg-blue-200 rounded-full blur-3xl" />
+          <div className="absolute bottom-20 left-20 w-96 h-96 bg-red-200 rounded-full blur-3xl" />
         </div>
 
         <div className="absolute inset-0 bg-[linear-gradient(to_right,#8080800a_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] bg-[size:32px_32px]" />
@@ -133,7 +133,7 @@ const Products = () => {
 
       {/* Category Info Banner */}
       {selectedCategory !== 'all' && (
-        <section className="relative py-6 sm:py-8 bg-gradient-to-r from-fosroc-blue-lightest via-white to-fosroc-blue-lightest border-y border-slate-200">
+        <section className="relative py-6 sm:py-8 bg-gradient-to-r from-fosroc-red-lightest via-white to-fosroc-red-lightest border-y border-slate-200">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
             {productCategories
               .filter(cat => cat.id === selectedCategory)
@@ -177,13 +177,36 @@ const Products = () => {
                     {/* Decorative corner */}
                     <div className="absolute top-0 right-0 w-20 h-20 bg-gradient-to-br from-fosroc-orange/10 to-transparent rounded-bl-full opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                     
+                    {/* Product Image */}
+                    {product.imageUrl && (
+                      <div className="relative w-full h-48 sm:h-56 mb-4 rounded-xl overflow-hidden bg-gray-100 group-hover:shadow-lg transition-shadow duration-300">
+                        <img
+                          src={product.imageUrl}
+                          alt={product.name}
+                          className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                          onError={(e) => {
+                            e.target.style.display = 'none';
+                            const fallback = e.target.nextElementSibling;
+                            if (fallback) fallback.style.display = 'flex';
+                          }}
+                        />
+                        <div className="hidden absolute inset-0 bg-gradient-to-br from-fosroc-orange/20 to-transparent items-center justify-center">
+                          <span className="text-4xl sm:text-5xl">
+                            {productCategories.find(cat => cat.id === product.category)?.icon}
+                          </span>
+                        </div>
+                      </div>
+                    )}
+                    
                     <div className="flex justify-between items-start mb-3 sm:mb-4 relative z-10">
                       <h3 className="text-lg sm:text-xl font-bold text-slate-900 flex-1 pr-2 group-hover:text-fosroc-orange transition-colors">
                         {product.name}
                       </h3>
-                      <span className="text-2xl sm:text-3xl flex-shrink-0 transform group-hover:scale-110 transition-transform duration-300">
-                        {productCategories.find(cat => cat.id === product.category)?.icon}
-                      </span>
+                      {!product.imageUrl && (
+                        <span className="text-2xl sm:text-3xl flex-shrink-0 transform group-hover:scale-110 transition-transform duration-300">
+                          {productCategories.find(cat => cat.id === product.category)?.icon}
+                        </span>
+                      )}
                     </div>
                     <p className="text-sm sm:text-base text-slate-600 mb-3 sm:mb-4 leading-relaxed flex-1 relative z-10">
                       {product.description}
@@ -207,7 +230,7 @@ const Products = () => {
                     <div className="flex gap-2 sm:gap-3 mt-auto relative z-10">
                       <button
                         onClick={() => setSelectedProduct(product)}
-                        className="flex-1 px-3 sm:px-4 py-2 text-xs sm:text-sm border-2 border-fosroc-blue text-fosroc-blue font-semibold rounded-lg hover:bg-fosroc-blue hover:text-white transition-all min-h-[44px] hover:scale-105"
+                        className="flex-1 px-3 sm:px-4 py-2 text-xs sm:text-sm border-2 border-fosroc-red text-fosroc-red font-semibold rounded-lg hover:bg-fosroc-red hover:text-white transition-all min-h-[44px] hover:scale-105"
                       >
                         View Details
                       </button>
@@ -250,14 +273,14 @@ const Products = () => {
       {/* Product Detail Modal */}
       {selectedProduct && (
         <div
-          className="fixed inset-0 bg-black/70 z-50 flex items-center justify-center p-4"
+          className="fixed inset-0 bg-fosroc-red/70 z-50 flex items-center justify-center p-4"
           onClick={() => setSelectedProduct(null)}
         >
           <div
             className="bg-white rounded-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto shadow-2xl"
             onClick={(e) => e.stopPropagation()}
           >
-            <div className="sticky top-0 bg-gradient-to-r from-fosroc-blue to-fosroc-blue-dark text-white border-b border-white/20 p-6 flex justify-between items-start">
+            <div className="sticky top-0 bg-gradient-to-r from-fosroc-red to-fosroc-red-dark text-white border-b border-white/20 p-6 flex justify-between items-start">
               <div className="flex-1">
                 <h2 className="text-2xl sm:text-3xl font-bold mb-2">{selectedProduct.name}</h2>
                 <span className="inline-flex items-center gap-2 px-3 py-1 bg-white/20 backdrop-blur-sm text-white rounded-full text-sm font-semibold">
@@ -272,15 +295,27 @@ const Products = () => {
                 <FaTimes />
               </button>
             </div>
+            {selectedProduct.imageUrl && (
+              <div className="w-full h-64 sm:h-80 bg-gray-100 overflow-hidden">
+                <img
+                  src={selectedProduct.imageUrl}
+                  alt={selectedProduct.name}
+                  className="w-full h-full object-cover"
+                  onError={(e) => {
+                    e.target.style.display = 'none';
+                  }}
+                />
+              </div>
+            )}
             <div className="p-6 space-y-6">
               <div>
-                <h3 className="text-lg font-semibold text-fosroc-blue mb-2 flex items-center gap-2">
+                <h3 className="text-lg font-semibold text-fosroc-red mb-2 flex items-center gap-2">
                   <FaCheckCircle className="text-fosroc-orange" /> Description
                 </h3>
                 <p className="text-slate-600 leading-relaxed">{selectedProduct.description}</p>
               </div>
               <div>
-                <h3 className="text-lg font-semibold text-fosroc-blue mb-2 flex items-center gap-2">
+                <h3 className="text-lg font-semibold text-fosroc-red mb-2 flex items-center gap-2">
                   <FaCheckCircle className="text-fosroc-orange" /> Applications
                 </h3>
                 <ul className="space-y-2">
@@ -293,13 +328,13 @@ const Products = () => {
                 </ul>
               </div>
               <div>
-                <h3 className="text-lg font-semibold text-fosroc-blue mb-2 flex items-center gap-2">
+                <h3 className="text-lg font-semibold text-fosroc-red mb-2 flex items-center gap-2">
                   <FaCheckCircle className="text-fosroc-orange" /> Specifications
                 </h3>
                 <p className="text-slate-600">{selectedProduct.specifications}</p>
               </div>
               <div>
-                <h3 className="text-lg font-semibold text-fosroc-blue mb-2 flex items-center gap-2">
+                <h3 className="text-lg font-semibold text-fosroc-red mb-2 flex items-center gap-2">
                   <FaCheckCircle className="text-fosroc-orange" /> Packaging
                 </h3>
                 <p className="text-slate-600">{selectedProduct.packaging}</p>
@@ -326,7 +361,7 @@ const Products = () => {
       )}
 
       {/* CTA Section */}
-      <section className="relative py-12 sm:py-16 lg:py-20 bg-gradient-to-br from-fosroc-blue via-fosroc-blue-light to-fosroc-blue-dark text-white overflow-hidden">
+      <section className="relative py-12 sm:py-16 lg:py-20 bg-gradient-to-br from-fosroc-red via-fosroc-red-dark to-fosroc-red-dark text-white overflow-hidden">
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <div className="absolute top-20 left-10 w-72 h-72 bg-fosroc-orange/20 rounded-full blur-3xl" />
           <div className="absolute bottom-20 right-10 w-96 h-96 bg-white/10 rounded-full blur-3xl" />
@@ -359,7 +394,7 @@ const Products = () => {
               href="https://wa.me/917829531999?text=Hello, I need help choosing the right construction chemical product."
               target="_blank"
               rel="noopener noreferrer"
-              className="group inline-flex items-center gap-3 px-6 sm:px-8 py-3 sm:py-4 bg-white/20 backdrop-blur-md text-white font-bold text-sm sm:text-base rounded-xl border-2 border-white/30 hover:bg-white hover:text-fosroc-blue transition-all duration-300 hover:scale-105 hover:shadow-xl"
+              className="group inline-flex items-center gap-3 px-6 sm:px-8 py-3 sm:py-4 bg-white/20 backdrop-blur-md text-white font-bold text-sm sm:text-base rounded-xl border-2 border-white/30 hover:bg-white hover:text-fosroc-red transition-all duration-300 hover:scale-105 hover:shadow-xl"
             >
               <FaWhatsapp /> <span>WhatsApp Us</span>
             </a>

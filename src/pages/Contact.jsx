@@ -60,7 +60,7 @@ const Contact = () => {
       />
       
       {/* Page Header */}
-      <section className="relative py-12 sm:py-16 lg:py-20 bg-gradient-to-br from-fosroc-blue via-fosroc-blue-light to-fosroc-blue-dark text-white overflow-hidden">
+      <section className="relative py-12 sm:py-16 lg:py-20 bg-gradient-to-br from-fosroc-red via-fosroc-red-dark to-fosroc-red-dark text-white overflow-hidden">
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <div className="absolute top-20 left-10 w-48 sm:w-72 h-48 sm:h-72 bg-fosroc-orange/20 rounded-full blur-3xl" />
           <div className="absolute bottom-20 right-10 w-64 sm:w-96 h-64 sm:h-96 bg-white/10 rounded-full blur-3xl" />
@@ -104,7 +104,7 @@ const Contact = () => {
         {/* Background Elements */}
         <div className="absolute inset-0 opacity-30">
           <div className="absolute top-40 right-20 w-96 h-96 bg-orange-200 rounded-full blur-3xl" />
-          <div className="absolute bottom-20 left-20 w-96 h-96 bg-blue-200 rounded-full blur-3xl" />
+          <div className="absolute bottom-20 left-20 w-96 h-96 bg-red-200 rounded-full blur-3xl" />
         </div>
 
         <div className="absolute inset-0 bg-[linear-gradient(to_right,#8080800a_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] bg-[size:32px_32px]" />
@@ -155,7 +155,7 @@ const Contact = () => {
                     >
                       <a
                         href={`tel:${phone.tel}`}
-                        className="text-lg font-semibold text-fosroc-blue hover:text-fosroc-orange transition-colors"
+                        className="text-lg font-semibold text-fosroc-red hover:text-fosroc-orange transition-colors"
                       >
                         {phone.number}
                       </a>
@@ -175,7 +175,7 @@ const Contact = () => {
               {/* Location */}
               <div className="bg-white rounded-2xl p-6 shadow-lg border border-slate-200">
                 <h3 className="text-xl font-bold mb-4 text-slate-900 flex items-center gap-2">
-                  <div className="w-10 h-10 bg-gradient-to-br from-fosroc-blue to-fosroc-blue-dark rounded-xl flex items-center justify-center text-white">
+                  <div className="w-10 h-10 bg-gradient-to-br from-fosroc-red to-fosroc-red-dark rounded-xl flex items-center justify-center text-white">
                     <FaMapMarkerAlt className="text-sm" />
                   </div>
                   Location
@@ -409,7 +409,7 @@ const Contact = () => {
       </section>
 
       {/* Quick Contact CTA */}
-      <section className="relative py-12 sm:py-16 lg:py-20 bg-gradient-to-br from-fosroc-blue via-fosroc-blue-light to-fosroc-blue-dark text-white overflow-hidden">
+      <section className="relative py-12 sm:py-16 lg:py-20 bg-gradient-to-br from-fosroc-red via-fosroc-red-dark to-fosroc-red-dark text-white overflow-hidden">
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <div className="absolute top-20 left-10 w-72 h-72 bg-fosroc-orange/20 rounded-full blur-3xl" />
           <div className="absolute bottom-20 right-10 w-96 h-96 bg-white/10 rounded-full blur-3xl" />

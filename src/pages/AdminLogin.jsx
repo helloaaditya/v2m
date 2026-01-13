@@ -58,10 +58,10 @@ const AdminLogin = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-fosroc-blue-lightest via-white to-gray-50 py-8 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-fosroc-red-lightest via-white to-gray-50 py-8 px-4 sm:px-6 lg:px-8">
       <div className="max-w-md w-full space-y-6 sm:space-y-8">
         <div className="text-center">
-          <div className="mx-auto h-14 w-14 sm:h-16 sm:w-16 bg-fosroc-blue rounded-full flex items-center justify-center mb-4">
+          <div className="mx-auto h-14 w-14 sm:h-16 sm:w-16 bg-fosroc-red rounded-full flex items-center justify-center mb-4">
             <FaLock className="h-7 w-7 sm:h-8 sm:w-8 text-white" />
           </div>
           <h2 className="text-2xl sm:text-3xl font-extrabold text-gray-900">
@@ -96,7 +96,7 @@ const AdminLogin = () => {
                   required
                   value={username}
                   onChange={(e) => setUsername(e.target.value)}
-                  className="appearance-none relative block w-full pl-10 pr-3 py-3 text-base sm:text-sm border border-gray-300 placeholder-gray-500 text-gray-900 rounded-lg focus:outline-none focus:ring-2 focus:ring-fosroc-blue focus:border-fosroc-blue bg-white"
+                  className="appearance-none relative block w-full pl-10 pr-3 py-3 text-base sm:text-sm border border-gray-300 placeholder-gray-500 text-gray-900 rounded-lg focus:outline-none focus:ring-2 focus:ring-fosroc-red focus:border-fosroc-red bg-white"
                   placeholder="Enter username"
                 />
               </div>
@@ -128,7 +128,7 @@ const AdminLogin = () => {
                       }
                     }
                   }}
-                  className="appearance-none relative block w-full pl-10 pr-12 py-3 text-base sm:text-sm border border-gray-300 placeholder-gray-500 text-gray-900 rounded-lg focus:outline-none focus:ring-2 focus:ring-fosroc-blue focus:border-fosroc-blue bg-white"
+                  className="appearance-none relative block w-full pl-10 pr-12 py-3 text-base sm:text-sm border border-gray-300 placeholder-gray-500 text-gray-900 rounded-lg focus:outline-none focus:ring-2 focus:ring-fosroc-red focus:border-fosroc-red bg-white"
                   placeholder="Enter password"
                 />
                 <button
@@ -151,7 +151,7 @@ const AdminLogin = () => {
             <button
               type="submit"
               disabled={isLoading}
-              className="group relative w-full flex justify-center py-3 px-4 border border-transparent text-base sm:text-sm font-medium rounded-lg text-white bg-fosroc-blue hover:bg-fosroc-blue-dark active:bg-fosroc-blue-dark focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-fosroc-blue disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200 touch-manipulation min-h-[44px]"
+              className="group relative w-full flex justify-center py-3 px-4 border border-transparent text-base sm:text-sm font-medium rounded-lg text-white bg-fosroc-red hover:bg-fosroc-red-dark active:bg-fosroc-red-dark focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-fosroc-red disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200 touch-manipulation min-h-[44px]"
             >
               {isLoading ? (
                 <span className="flex items-center">

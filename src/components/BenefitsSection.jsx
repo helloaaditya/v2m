@@ -9,9 +9,9 @@ const BenefitsSection = () => {
       icon: <FaAward />,
       title: 'Authorized Dealer',
       description: 'Official Fosroc dealer with 100% genuine products and comprehensive warranty support',
-      color: 'from-blue-500 to-blue-600',
-      bgColor: 'from-blue-500/10 to-blue-600/5',
-      glowColor: 'shadow-blue-500/20'
+      color: 'from-red-500 to-red-600',
+      bgColor: 'from-red-500/10 to-red-600/5',
+      glowColor: 'shadow-red-500/20'
     },
     {
       icon: <FaShieldAlt />,
@@ -60,7 +60,7 @@ const BenefitsSection = () => {
       {/* Subtle Background Elements */}
       <div className="absolute inset-0 opacity-40">
         <div className="absolute top-20 right-20 w-72 h-72 bg-orange-200 rounded-full blur-3xl" />
-        <div className="absolute bottom-20 left-20 w-96 h-96 bg-blue-200 rounded-full blur-3xl" />
+        <div className="absolute bottom-20 left-20 w-96 h-96 bg-red-200 rounded-full blur-3xl" />
       </div>
 
       {/* Decorative grid pattern */}
