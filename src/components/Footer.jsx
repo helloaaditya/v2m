@@ -93,11 +93,11 @@ const Footer = () => {
               ))}
               <li>
                 <a 
-                  href="mailto:info@v2marketing.com"
+                  href="mailto:info@v2marketing.in"
                   className="group flex items-center gap-2.5 sm:gap-3 text-gray-600 hover:text-fosroc-red transition-all duration-300 text-xs sm:text-sm font-medium py-1.5 sm:py-2 px-2 sm:px-3 rounded-lg hover:bg-fosroc-red-lightest break-all"
                 >
                   <FaEnvelope className="text-fosroc-red text-sm sm:text-base flex-shrink-0 group-hover:scale-110 transition-transform duration-300" />
-                  <span className="group-hover:translate-x-1 transition-transform duration-300">info@v2marketing.com</span>
+                  <span className="group-hover:translate-x-1 transition-transform duration-300">info@v2marketing.in</span>
                 </a>
               </li>
             </ul>

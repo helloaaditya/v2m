@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { FaCheck, FaAward, FaShieldAlt, FaUsers, FaTruck, FaHandshake, FaStar, FaArrowRight, FaCheckCircle, FaRocket, FaBullseye } from 'react-icons/fa';
+import SEO from '../components/SEO';
 
 const About = () => {
   const [hoveredIndex, setHoveredIndex] = useState(null);
@@ -72,6 +73,13 @@ const About = () => {
 
   return (
     <div className="about bg-white">
+      <SEO
+        title="About Us"
+        description="Learn about V2 Marketing - Authorized Fosroc Dealer in KR Puram, Bangalore. 15+ years of experience, 500+ projects completed, 100% genuine products. Expert consultation and reliable delivery across East Bangalore."
+        keywords="V2 Marketing about, Fosroc dealer Bangalore, authorized dealer, construction chemicals expert, KR Puram dealer, 15 years experience, genuine Fosroc products, construction chemicals consultation"
+        canonicalUrl="https://v2marketing.in/about"
+        schemaType="Organization"
+      />
       {/* Hero Section */}
       <section className="relative h-[35vh] sm:h-[40vh] md:h-[45vh] flex items-center justify-center overflow-hidden bg-gradient-to-br from-fosroc-red via-fosroc-red-dark to-fosroc-red-dark">
         <div className="absolute inset-0 overflow-hidden pointer-events-none">

@@ -59,11 +59,11 @@ const Navbar = () => {
                 <span>+91 78295 31999</span>
               </a>
               <a 
-                href="mailto:info@v2marketing.com" 
+                href="mailto:info@v2marketing.in" 
                 className="flex items-center gap-2 hover:text-fosroc-red-light transition-colors duration-300"
               >
                 <FaEnvelope className="text-xs" />
-                <span>info@v2marketing.com</span>
+                <span>info@v2marketing.in</span>
               </a>
             </div>
             <div className="text-xs">

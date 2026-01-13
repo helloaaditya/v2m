@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { FaSearch, FaPhone, FaWhatsapp, FaTimes, FaCheck, FaCheckCircle, FaArrowRight, FaBox } from 'react-icons/fa';
 import { products as defaultProducts, productCategories } from '../data/products';
 import { api } from '../utils/api';
+import SEO from '../components/SEO';
 
 const Products = () => {
   const [selectedCategory, setSelectedCategory] = useState('all');
@@ -47,6 +48,13 @@ const Products = () => {
 
   return (
     <div className="products min-h-screen bg-white">
+      <SEO
+        title="Products"
+        description="Browse comprehensive range of authentic Fosroc construction chemicals. Waterproofing solutions, protective coatings, concrete admixtures, joint sealants, repair mortars, and more. 100% genuine products with expert consultation."
+        keywords="Fosroc products, construction chemicals, waterproofing products, concrete admixtures, protective coatings, joint sealants, repair mortars, Fosroc product catalog, construction chemicals Bangalore, Fosroc dealer products"
+        canonicalUrl="https://v2marketing.in/products"
+        schemaType="Product"
+      />
       {/* Hero Section */}
       <section className="relative h-[35vh] sm:h-[40vh] md:h-[45vh] flex items-center justify-center overflow-hidden bg-gradient-to-br from-fosroc-red via-fosroc-red-dark to-fosroc-red-dark">
         <div className="absolute inset-0 overflow-hidden pointer-events-none">

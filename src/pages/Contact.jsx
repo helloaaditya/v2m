@@ -54,9 +54,10 @@ const Contact = () => {
   return (
     <div className="contact min-h-screen bg-white">
       <SEO
-        title="Contact Us - V2 Marketing | Fosroc Dealer KR Puram, Bangalore"
-        description="Contact V2 Marketing - Authorized Fosroc Dealer in KR Puram, Bangalore. Call 78295 31999, 99168 00900, or 99162 90799. Serving Whitefield, Hoodi, Hoskote and surrounding areas."
-        keywords="contact V2 Marketing, Fosroc dealer contact, KR Puram construction chemicals, Bangalore Fosroc dealer phone number"
+        title="Contact Us"
+        description="Contact V2 Marketing - Authorized Fosroc Dealer in KR Puram, Bangalore. Call 78295 31999, 99168 00900, or 99162 90799. Get expert consultation, product quotes, and technical support. Serving Whitefield, Hoodi, Hoskote and surrounding areas. Business hours: Monday-Saturday 9 AM - 7 PM."
+        keywords="contact V2 Marketing, Fosroc dealer contact, KR Puram construction chemicals, Bangalore Fosroc dealer phone number, construction chemicals consultation, Fosroc dealer Bangalore contact, V2 Marketing phone number, get quote construction chemicals"
+        canonicalUrl="https://v2marketing.in/contact"
       />
       
       {/* Page Header */}
