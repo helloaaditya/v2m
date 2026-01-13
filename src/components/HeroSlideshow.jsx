@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { FaPhone, FaWhatsapp, FaChevronLeft, FaChevronRight, FaQuoteLeft, FaAward, FaShieldAlt, FaClock } from 'react-icons/fa';
 
 const HeroSlideshow = () => {
@@ -118,10 +119,10 @@ const HeroSlideshow = () => {
             {slides.map((slide, index) => (
               <div
                 key={slide.id}
-                className={`transition-all duration-700 ${
+                className={`transition-all duration-300 ease-in-out ${
                   index === currentSlide
-                    ? 'opacity-100 translate-x-0 relative'
-                    : 'opacity-0 -translate-x-12 absolute inset-0'
+                    ? 'opacity-100 translate-x-0 relative z-10'
+                    : 'opacity-0 -translate-x-12 absolute inset-0 pointer-events-none hidden'
                 }`}
               >
                 {/* Subheadline with Icon */}
@@ -134,15 +135,7 @@ const HeroSlideshow = () => {
 
                 {/* Main Headline */}
                 <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-white leading-tight mb-4 sm:mb-6">
-                  {slide.headline.split(' ').map((word, i) => (
-                    <span
-                      key={i}
-                      className="inline-block mr-2 sm:mr-3 animate-fade-in"
-                      style={{ animationDelay: `${i * 0.05}s` }}
-                    >
-                      {word}
-                    </span>
-                  ))}
+                  {slide.headline}
                 </h1>
 
                 {/* Description */}
@@ -151,19 +144,23 @@ const HeroSlideshow = () => {
                 </p>
 
                 {/* CTA Buttons */}
-                <div className="flex flex-wrap gap-3 sm:gap-4 mb-6 sm:mb-8">
-                  <a
-                    href="/contact"
-                    className="group px-5 sm:px-6 lg:px-8 py-2.5 sm:py-3 lg:py-4 bg-fosroc-orange text-white font-semibold text-sm sm:text-base rounded-lg hover:shadow-2xl hover:shadow-orange-500/50 transition-all duration-300 hover:scale-105 flex items-center gap-2"
+                <div className="flex flex-wrap gap-3 sm:gap-4 mb-6 sm:mb-8 relative z-20">
+                  <Link
+                    to="/contact"
+                    className="group px-5 sm:px-6 lg:px-8 py-2.5 sm:py-3 lg:py-4 bg-fosroc-orange text-white font-semibold text-sm sm:text-base rounded-lg hover:shadow-2xl hover:shadow-orange-500/50 transition-all duration-300 hover:scale-105 flex items-center gap-2 relative z-20"
+                    onClick={(e) => e.stopPropagation()}
                   >
                     {slide.cta}
                     <span className="group-hover:translate-x-1 transition-transform">→</span>
-                  </a>
+                  </Link>
                   <a
-                    href="/contact"
-                    className="px-5 sm:px-6 lg:px-8 py-2.5 sm:py-3 lg:py-4 bg-white/10 backdrop-blur-sm text-white font-semibold text-sm sm:text-base rounded-lg border-2 border-white/20 hover:bg-white/20 hover:border-white/40 transition-all duration-300"
+                    href="tel:+917829531999"
+                    className="group inline-flex items-center justify-center gap-3 px-8 py-5 bg-fosroc-white backdrop-blur-xl text-fosroc-orange font-bold text-lg rounded-xl border-2 border-white/20 hover:bg-white hover:text-slate-900 transition-all duration-300 hover:scale-105 hover:shadow-2xl relative z-20"
+                    onClick={(e) => e.stopPropagation()}
                   >
-                    Contact Us
+                    <FaPhone className="group-hover:rotate-12 transition-transform" />
+                    <span className="hidden sm:inline">Call:</span>
+                    <span>78295 31999</span>
                   </a>
                 </div>
 
@@ -221,14 +218,24 @@ const HeroSlideshow = () => {
                   </div>
 
                   {/* Contact Card */}
-                  <div className="mt-6 xl:mt-8 p-5 xl:p-6 bg-gradient-to-br from-fosroc-orange/20 to-fosroc-orange-dark/10 rounded-xl border border-fosroc-orange/30">
+                  <div className="mt-6 xl:mt-8 p-5 xl:p-6 bg-gradient-to-br from-fosroc-orange/20 to-fosroc-orange-dark/10 rounded-xl border border-fosroc-orange/30 relative z-20">
                     <p className="text-white font-semibold mb-4 text-center text-sm xl:text-base">Get Expert Consultation</p>
                     <div className="flex gap-3">
-                      <a href="tel:+917829531999" className="flex-1 py-2.5 xl:py-3 bg-white/90 hover:bg-white text-slate-900 font-semibold rounded-lg transition-all duration-300 flex items-center justify-center gap-2 hover:scale-105 text-sm xl:text-base">
+                      <a 
+                        href="tel:+917829531999" 
+                        className="flex-1 py-2.5 xl:py-3 bg-white/90 hover:bg-white text-slate-900 font-semibold rounded-lg transition-all duration-300 flex items-center justify-center gap-2 hover:scale-105 text-sm xl:text-base relative z-20"
+                        onClick={(e) => e.stopPropagation()}
+                      >
                         <FaPhone className="text-sm" />
                         Call
                       </a>
-                      <a href="https://wa.me/917829531999" className="flex-1 py-2.5 xl:py-3 bg-green-500 hover:bg-green-600 text-white font-semibold rounded-lg transition-all duration-300 flex items-center justify-center gap-2 hover:scale-105 text-sm xl:text-base">
+                      <a 
+                        href="https://wa.me/917829531999" 
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex-1 py-2.5 xl:py-3 bg-green-500 hover:bg-green-600 text-white font-semibold rounded-lg transition-all duration-300 flex items-center justify-center gap-2 hover:scale-105 text-sm xl:text-base relative z-20"
+                        onClick={(e) => e.stopPropagation()}
+                      >
                         <FaWhatsapp />
                         WhatsApp
                       </a>
