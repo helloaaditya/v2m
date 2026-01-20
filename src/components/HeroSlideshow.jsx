@@ -6,6 +6,9 @@ const HeroSlideshow = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isTransitioning, setIsTransitioning] = useState(false);
   const [progress, setProgress] = useState(0);
+  const [touchStart, setTouchStart] = useState(null);
+  const [touchEnd, setTouchEnd] = useState(null);
+  const [swipeOffset, setSwipeOffset] = useState(0);
 
   const slides = [
     {
@@ -95,6 +98,44 @@ const HeroSlideshow = () => {
     setTimeout(() => setIsTransitioning(false), 800);
   };
 
+  // Touch handlers for swipe gestures
+  const minSwipeDistance = 50;
+
+  const onTouchStart = (e) => {
+    setTouchEnd(null);
+    setTouchStart(e.targetTouches[0].clientX);
+  };
+
+  const onTouchMove = (e) => {
+    if (!touchStart) return;
+    const currentTouch = e.targetTouches[0].clientX;
+    const distance = touchStart - currentTouch;
+    setSwipeOffset(distance);
+  };
+
+  const onTouchEnd = (e) => {
+    if (!touchStart) {
+      setTouchStart(null);
+      setSwipeOffset(0);
+      return;
+    }
+    
+    const endX = e.changedTouches[0].clientX;
+    const distance = touchStart - endX;
+    const isLeftSwipe = distance > minSwipeDistance;
+    const isRightSwipe = distance < -minSwipeDistance;
+
+    if (isLeftSwipe) {
+      nextSlide();
+    } else if (isRightSwipe) {
+      prevSlide();
+    }
+
+    setTouchStart(null);
+    setTouchEnd(null);
+    setSwipeOffset(0);
+  };
+
   const trustBadges = [
     { icon: <FaAward className="w-5 h-5" />, label: '30+ Years', sublabel: 'Experience' },
     { icon: <FaShieldAlt className="w-5 h-5" />, label: '100%', sublabel: 'Genuine' },
@@ -102,7 +143,13 @@ const HeroSlideshow = () => {
   ];
 
   return (
-    <div className="relative w-full min-h-screen sm:h-screen bg-slate-900 overflow-hidden">
+    <div 
+      className="relative w-full h-auto sm:h-screen bg-slate-900 overflow-hidden touch-pan-y"
+      onTouchStart={onTouchStart}
+      onTouchMove={onTouchMove}
+      onTouchEnd={onTouchEnd}
+      onTouchCancel={onTouchEnd}
+    >
       {/* Background Images with Ken Burns Effect */}
       {slides.map((slide, index) => (
         <div
@@ -112,6 +159,11 @@ const HeroSlideshow = () => {
               ? 'opacity-100 scale-100'
               : 'opacity-0 scale-105'
           }`}
+          style={{
+            transform: index === currentSlide && swipeOffset !== 0 
+              ? `translateX(${-swipeOffset * 0.3}px)` 
+              : undefined
+          }}
         >
           <div 
             className="w-full h-full bg-cover bg-center transition-transform duration-[20000ms] ease-linear"
@@ -127,11 +179,11 @@ const HeroSlideshow = () => {
       ))}
 
       {/* Main Content Container */}
-      <div className="relative h-full min-h-screen sm:h-screen max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center pt-12 sm:pt-16 lg:pt-20 pb-16 sm:pb-20">
-        <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center w-full">
+      <div className="relative h-full sm:h-screen max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-start sm:items-center pt-8 sm:pt-10 lg:pt-12 pb-10 sm:pb-16 lg:pb-20">
+        <div className="grid lg:grid-cols-2 gap-4 sm:gap-6 lg:gap-12 items-center w-full py-10 sm:py-0">
           
           {/* Left Content Section */}
-          <div className="space-y-6 sm:space-y-8 z-10 w-full">
+          <div className="space-y-4 sm:space-y-5 lg:space-y-7 z-10 w-full">
             {slides.map((slide, index) => (
               <div
                 key={slide.id}
@@ -142,7 +194,7 @@ const HeroSlideshow = () => {
                 }`}
               >
                 {/* Subheadline with Icon */}
-                <div className="flex items-center gap-2 sm:gap-3 mb-3 sm:mb-4">
+                <div className="flex items-center gap-2 sm:gap-3 mb-3 sm:mb-4 lg:mb-5">
                   <div className="w-8 sm:w-12 h-0.5 bg-fosroc-orange" />
                   <span className="text-fosroc-orange font-semibold tracking-wider uppercase text-xs sm:text-sm">
                     {slide.subheadline}
@@ -150,20 +202,20 @@ const HeroSlideshow = () => {
                 </div>
 
                 {/* Main Headline */}
-                <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-white leading-tight mb-4 sm:mb-6">
+                <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl 2xl:text-7xl font-bold text-white leading-tight mb-3 sm:mb-4 lg:mb-6">
                   {slide.headline}
                 </h1>
 
                 {/* Description */}
-                <p className="text-sm sm:text-base lg:text-lg text-slate-300 leading-relaxed max-w-2xl mb-6 sm:mb-8">
+                <p className="text-xs sm:text-sm md:text-base lg:text-lg text-slate-300 leading-relaxed max-w-2xl mb-4 sm:mb-5 lg:mb-7">
                   {slide.description}
                 </p>
 
                 {/* CTA Buttons */}
-                <div className="flex flex-wrap gap-3 sm:gap-4 mb-6 sm:mb-8 relative z-20">
+                <div className="flex flex-col sm:flex-row flex-wrap gap-2 sm:gap-3 lg:gap-4 mb-4 sm:mb-5 lg:mb-7 relative z-20">
                   <Link
                     to="/contact"
-                    className="group px-5 sm:px-6 lg:px-8 py-2.5 sm:py-3 lg:py-4 bg-fosroc-orange text-white font-semibold text-sm sm:text-base rounded-lg hover:shadow-2xl hover:shadow-orange-500/50 transition-all duration-300 hover:scale-105 flex items-center gap-2 relative z-20"
+                    className="group px-4 sm:px-5 lg:px-6 xl:px-8 py-2.5 sm:py-3 lg:py-4 bg-fosroc-orange text-white font-semibold text-xs sm:text-sm lg:text-base rounded-lg hover:shadow-2xl hover:shadow-orange-500/50 active:scale-95 transition-all duration-300 hover:scale-105 flex items-center justify-center gap-2 relative z-20 touch-manipulation"
                     onClick={(e) => e.stopPropagation()}
                   >
                     {slide.cta}
@@ -171,17 +223,17 @@ const HeroSlideshow = () => {
                   </Link>
                   <a
                     href="tel:+917829531999"
-                    className="group inline-flex items-center justify-center gap-3 px-8 py-5 bg-fosroc-white backdrop-blur-xl text-fosroc-orange font-bold text-lg rounded-xl border-2 border-white/20 hover:bg-white hover:text-slate-900 transition-all duration-300 hover:scale-105 hover:shadow-2xl relative z-20"
+                    className="group inline-flex items-center justify-center gap-2 sm:gap-3 px-4 sm:px-6 lg:px-8 py-2.5 sm:py-3 lg:py-4 bg-white/10 backdrop-blur-xl text-white font-bold text-sm sm:text-base lg:text-lg rounded-xl border-2 border-white/20 hover:bg-white hover:text-slate-900 active:scale-95 transition-all duration-300 hover:scale-105 hover:shadow-2xl relative z-20 touch-manipulation"
                     onClick={(e) => e.stopPropagation()}
                   >
-                    <FaPhone className="group-hover:rotate-12 transition-transform" />
+                    <FaPhone className="group-hover:rotate-12 transition-transform text-sm sm:text-base" />
                     <span className="hidden sm:inline">Call:</span>
-                    <span>78295 31999</span>
+                    <span className="text-xs sm:text-sm lg:text-base">78295 31999</span>
                   </a>
                 </div>
 
                 {/* Trust Badges */}
-                <div className="flex flex-wrap gap-4 sm:gap-6 pt-4 sm:pt-6 border-t border-white/10">
+                <div className="flex flex-wrap gap-3 sm:gap-4 lg:gap-6 pt-4 sm:pt-5 lg:pt-7 border-t border-white/10">
                   {trustBadges.map((badge, i) => (
                     <div key={i} className="flex items-center gap-2 sm:gap-3">
                       <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-fosroc-orange/10 border border-fosroc-orange/30 flex items-center justify-center text-fosroc-orange flex-shrink-0">
@@ -199,10 +251,10 @@ const HeroSlideshow = () => {
           </div>
 
           {/* Right Content Section - Stats Card */}
-          <div className="block">
+          <div className="hidden lg:block">
             <div className="relative">
               {/* Floating Stats Card */}
-              <div className="relative bg-white/10 backdrop-blur-xl rounded-2xl border border-white/20 p-6 xl:p-8 shadow-2xl">
+              <div className="relative bg-white/10 backdrop-blur-xl rounded-2xl border border-white/20 p-5 xl:p-6 2xl:p-8 shadow-2xl">
                 <div className="absolute -top-3 -right-3 w-24 h-24 bg-gradient-to-br from-fosroc-orange to-fosroc-orange-dark rounded-full blur-3xl opacity-50" />
                 <div className="absolute -bottom-3 -left-3 w-32 h-32 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full blur-3xl opacity-30" />
                 
@@ -264,34 +316,46 @@ const HeroSlideshow = () => {
         </div>
       </div>
 
+      {/* Swipe Indicator for Mobile */}
+      <div className="lg:hidden absolute top-6 sm:top-3 left-1/2 transform -translate-x-1/2 z-30">
+        <div className="flex items-center gap-2 px-3 py-1.5 bg-white/10 backdrop-blur-md rounded-full">
+          <span className="text-white text-xs font-medium">Swipe to navigate</span>
+          <div className="flex gap-1">
+            <div className="w-1 h-1 rounded-full bg-white/50 animate-pulse" style={{ animationDelay: '0ms' }} />
+            <div className="w-1 h-1 rounded-full bg-white/50 animate-pulse" style={{ animationDelay: '150ms' }} />
+            <div className="w-1 h-1 rounded-full bg-white/50 animate-pulse" style={{ animationDelay: '300ms' }} />
+          </div>
+        </div>
+      </div>
+
       {/* Navigation Controls */}
-      <div className="absolute bottom-4 sm:bottom-6 lg:bottom-8 left-1/2 transform -translate-x-1/2 z-20 w-full px-4">
-        <div className="flex items-center justify-center gap-4 sm:gap-6 max-w-md mx-auto bg-white/10 backdrop-blur-md rounded-full px-4 sm:px-6 py-2 sm:py-3">
+      <div className="absolute bottom-4 sm:bottom-4 lg:bottom-6 left-1/2 transform -translate-x-1/2 z-20 w-full px-4">
+        <div className="flex items-center justify-center gap-3 sm:gap-4 lg:gap-6 max-w-md mx-auto bg-white/10 backdrop-blur-md rounded-full px-3 sm:px-4 lg:px-6 py-2 sm:py-2.5 lg:py-3">
           {/* Navigation Arrows - Mobile */}
           <button
             onClick={prevSlide}
             disabled={isTransitioning}
-            className="lg:hidden bg-white/20 hover:bg-white/30 text-white p-2 rounded-full transition-all duration-300 disabled:opacity-50"
+            className="lg:hidden bg-white/20 active:bg-white/40 text-white p-2.5 rounded-full transition-all duration-300 disabled:opacity-50 touch-manipulation"
             aria-label="Previous slide"
           >
-            <FaChevronLeft className="text-sm" />
+            <FaChevronLeft className="text-base" />
           </button>
 
           {/* Slide Indicators with Progress */}
-          <div className="flex gap-2 sm:gap-3 flex-1 justify-center">
+          <div className="flex gap-1.5 sm:gap-2 lg:gap-3 flex-1 justify-center">
             {slides.map((_, index) => (
               <button
                 key={index}
                 onClick={() => goToSlide(index)}
                 disabled={isTransitioning}
-                className="relative group flex-1 max-w-16"
+                className="relative group flex-1 max-w-12 sm:max-w-16 touch-manipulation"
                 aria-label={`Go to slide ${index + 1}`}
               >
                 <div
                   className={`h-1.5 sm:h-2 rounded-full transition-all duration-500 w-full ${
                     index === currentSlide
                       ? 'bg-fosroc-orange'
-                      : 'bg-white/30 group-hover:bg-white/50'
+                      : 'bg-white/30 group-active:bg-white/50'
                   }`}
                 />
                 {index === currentSlide && (
@@ -308,10 +372,10 @@ const HeroSlideshow = () => {
           <button
             onClick={nextSlide}
             disabled={isTransitioning}
-            className="lg:hidden bg-white/20 hover:bg-white/30 text-white p-2 rounded-full transition-all duration-300 disabled:opacity-50"
+            className="lg:hidden bg-white/20 active:bg-white/40 text-white p-2.5 rounded-full transition-all duration-300 disabled:opacity-50 touch-manipulation"
             aria-label="Next slide"
           >
-            <FaChevronRight className="text-sm" />
+            <FaChevronRight className="text-base" />
           </button>
         </div>
       </div>
@@ -320,7 +384,7 @@ const HeroSlideshow = () => {
       <button
         onClick={prevSlide}
         disabled={isTransitioning}
-        className="hidden lg:flex absolute left-4 xl:left-8 top-1/2 transform -translate-y-1/2 z-20 bg-white/20 backdrop-blur-md text-white p-3 xl:p-4 rounded-full hover:bg-white/30 transition-all duration-300 hover:scale-110 disabled:opacity-50"
+        className="hidden lg:flex absolute left-4 xl:left-8 top-1/2 transform -translate-y-1/2 z-20 bg-white/20 backdrop-blur-md text-white p-3 xl:p-4 rounded-full hover:bg-white/30 active:scale-95 transition-all duration-300 hover:scale-110 disabled:opacity-50 touch-manipulation"
         aria-label="Previous slide"
       >
         <FaChevronLeft className="text-lg xl:text-xl" />
@@ -329,7 +393,7 @@ const HeroSlideshow = () => {
       <button
         onClick={nextSlide}
         disabled={isTransitioning}
-        className="hidden lg:flex absolute right-4 xl:right-8 top-1/2 transform -translate-y-1/2 z-20 bg-white/20 backdrop-blur-md text-white p-3 xl:p-4 rounded-full hover:bg-white/30 transition-all duration-300 hover:scale-110 disabled:opacity-50"
+        className="hidden lg:flex absolute right-4 xl:right-8 top-1/2 transform -translate-y-1/2 z-20 bg-white/20 backdrop-blur-md text-white p-3 xl:p-4 rounded-full hover:bg-white/30 active:scale-95 transition-all duration-300 hover:scale-110 disabled:opacity-50 touch-manipulation"
         aria-label="Next slide"
       >
         <FaChevronRight className="text-lg xl:text-xl" />
