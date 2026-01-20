@@ -31,7 +31,7 @@ const Home = () => {
     <div className="home bg-white">
       <SEO
         title="Home"
-        description="V2 Marketing - Authorized Fosroc Dealer in KR Puram, Bangalore. Premium construction chemicals, waterproofing solutions, protective coatings, and expert consultation. Serving Whitefield, Hoodi, Hoskote and surrounding areas since 2010."
+        description="V2 Marketing - Authorized Fosroc Dealer in KR Puram, Bangalore. Premium construction chemicals, waterproofing solutions, protective coatings, and expert consultation. Serving Whitefield, Hoodi, Hoskote and surrounding areas since 1994."
         keywords="Fosroc dealer Bangalore, construction chemicals, waterproofing solutions, concrete admixtures, protective coatings, joint sealants, KR Puram, Whitefield, V2 Marketing, Fosroc products Bangalore, construction chemicals dealer, authorized Fosroc dealer"
         canonicalUrl="https://v2marketing.in/"
       />

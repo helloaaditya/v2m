@@ -11,7 +11,7 @@ const HeroSlideshow = () => {
     {
       id: 1,
       headline: 'World Leaders in Construction Chemicals',
-      subheadline: 'Trusted Partner Since 2009',
+      subheadline: 'Trusted Partner Since 1994',
       description: 'A world leader in tailored constructive solutions for the construction industry backed by excellent technical support and expert customer service.',
       cta: 'Explore Solutions',
       image: 'https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=1600&auto=format&fit=crop&q=80'
@@ -39,6 +39,22 @@ const HeroSlideshow = () => {
       description: 'From waterproofing to concrete admixtures, industrial flooring to repair solutions. We provide the complete range of Fosroc products for your construction needs.',
       cta: 'Get Started',
       image: 'https://images.unsplash.com/photo-1566576721346-d4a3b4eaeb55?w=1600&auto=format&fit=crop&q=80'
+    },
+    {
+      id: 5,
+      headline: '30 Years of Excellence',
+      subheadline: 'Proven Track Record',
+      description: 'Three decades of delivering quality construction chemical solutions. Trusted by builders, contractors, and construction professionals across Bangalore.',
+      cta: 'Learn More',
+      image: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1600&auto=format&fit=crop&q=80'
+    },
+    {
+      id: 6,
+      headline: 'Expert Consultation Services',
+      subheadline: 'Technical Support',
+      description: 'Our experienced team provides on-site consultation, product selection guidance, and application support to ensure optimal results for your projects.',
+      cta: 'Contact Us',
+      image: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1600&auto=format&fit=crop&q=80'
     }
   ];
 
@@ -80,7 +96,7 @@ const HeroSlideshow = () => {
   };
 
   const trustBadges = [
-    { icon: <FaAward className="w-5 h-5" />, label: '15+ Years', sublabel: 'Experience' },
+    { icon: <FaAward className="w-5 h-5" />, label: '30+ Years', sublabel: 'Experience' },
     { icon: <FaShieldAlt className="w-5 h-5" />, label: '100%', sublabel: 'Genuine' },
     { icon: <FaClock className="w-5 h-5" />, label: '24/7', sublabel: 'Support' }
   ];
@@ -204,7 +220,7 @@ const HeroSlideshow = () => {
                       <div className="text-slate-300 text-xs xl:text-sm font-medium">Projects Delivered</div>
                     </div>
                     <div className="text-center p-4 xl:p-6 bg-white/5 rounded-xl border border-white/10 hover:bg-white/10 transition-all duration-300">
-                      <div className="text-3xl xl:text-4xl font-bold text-fosroc-orange mb-2">15+</div>
+                      <div className="text-3xl xl:text-4xl font-bold text-fosroc-orange mb-2">30+</div>
                       <div className="text-slate-300 text-xs xl:text-sm font-medium">Years Excellence</div>
                     </div>
                     <div className="text-center p-4 xl:p-6 bg-white/5 rounded-xl border border-white/10 hover:bg-white/10 transition-all duration-300">

@@ -64,7 +64,7 @@ const SolutionsSection = () => {
       id: 5,
       title: 'Repair & Strengthening',
       description: 'Structural repair mortars, injection systems, and strengthening solutions to restore concrete integrity.',
-      image: 'https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=800&auto=format&fit=crop&q=80',
+      image: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=800&auto=format&fit=crop&q=80',
       category: 'Repair',
       features: ['Structural Repair', 'Injection Systems', 'Strengthening'],
       color: 'from-red-500 to-red-600'
@@ -73,7 +73,7 @@ const SolutionsSection = () => {
       id: 6,
       title: 'Industrial Flooring',
       description: 'Durable flooring systems including epoxy, polyurethane, and self-leveling compounds for heavy-duty environments.',
-      image: 'https://images.unsplash.com/photo-1590650153855-d9e808231d41?w=800&auto=format&fit=crop&q=80',
+      image: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=800&auto=format&fit=crop&q=80',
       category: 'Flooring',
       features: ['Epoxy Systems', 'Polyurethane', 'Heavy Duty'],
       color: 'from-green-500 to-green-600'
@@ -82,10 +82,28 @@ const SolutionsSection = () => {
       id: 7,
       title: 'Grouts & Anchoring',
       description: 'High-strength grouting and anchoring systems for machinery installation and structural connections.',
-      image: 'https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=800&auto=format&fit=crop&q=80',
+      image: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=800&auto=format&fit=crop&q=80',
       category: 'Grouts',
       features: ['High Strength', 'Precision Grouts', 'Load Transfer'],
       color: 'from-indigo-500 to-indigo-600'
+    },
+    {
+      id: 8,
+      title: 'Surface Treatments',
+      description: 'Advanced surface treatment solutions for concrete protection, hardening, and aesthetic enhancement.',
+      image: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=800&auto=format&fit=crop&q=80',
+      category: 'Treatments',
+      features: ['Surface Hardening', 'Dust Proofing', 'Aesthetic Finish'],
+      color: 'from-blue-500 to-blue-600'
+    },
+    {
+      id: 9,
+      title: 'Specialty Chemicals',
+      description: 'Customized specialty chemical solutions for unique construction challenges and specialized applications.',
+      image: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=800&auto=format&fit=crop&q=80',
+      category: 'Specialty',
+      features: ['Custom Solutions', 'Technical Support', 'Quality Assured'],
+      color: 'from-teal-500 to-teal-600'
     }
   ];
 

@@ -67,7 +67,7 @@ const Navbar = () => {
               </a>
             </div>
             <div className="text-xs">
-              <span className="font-semibold">Authorized Fosroc Dealer</span> - Serving Since 2010
+              <span className="font-semibold">Authorized Fosroc Dealer</span> - Serving Since 1994
             </div>
           </div>
         </div>

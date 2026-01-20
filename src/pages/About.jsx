@@ -10,8 +10,8 @@ const About = () => {
       icon: <FaAward />,
       title: 'Authorized Dealer',
       description: 'Official authorization from Fosroc ensures you receive 100% genuine products with full warranty and technical support.',
-      color: 'from-red-500 to-red-600',
-      bgColor: 'from-red-500/10 to-red-600/5'
+      color: 'from-orange-500 to-orange-600',
+      bgColor: 'from-orange-500/10 to-orange-600/5'
     },
     {
       icon: <FaShieldAlt />,
@@ -40,7 +40,7 @@ const About = () => {
       icon: <FaShieldAlt />,
       title: 'Expertise',
       description: 'Deep technical knowledge to guide you in product selection and application',
-      color: 'from-red-500 to-red-600'
+      color: 'from-orange-500 to-orange-600'
     },
     {
       icon: <FaTruck />,
@@ -75,13 +75,17 @@ const About = () => {
     <div className="about bg-white">
       <SEO
         title="About Us"
-        description="Learn about V2 Marketing - Authorized Fosroc Dealer in KR Puram, Bangalore. 15+ years of experience, 500+ projects completed, 100% genuine products. Expert consultation and reliable delivery across East Bangalore."
-        keywords="V2 Marketing about, Fosroc dealer Bangalore, authorized dealer, construction chemicals expert, KR Puram dealer, 15 years experience, genuine Fosroc products, construction chemicals consultation"
+        description="Learn about V2 Marketing - Authorized Fosroc Dealer in KR Puram, Bangalore. 30+ years of experience, 500+ projects completed, 100% genuine products. Expert consultation and reliable delivery across East Bangalore."
+        keywords="V2 Marketing about, Fosroc dealer Bangalore, authorized dealer, construction chemicals expert, KR Puram dealer, 30 years experience, genuine Fosroc products, construction chemicals consultation"
         canonicalUrl="https://v2marketing.in/about"
         schemaType="Organization"
       />
       {/* Hero Section */}
       <section className="relative h-[35vh] sm:h-[40vh] md:h-[45vh] flex items-center justify-center overflow-hidden bg-gradient-to-br from-fosroc-red via-fosroc-red-dark to-fosroc-red-dark">
+        {/* Background Image */}
+        <div className="absolute inset-0">
+          
+        </div>
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <div className="absolute top-20 left-10 w-48 sm:w-72 h-48 sm:h-72 bg-fosroc-orange/20 rounded-full blur-3xl" />
           <div className="absolute bottom-20 right-10 w-64 sm:w-96 h-64 sm:h-96 bg-white/10 rounded-full blur-3xl" />
@@ -134,8 +138,8 @@ const About = () => {
               </div>
               <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-slate-900 leading-tight">
                 Building Excellence{' '}
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-fosroc-orange to-fosroc-orange-light">
-                  Since 2010
+                <span className="bg-clip-text bg-gradient-to-r from-fosroc-orange to-fosroc-orange-light">
+                  Since 1994
                 </span>
               </h2>
               <div className="w-20 h-1 bg-gradient-to-r from-fosroc-orange to-fosroc-orange-light mb-6"></div>
@@ -151,7 +155,7 @@ const About = () => {
               </p>
               <div className="flex gap-4 sm:gap-6 mt-8">
                 <div className="text-center flex-1 p-4 bg-white rounded-xl shadow-md border border-slate-200">
-                  <div className="text-3xl sm:text-4xl font-bold text-fosroc-orange mb-2">15+</div>
+                  <div className="text-3xl sm:text-4xl font-bold text-fosroc-orange mb-2">30+</div>
                   <div className="text-xs sm:text-sm text-slate-600 font-medium">Years Experience</div>
                 </div>
                 <div className="text-center flex-1 p-4 bg-white rounded-xl shadow-md border border-slate-200">
@@ -167,18 +171,21 @@ const About = () => {
 
             {/* Right: Info Card */}
             <div className="relative">
-              <div className="relative rounded-2xl overflow-hidden shadow-2xl bg-gradient-to-br from-fosroc-red via-fosroc-red-dark to-fosroc-red-dark p-8 sm:p-10 lg:p-12">
+              <div className="relative rounded-2xl overflow-hidden shadow-2xl h-full min-h-[400px]">
+                {/* Background Image */}
+                <img 
+                  src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=800&auto=format&fit=crop&q=80" 
+                  alt="Authorized Fosroc dealer" 
+                  className="w-full h-full object-cover"
+                />
                 <div className="absolute inset-0 bg-gradient-to-br from-fosroc-orange/10 to-transparent"></div>
-                <div className="relative z-10 text-center text-white">
+                <div className="relative z-10 text-center text-white p-8 sm:p-10 lg:p-12 h-full flex flex-col justify-center">
                   <div className="w-20 h-20 sm:w-24 sm:h-24 bg-gradient-to-br from-fosroc-orange to-fosroc-orange-dark rounded-2xl flex items-center justify-center text-white text-4xl sm:text-5xl mx-auto mb-6 shadow-xl transform hover:scale-110 transition-transform duration-300">
                     <FaAward />
                   </div>
-                  <h3 className="font-bold text-2xl sm:text-3xl mb-3">Authorized Dealer</h3>
-                  <p className="text-gray-200 text-lg mb-6">Official Fosroc Partner</p>
-                  <div className="mt-8 pt-8 border-t border-white/20">
-                    <p className="text-sm text-gray-200 font-medium">Serving since 2010</p>
-                    <p className="text-xs text-gray-300 mt-2">KR Puram, Bangalore</p>
-                  </div>
+                  <h3 className="text-fosroc-orange font-bold text-2xl sm:text-3xl mb-3">Authorized Dealer</h3>
+                  <p className="text-fosroc-orange text-lg mb-6">Official Fosroc Partner</p>
+                  
                 </div>
               </div>
             </div>
@@ -218,32 +225,47 @@ const About = () => {
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
-            {credentials.map((credential, index) => (
-              <div
-                key={index}
-                onMouseEnter={() => setHoveredIndex(index)}
-                onMouseLeave={() => setHoveredIndex(null)}
-                className={`group relative bg-white rounded-2xl p-6 sm:p-8 transition-all duration-500 border border-slate-200 hover:border-transparent ${
-                  hoveredIndex === index ? 'shadow-2xl scale-105' : 'shadow-md'
-                }`}
-              >
-                <div className={`absolute inset-0 bg-gradient-to-br ${credential.bgColor} opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl`} />
-                <div className="relative z-10">
-                  <div className={`inline-flex p-4 sm:p-5 bg-gradient-to-br ${credential.color} rounded-2xl text-white text-2xl sm:text-3xl shadow-lg transform transition-all duration-500 mb-6 ${
-                    hoveredIndex === index ? 'scale-110 rotate-6' : 'scale-100 rotate-0'
-                  }`}>
-                    {credential.icon}
+            {credentials.map((credential, index) => {
+              const credentialImages = [
+                'https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=600&auto=format&fit=crop&q=80',
+                'https://images.unsplash.com/photo-1590650153855-d9e808231d41?w=600&auto=format&fit=crop&q=80',
+                'https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=600&auto=format&fit=crop&q=80'
+              ];
+              return (
+                <div
+                  key={index}
+                  onMouseEnter={() => setHoveredIndex(index)}
+                  onMouseLeave={() => setHoveredIndex(null)}
+                  className={`group relative bg-white rounded-2xl overflow-hidden transition-all duration-500 border border-slate-200 hover:border-transparent ${
+                    hoveredIndex === index ? 'shadow-2xl scale-105' : 'shadow-md'
+                  }`}
+                >
+                  {/* Background Image */}
+                  <div className="absolute inset-0 opacity-0 group-hover:opacity-10 transition-opacity duration-500">
+                    <img 
+                      src={credentialImages[index]} 
+                      alt={credential.title} 
+                      className="w-full h-full object-cover"
+                    />
                   </div>
-                  <h3 className="text-xl sm:text-2xl font-bold mb-3 text-slate-900 group-hover:text-fosroc-orange transition-colors">
-                    {credential.title}
-                  </h3>
-                  <p className="text-slate-600 leading-relaxed text-sm sm:text-base">
-                    {credential.description}
-                  </p>
+                  <div className={`absolute inset-0 bg-gradient-to-br ${credential.bgColor} opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl`} />
+                  <div className="relative z-10 p-6 sm:p-8">
+                    <div className={`inline-flex p-4 sm:p-5 bg-gradient-to-br ${credential.color} rounded-2xl text-white text-2xl sm:text-3xl shadow-lg transform transition-all duration-500 mb-6 ${
+                      hoveredIndex === index ? 'scale-110 rotate-6' : 'scale-100 rotate-0'
+                    }`}>
+                      {credential.icon}
+                    </div>
+                    <h3 className="text-xl sm:text-2xl font-bold mb-3 text-slate-900 group-hover:text-fosroc-orange transition-colors">
+                      {credential.title}
+                    </h3>
+                    <p className="text-slate-600 leading-relaxed text-sm sm:text-base">
+                      {credential.description}
+                    </p>
+                  </div>
+                  <div className={`absolute top-0 right-0 w-20 h-20 bg-gradient-to-br ${credential.color} opacity-0 group-hover:opacity-10 rounded-bl-full transition-opacity duration-500`} />
                 </div>
-                <div className={`absolute top-0 right-0 w-20 h-20 bg-gradient-to-br ${credential.color} opacity-0 group-hover:opacity-10 rounded-bl-full transition-opacity duration-500`} />
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
       </section>
@@ -253,13 +275,19 @@ const About = () => {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
           {/* Mission */}
           <div className="grid lg:grid-cols-2 gap-8 sm:gap-12 items-center mb-16 sm:mb-20">
-            <div className="relative rounded-2xl overflow-hidden shadow-2xl bg-gradient-to-br from-fosroc-red via-fosroc-red-dark to-fosroc-red-dark h-[350px] sm:h-[400px] flex items-center justify-center group">
+            <div className="text-fosroc-orange relative rounded-2xl overflow-hidden shadow-2xl h-[350px] sm:h-[400px] flex items-center justify-center group">
+              {/* Background Image */}
+              <img 
+                src="https://images.unsplash.com/photo-1590650153855-d9e808231d41?w=800&auto=format&fit=crop&q=80" 
+                alt="Building excellence" 
+                className="w-full h-full object-cover"
+              />
               <div className="absolute inset-0 bg-gradient-to-br from-fosroc-orange/20 to-transparent"></div>
               <div className="relative z-10 text-center text-white">
                 <div className="w-20 h-20 bg-fosroc-orange rounded-2xl flex items-center justify-center text-white text-4xl mx-auto mb-6 shadow-xl transform group-hover:scale-110 transition-transform duration-300">
                   <FaBullseye />
                 </div>
-                <p className="text-xl sm:text-2xl font-bold">Building Excellence</p>
+                <p className="text-fosroc-orange text-xl sm:text-2xl font-bold">Building Excellence</p>
               </div>
             </div>
             <div>
@@ -285,8 +313,23 @@ const About = () => {
           </div>
 
           {/* Vision */}
-          <div className="grid lg:grid-cols-2 gap-8 sm:gap-12 items-center">
-            <div className="order-2 lg:order-1">
+          <div className="relative py-12 grid lg:grid-cols-2 gap-8 sm:gap-12 items-center">
+            <div className="text-fosroc-orange relative rounded-2xl overflow-hidden shadow-2xl h-[350px] sm:h-[400px] flex items-center justify-center group">
+              {/* Background Image */}
+              <img 
+                src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=800&auto=format&fit=crop&q=80" 
+                alt="Future forward" 
+                className="w-full h-full object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-br from-fosroc-orange/20 to-transparent"></div>
+              <div className="relative z-10 text-center text-white">
+                <div className="w-20 h-20 bg-fosroc-orange rounded-2xl flex items-center justify-center text-white text-4xl mx-auto mb-6 shadow-xl transform group-hover:scale-110 transition-transform duration-300">
+                  <FaBullseye />
+                </div>
+                <p className="text-fosroc-orange text-xl sm:text-2xl font-bold">Future Forward</p>
+              </div>
+            </div>
+            <div>
               <div className="inline-flex items-center gap-2 px-4 py-2 bg-orange-50 border border-orange-200 rounded-full mb-6">
                 <FaCheckCircle className="text-fosroc-orange text-sm" />
                 <span className="text-fosroc-orange font-semibold text-sm tracking-wide uppercase">
@@ -301,19 +344,10 @@ const About = () => {
               </h2>
               <div className="w-20 h-1 bg-gradient-to-r from-fosroc-orange to-fosroc-orange-light mb-6"></div>
               <p className="text-base sm:text-lg text-slate-600 leading-relaxed">
-                To establish V2 Marketing as the go-to destination for quality construction 
-                chemicals in East Bangalore, recognized for our technical expertise, product 
-                authenticity, and unwavering commitment to customer success.
+                To be the most trusted and reliable partner for construction professionals by 
+                providing genuine Fosroc products, expert technical consultation, and exceptional 
+                customer service that helps build stronger, more durable structures.
               </p>
-            </div>
-            <div className="relative rounded-2xl overflow-hidden shadow-2xl order-1 lg:order-2 bg-gradient-to-br from-fosroc-orange via-fosroc-orange-light to-fosroc-orange-dark h-[350px] sm:h-[400px] flex items-center justify-center group">
-              <div className="absolute inset-0 bg-gradient-to-br from-fosroc-red/20 to-transparent"></div>
-              <div className="relative z-10 text-center text-white">
-                <div className="w-20 h-20 bg-fosroc-red rounded-2xl flex items-center justify-center text-white text-4xl mx-auto mb-6 shadow-xl transform group-hover:scale-110 transition-transform duration-300">
-                  <FaRocket />
-                </div>
-                <p className="text-xl sm:text-2xl font-bold">Future Forward</p>
-              </div>
             </div>
           </div>
         </div>
@@ -386,13 +420,19 @@ const About = () => {
           <div className="grid lg:grid-cols-2 gap-8 sm:gap-12 items-center">
             {/* Left: Info Card */}
             <div className="relative">
-              <div className="relative rounded-2xl overflow-hidden shadow-2xl bg-gradient-to-br from-fosroc-orange via-fosroc-orange-light to-fosroc-orange-dark h-[400px] sm:h-[500px] flex items-center justify-center group">
-                <div className="absolute inset-0 bg-gradient-to-br from-fosroc-red/20 to-transparent"></div>
+              <div className="relative rounded-2xl overflow-hidden shadow-2xl h-[400px] sm:h-[500px] flex items-center justify-center group">
+                {/* Background Image */}
+                <img 
+                  src="https://images.unsplash.com/photo-1566576721346-d4a3b4eaeb55?w=800&auto=format&fit=crop&q=80" 
+                  alt="Why choose us" 
+                  className="w-full h-full object-cover object-center"
+                />
+                <div className="absolute inset-0 bg-gradient-to-br from-fosroc-orange/90 via-fosroc-orange-light/85 to-fosroc-orange-dark/90"></div>
                 <div className="relative z-10 text-center text-white p-8">
                   <div className="w-24 h-24 bg-fosroc-red rounded-2xl flex items-center justify-center text-white text-5xl mx-auto mb-6 shadow-xl transform group-hover:scale-110 transition-transform duration-300">
                     <FaStar />
                   </div>
-                  <h3 className="text-2xl sm:text-3xl font-bold mb-4">Why Choose Us?</h3>
+                  <h3 className="text-2xl sm:text-3xl font-bold mb-4">Why Us?</h3>
                   <p className="text-gray-200 text-lg mb-6">Trusted by 500+ Projects</p>
                   <div className="flex items-center justify-center gap-2">
                     <div className="flex -space-x-2">
