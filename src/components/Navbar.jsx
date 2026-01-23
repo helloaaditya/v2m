@@ -92,7 +92,7 @@ const Navbar = () => {
               <img 
                 src={logo} 
                 alt="V2 Marketing" 
-                className="h-14 sm:h-16 lg:h-14 w-auto object-contain"
+                className="h-12 sm:h-12 lg:h-12 w-auto object-contain"
                 onError={(e) => {
                   console.error('Logo failed to load');
                   e.target.style.display = 'none';

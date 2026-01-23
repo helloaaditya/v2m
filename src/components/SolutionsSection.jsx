@@ -34,15 +34,6 @@ const SolutionsSection = () => {
     },
     {
       id: 4,
-      title: 'Concrete Admixtures',
-      description: 'Comprehensive admixtures including plasticizers, superplasticizers, accelerators, and retarders for optimal concrete performance.',
-      image: 'https://images.unsplash.com/photo-1566576721346-d4a3b4eaeb55?w=800&auto=format&fit=crop&q=80',
-      category: 'Admixtures',
-      features: ['Superplasticizers', 'Accelerators', 'Air Entraining'],
-      color: 'from-orange-500 to-orange-600'
-    },
-    {
-      id: 5,
       title: 'Repair & Strengthening',
       description: 'Structural repair mortars, injection systems, and strengthening solutions to restore concrete integrity.',
       image: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=800&auto=format&fit=crop&q=80',
