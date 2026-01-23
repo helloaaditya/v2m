@@ -81,42 +81,42 @@ const About = () => {
         schemaType="Organization"
       />
       {/* Hero Section */}
-      <section className="relative h-[35vh] sm:h-[40vh] md:h-[45vh] flex items-center justify-center overflow-hidden bg-gradient-to-br from-fosroc-red via-fosroc-red-dark to-fosroc-red-dark">
+      <section className="relative h-[30vh] sm:h-[35vh] md:h-[40vh] lg:h-[45vh] flex items-center justify-center overflow-hidden bg-gradient-to-br from-fosroc-red via-fosroc-red-dark to-fosroc-red-dark">
         {/* Background Image */}
         <div className="absolute inset-0">
           
         </div>
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <div className="absolute top-20 left-10 w-48 sm:w-72 h-48 sm:h-72 bg-fosroc-orange/20 rounded-full blur-3xl" />
-          <div className="absolute bottom-20 right-10 w-64 sm:w-96 h-64 sm:h-96 bg-white/10 rounded-full blur-3xl" />
+          <div className="absolute top-20 left-10 w-32 sm:w-48 lg:w-72 h-32 sm:h-48 lg:h-72 bg-fosroc-orange/20 rounded-full blur-3xl" />
+          <div className="absolute bottom-20 right-10 w-40 sm:w-64 lg:w-96 h-40 sm:h-64 lg:h-96 bg-white/10 rounded-full blur-3xl" />
         </div>
         
-        <div className="container mx-auto px-4 sm:px-6 relative z-10 text-center text-white">
-          <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/10 backdrop-blur-md border border-white/20 rounded-full mb-6">
-            <FaCheckCircle className="text-fosroc-orange text-sm" />
-            <span className="text-white font-semibold text-sm tracking-wide uppercase">
+        <div className="container mx-auto px-3 sm:px-4 lg:px-6 relative z-10 text-center text-white">
+          <div className="inline-flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-1.5 sm:py-2 bg-white/10 backdrop-blur-md border border-white/20 rounded-full mb-3 sm:mb-4 lg:mb-6">
+            <FaCheckCircle className="text-fosroc-orange text-xs sm:text-sm" />
+            <span className="text-white font-semibold text-xs sm:text-sm tracking-wide uppercase">
               About Us
             </span>
           </div>
-          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-4 sm:mb-6 leading-tight">
+          <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-6xl xl:text-7xl font-bold mb-2 sm:mb-3 lg:mb-6 leading-tight px-2">
             About{' '}
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-fosroc-orange to-fosroc-orange-light">
               V2 Marketing
             </span>
           </h1>
-          <div className="flex items-center justify-center gap-3 mb-6">
-            <div className="h-px w-16 bg-gradient-to-r from-transparent to-fosroc-orange" />
-            <div className="w-2 h-2 rounded-full bg-fosroc-orange" />
-            <div className="h-px w-16 bg-gradient-to-l from-transparent to-fosroc-orange" />
+          <div className="flex items-center justify-center gap-2 sm:gap-3 mb-3 sm:mb-4 lg:mb-6">
+            <div className="h-px w-8 sm:w-12 lg:w-16 bg-gradient-to-r from-transparent to-fosroc-orange" />
+            <div className="w-1.5 sm:w-2 h-1.5 sm:h-2 rounded-full bg-fosroc-orange" />
+            <div className="h-px w-8 sm:w-12 lg:w-16 bg-gradient-to-l from-transparent to-fosroc-orange" />
           </div>
-          <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-gray-100 max-w-3xl mx-auto px-4">
+          <p className="text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl text-gray-100 max-w-3xl mx-auto px-3 sm:px-4">
             Your Trusted Partner for Quality Construction Chemicals
           </p>
         </div>
       </section>
 
       {/* Introduction Section */}
-      <section className="relative py-12 sm:py-16 lg:py-20 bg-gradient-to-b from-white via-slate-50 to-white overflow-hidden">
+      <section className="relative py-6 sm:py-10 lg:py-16 xl:py-20 bg-gradient-to-b from-white via-slate-50 to-white overflow-hidden">
         {/* Background Elements */}
         <div className="absolute inset-0 opacity-30">
           <div className="absolute top-40 right-20 w-96 h-96 bg-orange-200 rounded-full blur-3xl" />
@@ -126,65 +126,66 @@ const About = () => {
         {/* Decorative pattern */}
         <div className="absolute inset-0 bg-[linear-gradient(to_right,#8080800a_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] bg-[size:32px_32px]" />
 
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl relative z-10">
-          <div className="grid lg:grid-cols-2 gap-8 sm:gap-10 lg:gap-12 items-center">
+        <div className="container mx-auto px-3 sm:px-4 lg:px-6 xl:px-8 max-w-7xl relative z-10">
+          <div className="grid lg:grid-cols-2 gap-4 sm:gap-6 lg:gap-10 xl:gap-12 items-center">
             {/* Left: Content */}
             <div>
-              <div className="inline-flex items-center gap-2 px-4 py-2 bg-orange-50 border border-orange-200 rounded-full mb-6">
-                <div className="w-2 h-2 rounded-full bg-fosroc-orange animate-pulse" />
-                <span className="text-fosroc-orange font-semibold text-sm tracking-wide uppercase">
+              <div className="inline-flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-1.5 sm:py-2 bg-orange-50 border border-orange-200 rounded-full mb-3 sm:mb-4 lg:mb-6">
+                <div className="w-1.5 sm:w-2 h-1.5 sm:h-2 rounded-full bg-fosroc-orange animate-pulse" />
+                <span className="text-fosroc-orange font-semibold text-xs sm:text-sm tracking-wide uppercase">
                   Who We Are
                 </span>
               </div>
-              <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-slate-900 leading-tight">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-3 sm:mb-4 lg:mb-6 text-slate-900 leading-tight">
                 Building Excellence{' '}
                 <span className="bg-clip-text bg-gradient-to-r from-fosroc-orange to-fosroc-orange-light">
                   Since 1994
                 </span>
               </h2>
-              <div className="w-20 h-1 bg-gradient-to-r from-fosroc-orange to-fosroc-orange-light mb-6"></div>
-              <p className="text-base sm:text-lg text-slate-600 leading-relaxed mb-6">
+              <div className="w-12 sm:w-16 lg:w-20 h-0.5 sm:h-1 bg-gradient-to-r from-fosroc-orange to-fosroc-orange-light mb-3 sm:mb-4 lg:mb-6"></div>
+              <p className="text-sm sm:text-base lg:text-lg text-slate-600 leading-relaxed mb-3 sm:mb-4 lg:mb-6">
                 V2 Marketing is an authorized Fosroc dealer based in KR Puram, Bangalore, 
                 specializing in providing high-quality construction chemical solutions to builders, 
                 contractors, and construction professionals across East Bangalore.
               </p>
-              <p className="text-base sm:text-lg text-slate-600 leading-relaxed mb-8">
+              <p className="text-sm sm:text-base lg:text-lg text-slate-600 leading-relaxed mb-4 sm:mb-6 lg:mb-8">
                 With our deep understanding of construction challenges and technical expertise, 
                 we help our clients achieve superior results through genuine Fosroc products 
                 and expert consultation.
               </p>
-              <div className="flex gap-4 sm:gap-6 mt-8">
-                <div className="text-center flex-1 p-4 bg-white rounded-xl shadow-md border border-slate-200">
-                  <div className="text-3xl sm:text-4xl font-bold text-fosroc-orange mb-2">30+</div>
-                  <div className="text-xs sm:text-sm text-slate-600 font-medium">Years Experience</div>
+              <div className="flex gap-2 sm:gap-3 lg:gap-4 xl:gap-6 mt-4 sm:mt-6 lg:mt-8">
+                <div className="text-center flex-1 p-2 sm:p-3 lg:p-4 bg-white rounded-lg sm:rounded-xl shadow-md border border-slate-200">
+                  <div className="text-xl sm:text-2xl lg:text-3xl xl:text-4xl font-bold text-fosroc-orange mb-1 sm:mb-2">30+</div>
+                  <div className="text-[10px] sm:text-xs lg:text-sm text-slate-600 font-medium">Years</div>
                 </div>
-                <div className="text-center flex-1 p-4 bg-white rounded-xl shadow-md border border-slate-200">
-                  <div className="text-3xl sm:text-4xl font-bold text-fosroc-orange mb-2">500+</div>
-                  <div className="text-xs sm:text-sm text-slate-600 font-medium">Projects Completed</div>
+                <div className="text-center flex-1 p-2 sm:p-3 lg:p-4 bg-white rounded-lg sm:rounded-xl shadow-md border border-slate-200">
+                  <div className="text-xl sm:text-2xl lg:text-3xl xl:text-4xl font-bold text-fosroc-orange mb-1 sm:mb-2">500+</div>
+                  <div className="text-[10px] sm:text-xs lg:text-sm text-slate-600 font-medium">Projects</div>
                 </div>
-                <div className="text-center flex-1 p-4 bg-white rounded-xl shadow-md border border-slate-200">
-                  <div className="text-3xl sm:text-4xl font-bold text-fosroc-orange mb-2">100%</div>
-                  <div className="text-xs sm:text-sm text-slate-600 font-medium">Genuine Products</div>
+                <div className="text-center flex-1 p-2 sm:p-3 lg:p-4 bg-white rounded-lg sm:rounded-xl shadow-md border border-slate-200">
+                  <div className="text-xl sm:text-2xl lg:text-3xl xl:text-4xl font-bold text-fosroc-orange mb-1 sm:mb-2">100%</div>
+                  <div className="text-[10px] sm:text-xs lg:text-sm text-slate-600 font-medium">Genuine</div>
                 </div>
               </div>
             </div>
 
             {/* Right: Info Card */}
-            <div className="relative">
-              <div className="relative rounded-2xl overflow-hidden shadow-2xl h-full min-h-[400px]">
+            <div className="relative w-full">
+              <div className="relative rounded-xl sm:rounded-2xl overflow-hidden shadow-2xl h-[250px] sm:h-[300px] lg:h-[400px] xl:min-h-[400px]">
                 {/* Background Image */}
                 <img 
                   src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=800&auto=format&fit=crop&q=80" 
                   alt="Authorized Fosroc dealer" 
                   className="w-full h-full object-cover"
                 />
-                <div className="absolute inset-0 bg-gradient-to-br from-fosroc-orange/10 to-transparent"></div>
-                <div className="relative z-10 text-center text-white p-8 sm:p-10 lg:p-12 h-full flex flex-col justify-center">
-                  <div className="w-20 h-20 sm:w-24 sm:h-24 bg-gradient-to-br from-fosroc-orange to-fosroc-orange-dark rounded-2xl flex items-center justify-center text-white text-4xl sm:text-5xl mx-auto mb-6 shadow-xl transform hover:scale-110 transition-transform duration-300">
+                {/* Subtle dark overlay for text readability - no red color */}
+                <div className="absolute inset-0 bg-gradient-to-br from-black/10 to-transparent"></div>
+                <div className="relative z-10 text-center text-white p-4 sm:p-6 lg:p-8 xl:p-12 h-full flex flex-col justify-center">
+                  <div className="w-16 h-16 sm:w-20 lg:w-24 sm:h-20 lg:h-24 bg-gradient-to-br from-fosroc-orange to-fosroc-orange-dark rounded-xl sm:rounded-2xl flex items-center justify-center text-white text-2xl sm:text-3xl lg:text-4xl xl:text-5xl mx-auto mb-3 sm:mb-4 lg:mb-6 shadow-xl transform hover:scale-110 transition-transform duration-300">
                     <FaAward />
                   </div>
-                  <h3 className="text-fosroc-orange font-bold text-2xl sm:text-3xl mb-3">Authorized Dealer</h3>
-                  <p className="text-fosroc-orange text-lg mb-6">Official Fosroc Partner</p>
+                  <h3 className="text-fosroc-orange font-bold text-lg sm:text-xl lg:text-2xl xl:text-3xl mb-2 sm:mb-3">Authorized Dealer</h3>
+                  <p className="text-fosroc-orange text-sm sm:text-base lg:text-lg">Official Fosroc Partner</p>
                   
                 </div>
               </div>
@@ -194,7 +195,7 @@ const About = () => {
       </section>
 
       {/* Credentials Section */}
-      <section className="relative py-12 sm:py-16 lg:py-20 bg-gradient-to-b from-slate-50 via-white to-slate-50 overflow-hidden">
+      <section className="relative py-6 sm:py-10 lg:py-16 xl:py-20 bg-gradient-to-b from-slate-50 via-white to-slate-50 overflow-hidden">
         {/* Background Elements */}
         <div className="absolute inset-0 opacity-40">
           <div className="absolute top-20 right-20 w-72 h-72 bg-orange-200 rounded-full blur-3xl" />
@@ -203,28 +204,28 @@ const About = () => {
 
         <div className="absolute inset-0 bg-[linear-gradient(to_right,#8080800a_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] bg-[size:32px_32px]" />
 
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl relative z-10">
-          <div className="text-center mb-12 sm:mb-16">
-            <div className="inline-flex items-center gap-2 px-4 py-2 bg-orange-50 border border-orange-200 rounded-full mb-6">
-              <FaCheckCircle className="text-fosroc-orange text-sm" />
-              <span className="text-fosroc-orange font-semibold text-sm tracking-wide uppercase">
+        <div className="container mx-auto px-3 sm:px-4 lg:px-6 xl:px-8 max-w-7xl relative z-10">
+          <div className="text-center mb-6 sm:mb-10 lg:mb-12 xl:mb-16">
+            <div className="inline-flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-1.5 sm:py-2 bg-orange-50 border border-orange-200 rounded-full mb-3 sm:mb-4 lg:mb-6">
+              <FaCheckCircle className="text-fosroc-orange text-xs sm:text-sm" />
+              <span className="text-fosroc-orange font-semibold text-xs sm:text-sm tracking-wide uppercase">
                 Our Credentials
               </span>
             </div>
-            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-slate-900 leading-tight">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-3 sm:mb-4 lg:mb-6 text-slate-900 leading-tight px-2">
               Why Trust{' '}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-fosroc-orange to-fosroc-orange-light">
                 V2 Marketing?
               </span>
             </h2>
-            <div className="flex items-center justify-center gap-3 mb-6">
-              <div className="h-px w-16 bg-gradient-to-r from-transparent to-fosroc-orange" />
-              <div className="w-2 h-2 rounded-full bg-fosroc-orange" />
-              <div className="h-px w-16 bg-gradient-to-l from-transparent to-fosroc-orange" />
+            <div className="flex items-center justify-center gap-2 sm:gap-3 mb-3 sm:mb-4 lg:mb-6">
+              <div className="h-px w-8 sm:w-12 lg:w-16 bg-gradient-to-r from-transparent to-fosroc-orange" />
+              <div className="w-1.5 sm:w-2 h-1.5 sm:h-2 rounded-full bg-fosroc-orange" />
+              <div className="h-px w-8 sm:w-12 lg:w-16 bg-gradient-to-l from-transparent to-fosroc-orange" />
             </div>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-5 lg:gap-6 xl:gap-8">
             {credentials.map((credential, index) => {
               const credentialImages = [
                 'https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=600&auto=format&fit=crop&q=80',
@@ -271,40 +272,41 @@ const About = () => {
       </section>
 
       {/* Mission & Vision */}
-      <section className="relative py-12 sm:py-16 lg:py-20 bg-white overflow-hidden">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
+      <section className="relative py-6 sm:py-10 lg:py-16 xl:py-20 bg-white overflow-hidden">
+        <div className="container mx-auto px-3 sm:px-4 lg:px-6 xl:px-8 max-w-7xl">
           {/* Mission */}
-          <div className="grid lg:grid-cols-2 gap-8 sm:gap-12 items-center mb-16 sm:mb-20">
-            <div className="text-fosroc-orange relative rounded-2xl overflow-hidden shadow-2xl h-[350px] sm:h-[400px] flex items-center justify-center group">
+          <div className="grid lg:grid-cols-2 gap-4 sm:gap-6 lg:gap-10 xl:gap-12 items-center mb-8 sm:mb-12 lg:mb-16 xl:mb-20">
+            <div className="text-fosroc-orange relative rounded-xl sm:rounded-2xl overflow-hidden shadow-2xl h-[250px] sm:h-[300px] lg:h-[350px] xl:h-[400px] flex items-center justify-center group w-full">
               {/* Background Image */}
               <img 
                 src="https://images.unsplash.com/photo-1590650153855-d9e808231d41?w=800&auto=format&fit=crop&q=80" 
                 alt="Building excellence" 
                 className="w-full h-full object-cover"
               />
-              <div className="absolute inset-0 bg-gradient-to-br from-fosroc-orange/20 to-transparent"></div>
-              <div className="relative z-10 text-center text-white">
-                <div className="w-20 h-20 bg-fosroc-orange rounded-2xl flex items-center justify-center text-white text-4xl mx-auto mb-6 shadow-xl transform group-hover:scale-110 transition-transform duration-300">
+              {/* Subtle dark overlay for text readability - no red color */}
+              <div className="absolute inset-0 bg-gradient-to-br from-black/20 via-black/10 to-transparent"></div>
+              <div className="relative z-10 text-center text-white px-4">
+                <div className="w-14 h-14 sm:w-16 lg:w-20 sm:h-16 lg:h-20 bg-fosroc-orange rounded-xl sm:rounded-2xl flex items-center justify-center text-white text-2xl sm:text-3xl lg:text-4xl mx-auto mb-3 sm:mb-4 lg:mb-6 shadow-xl transform group-hover:scale-110 transition-transform duration-300">
                   <FaBullseye />
                 </div>
-                <p className="text-fosroc-orange text-xl sm:text-2xl font-bold">Building Excellence</p>
+                <p className="text-fosroc-orange  text-base sm:text-lg lg:text-xl xl:text-2xl font-bold break-words drop-shadow-lg">Building Excellence</p>
               </div>
             </div>
-            <div>
-              <div className="inline-flex items-center gap-2 px-4 py-2 bg-orange-50 border border-orange-200 rounded-full mb-6">
-                <FaCheckCircle className="text-fosroc-orange text-sm" />
-                <span className="text-fosroc-orange font-semibold text-sm tracking-wide uppercase">
+            <div className="w-full">
+              <div className="inline-flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-1.5 sm:py-2 bg-orange-50 border border-orange-200 rounded-full mb-3 sm:mb-4 lg:mb-6">
+                <FaCheckCircle className="text-fosroc-orange text-xs sm:text-sm" />
+                <span className="text-fosroc-orange font-semibold text-xs sm:text-sm tracking-wide uppercase">
                   Our Mission
                 </span>
               </div>
-              <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 text-slate-900 leading-tight">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-3 sm:mb-4 lg:mb-6 text-slate-900 leading-tight">
                 Our{' '}
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-fosroc-orange to-fosroc-orange-light">
                   Mission
                 </span>
               </h2>
-              <div className="w-20 h-1 bg-gradient-to-r from-fosroc-orange to-fosroc-orange-light mb-6"></div>
-              <p className="text-base sm:text-lg text-slate-600 leading-relaxed">
+              <div className="w-12 sm:w-16 lg:w-20 h-0.5 sm:h-1 bg-gradient-to-r from-fosroc-orange to-fosroc-orange-light mb-3 sm:mb-4 lg:mb-6"></div>
+              <p className="text-sm sm:text-base lg:text-lg text-slate-600 leading-relaxed">
                 To be the most trusted and reliable partner for construction professionals by 
                 providing genuine Fosroc products, expert technical consultation, and exceptional 
                 customer service that helps build stronger, more durable structures.
@@ -313,37 +315,38 @@ const About = () => {
           </div>
 
           {/* Vision */}
-          <div className="relative py-12 grid lg:grid-cols-2 gap-8 sm:gap-12 items-center">
-            <div className="text-fosroc-orange relative rounded-2xl overflow-hidden shadow-2xl h-[350px] sm:h-[400px] flex items-center justify-center group">
+          <div className="relative py-4 sm:py-6 lg:py-12 grid lg:grid-cols-2 gap-4 sm:gap-6 lg:gap-10 xl:gap-12 items-center">
+            <div className="text-fosroc-orange relative rounded-xl sm:rounded-2xl overflow-hidden shadow-2xl h-[250px] sm:h-[300px] lg:h-[350px] xl:h-[400px] flex items-center justify-center group w-full order-2 lg:order-1">
               {/* Background Image */}
               <img 
                 src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=800&auto=format&fit=crop&q=80" 
                 alt="Future forward" 
                 className="w-full h-full object-cover"
               />
-              <div className="absolute inset-0 bg-gradient-to-br from-fosroc-orange/20 to-transparent"></div>
-              <div className="relative z-10 text-center text-white">
-                <div className="w-20 h-20 bg-fosroc-orange rounded-2xl flex items-center justify-center text-white text-4xl mx-auto mb-6 shadow-xl transform group-hover:scale-110 transition-transform duration-300">
+              {/* Subtle dark overlay for text readability - no red color */}
+              <div className="absolute inset-0 bg-gradient-to-br from-black/20 via-black/10 to-transparent"></div>
+              <div className="relative z-10 text-center text-white px-4">
+                <div className="w-14 h-14 sm:w-16 lg:w-20 sm:h-16 lg:h-20 bg-fosroc-orange rounded-xl sm:rounded-2xl flex items-center justify-center text-white text-2xl sm:text-3xl lg:text-4xl mx-auto mb-3 sm:mb-4 lg:mb-6 shadow-xl transform group-hover:scale-110 transition-transform duration-300">
                   <FaBullseye />
                 </div>
-                <p className="text-fosroc-orange text-xl sm:text-2xl font-bold">Future Forward</p>
+                <p className="text-fosroc-orange text-base sm:text-lg lg:text-xl xl:text-2xl font-bold break-words drop-shadow-lg">Future Forward</p>
               </div>
             </div>
-            <div>
-              <div className="inline-flex items-center gap-2 px-4 py-2 bg-orange-50 border border-orange-200 rounded-full mb-6">
-                <FaCheckCircle className="text-fosroc-orange text-sm" />
-                <span className="text-fosroc-orange font-semibold text-sm tracking-wide uppercase">
+            <div className="w-full order-1 lg:order-2">
+              <div className="inline-flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-1.5 sm:py-2 bg-orange-50 border border-orange-200 rounded-full mb-3 sm:mb-4 lg:mb-6">
+                <FaCheckCircle className="text-fosroc-orange text-xs sm:text-sm" />
+                <span className="text-fosroc-orange font-semibold text-xs sm:text-sm tracking-wide uppercase">
                   Our Vision
                 </span>
               </div>
-              <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 text-slate-900 leading-tight">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-3 sm:mb-4 lg:mb-6 text-slate-900 leading-tight">
                 Our{' '}
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-fosroc-orange to-fosroc-orange-light">
                   Vision
                 </span>
               </h2>
-              <div className="w-20 h-1 bg-gradient-to-r from-fosroc-orange to-fosroc-orange-light mb-6"></div>
-              <p className="text-base sm:text-lg text-slate-600 leading-relaxed">
+              <div className="w-12 sm:w-16 lg:w-20 h-0.5 sm:h-1 bg-gradient-to-r from-fosroc-orange to-fosroc-orange-light mb-3 sm:mb-4 lg:mb-6"></div>
+              <p className="text-sm sm:text-base lg:text-lg text-slate-600 leading-relaxed">
                 To be the most trusted and reliable partner for construction professionals by 
                 providing genuine Fosroc products, expert technical consultation, and exceptional 
                 customer service that helps build stronger, more durable structures.
@@ -354,7 +357,7 @@ const About = () => {
       </section>
 
       {/* Core Values */}
-      <section className="relative py-12 sm:py-16 lg:py-20 bg-gradient-to-b from-slate-50 via-white to-slate-50 overflow-hidden">
+      <section className="relative py-6 sm:py-10 lg:py-16 xl:py-20 bg-gradient-to-b from-slate-50 via-white to-slate-50 overflow-hidden">
         <div className="absolute inset-0 opacity-40">
           <div className="absolute top-20 right-20 w-72 h-72 bg-orange-200 rounded-full blur-3xl" />
           <div className="absolute bottom-20 left-20 w-96 h-96 bg-red-200 rounded-full blur-3xl" />
@@ -362,28 +365,28 @@ const About = () => {
 
         <div className="absolute inset-0 bg-[linear-gradient(to_right,#8080800a_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] bg-[size:32px_32px]" />
 
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl relative z-10">
-          <div className="text-center mb-12 sm:mb-16">
-            <div className="inline-flex items-center gap-2 px-4 py-2 bg-orange-50 border border-orange-200 rounded-full mb-6">
-              <FaCheckCircle className="text-fosroc-orange text-sm" />
-              <span className="text-fosroc-orange font-semibold text-sm tracking-wide uppercase">
+        <div className="container mx-auto px-3 sm:px-4 lg:px-6 xl:px-8 max-w-7xl relative z-10">
+          <div className="text-center mb-6 sm:mb-10 lg:mb-12 xl:mb-16">
+            <div className="inline-flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-1.5 sm:py-2 bg-orange-50 border border-orange-200 rounded-full mb-3 sm:mb-4 lg:mb-6">
+              <FaCheckCircle className="text-fosroc-orange text-xs sm:text-sm" />
+              <span className="text-fosroc-orange font-semibold text-xs sm:text-sm tracking-wide uppercase">
                 Core Values
               </span>
             </div>
-            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-slate-900 leading-tight">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-3 sm:mb-4 lg:mb-6 text-slate-900 leading-tight px-2">
               What{' '}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-fosroc-orange to-fosroc-orange-light">
                 Drives Us
               </span>
             </h2>
-            <div className="flex items-center justify-center gap-3 mb-6">
-              <div className="h-px w-16 bg-gradient-to-r from-transparent to-fosroc-orange" />
-              <div className="w-2 h-2 rounded-full bg-fosroc-orange" />
-              <div className="h-px w-16 bg-gradient-to-l from-transparent to-fosroc-orange" />
+            <div className="flex items-center justify-center gap-2 sm:gap-3 mb-3 sm:mb-4 lg:mb-6">
+              <div className="h-px w-8 sm:w-12 lg:w-16 bg-gradient-to-r from-transparent to-fosroc-orange" />
+              <div className="w-1.5 sm:w-2 h-1.5 sm:h-2 rounded-full bg-fosroc-orange" />
+              <div className="h-px w-8 sm:w-12 lg:w-16 bg-gradient-to-l from-transparent to-fosroc-orange" />
             </div>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 lg:gap-6 xl:gap-8">
             {values.map((value, index) => (
               <div
                 key={index}
@@ -415,29 +418,30 @@ const About = () => {
       </section>
 
       {/* Why Choose Us */}
-      <section className="relative py-12 sm:py-16 lg:py-20 bg-white overflow-hidden">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
-          <div className="grid lg:grid-cols-2 gap-8 sm:gap-12 items-center">
+      <section className="relative py-6 sm:py-10 lg:py-16 xl:py-20 bg-white overflow-hidden">
+        <div className="container mx-auto px-3 sm:px-4 lg:px-6 xl:px-8 max-w-7xl">
+          <div className="grid lg:grid-cols-2 gap-4 sm:gap-6 lg:gap-10 xl:gap-12 items-center">
             {/* Left: Info Card */}
-            <div className="relative">
-              <div className="relative rounded-2xl overflow-hidden shadow-2xl h-[400px] sm:h-[500px] flex items-center justify-center group">
+            <div className="relative w-full order-2 lg:order-1">
+              <div className="relative rounded-xl sm:rounded-2xl overflow-hidden shadow-2xl h-[250px] sm:h-[300px] lg:h-[400px] xl:h-[500px] flex items-center justify-center group">
                 {/* Background Image */}
                 <img 
                   src="https://images.unsplash.com/photo-1566576721346-d4a3b4eaeb55?w=800&auto=format&fit=crop&q=80" 
                   alt="Why choose us" 
                   className="w-full h-full object-cover object-center"
                 />
-                <div className="absolute inset-0 bg-gradient-to-br from-fosroc-orange/90 via-fosroc-orange-light/85 to-fosroc-orange-dark/90"></div>
-                <div className="relative z-10 text-center text-white p-8">
-                  <div className="w-24 h-24 bg-fosroc-red rounded-2xl flex items-center justify-center text-white text-5xl mx-auto mb-6 shadow-xl transform group-hover:scale-110 transition-transform duration-300">
+                {/* Subtle dark overlay for text readability - no red color */}
+                <div className="absolute inset-0 bg-gradient-to-br from-black/20 via-black/10 to-transparent"></div>
+                <div className="relative z-10 text-center text-white p-4 sm:p-6 lg:p-8">
+                  <div className="w-16 h-16 sm:w-20 lg:w-24 sm:h-20 lg:h-24 bg-fosroc-red rounded-xl sm:rounded-2xl flex items-center justify-center text-white text-3xl sm:text-4xl lg:text-5xl mx-auto mb-3 sm:mb-4 lg:mb-6 shadow-xl transform group-hover:scale-110 transition-transform duration-300">
                     <FaStar />
                   </div>
-                  <h3 className="text-2xl sm:text-3xl font-bold mb-4">Why Us?</h3>
-                  <p className="text-gray-200 text-lg mb-6">Trusted by 500+ Projects</p>
-                  <div className="flex items-center justify-center gap-2">
-                    <div className="flex -space-x-2">
+                  <h3 className="text-fosroc-orange text-lg sm:text-xl lg:text-2xl xl:text-3xl font-bold mb-2 sm:mb-3 lg:mb-4">Why Us?</h3>
+                  <p className="text-fosroc-orange text-sm sm:text-base lg:text-lg mb-3 sm:mb-4 lg:mb-6">Trusted by 500+ Projects</p>
+                  <div className="flex items-center justify-center gap-1 sm:gap-2">
+                    <div className="flex -space-x-1 sm:-space-x-2">
                       {[1, 2, 3, 4].map((i) => (
-                        <div key={i} className="w-10 h-10 rounded-full bg-white/20 border-2 border-white flex items-center justify-center text-white font-bold text-sm">
+                        <div key={i} className="w-7 h-7 sm:w-8 lg:w-10 sm:h-8 lg:h-10 rounded-full bg-fosroc-orange border-2 border-white flex items-center justify-center text-white font-bold text-xs sm:text-sm">
                           {i}
                         </div>
                       ))}
@@ -448,31 +452,31 @@ const About = () => {
             </div>
 
             {/* Right: Content */}
-            <div>
-              <div className="inline-flex items-center gap-2 px-4 py-2 bg-orange-50 border border-orange-200 rounded-full mb-6">
-                <FaCheckCircle className="text-fosroc-orange text-sm" />
-                <span className="text-fosroc-orange font-semibold text-sm tracking-wide uppercase">
+            <div className="w-full order-1 lg:order-2">
+              <div className="inline-flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-1.5 sm:py-2 bg-orange-50 border border-orange-200 rounded-full mb-3 sm:mb-4 lg:mb-6">
+                <FaCheckCircle className="text-fosroc-orange text-xs sm:text-sm" />
+                <span className="text-fosroc-orange font-semibold text-xs sm:text-sm tracking-wide uppercase">
                   Why Choose Us
                 </span>
               </div>
-              <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 text-slate-900 leading-tight">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-3 sm:mb-4 lg:mb-6 text-slate-900 leading-tight">
                 Why Choose{' '}
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-fosroc-orange to-fosroc-orange-light">
                   V2 Marketing?
                 </span>
               </h2>
-              <div className="w-20 h-1 bg-gradient-to-r from-fosroc-orange to-fosroc-orange-light mb-8"></div>
+              <div className="w-12 sm:w-16 lg:w-20 h-0.5 sm:h-1 bg-gradient-to-r from-fosroc-orange to-fosroc-orange-light mb-4 sm:mb-6 lg:mb-8"></div>
               
-              <div className="space-y-4">
+              <div className="space-y-2 sm:space-y-3 lg:space-y-4">
                 {whyChoose.map((item, index) => (
                   <div
                     key={index}
-                    className="flex gap-4 items-start bg-white p-4 sm:p-5 rounded-xl shadow-md hover:shadow-xl border border-slate-200 hover:border-fosroc-orange/50 transition-all duration-300 group"
+                    className="flex gap-2 sm:gap-3 lg:gap-4 items-start bg-white p-3 sm:p-4 lg:p-5 rounded-lg sm:rounded-xl shadow-md hover:shadow-xl border border-slate-200 hover:border-fosroc-orange/50 transition-all duration-300 group"
                   >
-                    <div className="w-6 h-6 sm:w-7 sm:h-7 bg-gradient-to-br from-fosroc-orange to-fosroc-orange-dark rounded-full flex items-center justify-center text-white flex-shrink-0 mt-0.5 shadow-lg group-hover:scale-110 transition-transform duration-300">
-                      <FaCheck className="text-xs" />
+                    <div className="w-5 h-5 sm:w-6 lg:w-7 sm:h-6 lg:h-7 bg-gradient-to-br from-fosroc-orange to-fosroc-orange-dark rounded-full flex items-center justify-center text-white flex-shrink-0 mt-0.5 shadow-lg group-hover:scale-110 transition-transform duration-300">
+                      <FaCheck className="text-[10px] sm:text-xs" />
                     </div>
-                    <p className="text-slate-700 leading-relaxed text-sm sm:text-base group-hover:text-slate-900 transition-colors flex-1">
+                    <p className="text-slate-700 leading-relaxed text-xs sm:text-sm lg:text-base group-hover:text-slate-900 transition-colors flex-1">
                       {item}
                     </p>
                   </div>
@@ -484,42 +488,42 @@ const About = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="relative py-12 sm:py-16 lg:py-20 bg-gradient-to-br from-fosroc-red via-fosroc-red-dark to-fosroc-red-dark text-white overflow-hidden">
+      <section className="relative py-6 sm:py-10 lg:py-16 xl:py-20 bg-gradient-to-br from-fosroc-red via-fosroc-red-dark to-fosroc-red-dark text-white overflow-hidden">
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <div className="absolute top-20 left-10 w-72 h-72 bg-fosroc-orange/20 rounded-full blur-3xl" />
           <div className="absolute bottom-20 right-10 w-96 h-96 bg-white/10 rounded-full blur-3xl" />
         </div>
         
-        <div className="container mx-auto px-4 sm:px-6 max-w-4xl relative z-10 text-center">
-          <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/10 backdrop-blur-md border border-white/20 rounded-full mb-6">
-            <FaCheckCircle className="text-fosroc-orange text-sm" />
-            <span className="text-white font-semibold text-sm tracking-wide uppercase">
+        <div className="container mx-auto px-3 sm:px-4 lg:px-6 max-w-4xl relative z-10 text-center">
+          <div className="inline-flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-1.5 sm:py-2 bg-white/10 backdrop-blur-md border border-white/20 rounded-full mb-3 sm:mb-4 lg:mb-6">
+            <FaCheckCircle className="text-fosroc-orange text-xs sm:text-sm" />
+            <span className="text-white font-semibold text-xs sm:text-sm tracking-wide uppercase">
               Partner With Us
             </span>
           </div>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-3 sm:mb-4 lg:mb-6 leading-tight px-2">
             Experience the{' '}
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-fosroc-orange to-fosroc-orange-light">
               Difference
             </span>
           </h2>
-          <p className="text-lg sm:text-xl text-gray-100 mb-8 leading-relaxed">
+          <p className="text-sm sm:text-base lg:text-lg xl:text-xl text-gray-100 mb-4 sm:mb-6 lg:mb-8 leading-relaxed px-3">
             Experience the difference of working with an authorized Fosroc dealer
           </p>
-          <div className="flex flex-wrap gap-4 justify-center">
+          <div className="flex flex-wrap gap-2 sm:gap-3 lg:gap-4 justify-center px-3">
             <a
               href="/contact"
-              className="group inline-flex items-center gap-3 px-6 sm:px-8 py-3 sm:py-4 bg-fosroc-orange text-white font-bold text-sm sm:text-base rounded-xl hover:bg-fosroc-orange-dark transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-orange-500/50"
+              className="group inline-flex items-center gap-2 sm:gap-3 px-4 sm:px-6 lg:px-8 py-2.5 sm:py-3 lg:py-4 bg-fosroc-orange text-white font-bold text-xs sm:text-sm lg:text-base rounded-lg sm:rounded-xl hover:bg-fosroc-orange-dark transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-orange-500/50 touch-manipulation"
             >
               <span>Get in Touch</span>
-              <FaArrowRight className="group-hover:translate-x-1 transition-transform" />
+              <FaArrowRight className="text-xs sm:text-sm group-hover:translate-x-1 transition-transform" />
             </a>
             <a
               href="/products"
-              className="group inline-flex items-center gap-3 px-6 sm:px-8 py-3 sm:py-4 bg-white/20 backdrop-blur-md text-white font-bold text-sm sm:text-base rounded-xl border-2 border-white/30 hover:bg-white hover:text-fosroc-red transition-all duration-300 hover:scale-105 hover:shadow-xl"
+              className="group inline-flex items-center gap-2 sm:gap-3 px-4 sm:px-6 lg:px-8 py-2.5 sm:py-3 lg:py-4 bg-white/20 backdrop-blur-md text-white font-bold text-xs sm:text-sm lg:text-base rounded-lg sm:rounded-xl border-2 border-white/30 hover:bg-white hover:text-fosroc-red transition-all duration-300 hover:scale-105 hover:shadow-xl touch-manipulation"
             >
               <span>View Products</span>
-              <FaArrowRight className="group-hover:translate-x-1 transition-transform" />
+              <FaArrowRight className="text-xs sm:text-sm group-hover:translate-x-1 transition-transform" />
             </a>
           </div>
         </div>

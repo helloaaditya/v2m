@@ -69,7 +69,7 @@ const Products = () => {
               Our Products
             </span>
           </div>
-          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-4 sm:mb-6 leading-tight">
+          <h1 className="text-3xl sm:text-5xl md:text-4xl lg:text-5xl font-bold mb-4 sm:mb-6 leading-tight">
             Comprehensive{' '}
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-fosroc-orange to-fosroc-orange-light">
               Product Range

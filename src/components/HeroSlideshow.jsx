@@ -144,7 +144,7 @@ const HeroSlideshow = () => {
 
   return (
     <div 
-      className="relative w-full h-auto sm:h-screen bg-slate-900 overflow-hidden touch-pan-y"
+      className="relative w-full h-auto min-h-[85vh] sm:h-screen bg-slate-900 overflow-hidden touch-pan-y"
       onTouchStart={onTouchStart}
       onTouchMove={onTouchMove}
       onTouchEnd={onTouchEnd}
@@ -179,11 +179,11 @@ const HeroSlideshow = () => {
       ))}
 
       {/* Main Content Container */}
-      <div className="relative h-full sm:h-screen max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-start sm:items-center pt-8 sm:pt-10 lg:pt-12 pb-10 sm:pb-16 lg:pb-20">
-        <div className="grid lg:grid-cols-2 gap-4 sm:gap-6 lg:gap-12 items-center w-full py-10 sm:py-0">
+      <div className="relative h-auto min-h-[90vh] sm:h-screen max-w-7xl mx-auto px-3 sm:px-4 lg:px-8 flex items-start sm:items-center pt-8 sm:pt-6 lg:pt-12 pb-6 sm:pb-8 lg:pb-20">
+        <div className="grid lg:grid-cols-2 gap-3 sm:gap-4 lg:gap-12 items-center w-full py-4 sm:py-6 lg:py-0">
           
           {/* Left Content Section */}
-          <div className="space-y-4 sm:space-y-5 lg:space-y-7 z-10 w-full">
+          <div className="space-y-3 sm:space-y-4 lg:space-y-7 z-10 w-full">
             {slides.map((slide, index) => (
               <div
                 key={slide.id}
@@ -194,25 +194,25 @@ const HeroSlideshow = () => {
                 }`}
               >
                 {/* Subheadline with Icon */}
-                <div className="flex items-center gap-2 sm:gap-3 mb-3 sm:mb-4 lg:mb-5">
-                  <div className="w-8 sm:w-12 h-0.5 bg-fosroc-orange" />
-                  <span className="text-fosroc-orange font-semibold tracking-wider uppercase text-xs sm:text-sm">
+                <div className="flex items-center gap-1.5 sm:gap-2 lg:gap-3 mb-2 sm:mb-3 lg:mb-5">
+                  <div className="w-6 sm:w-8 lg:w-12 h-0.5 bg-fosroc-orange" />
+                  <span className="text-fosroc-orange font-semibold tracking-wider uppercase text-[10px] sm:text-xs lg:text-sm">
                     {slide.subheadline}
                   </span>
                 </div>
 
                 {/* Main Headline */}
-                <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl 2xl:text-7xl font-bold text-white leading-tight mb-3 sm:mb-4 lg:mb-6">
+                <h1 className="text-xl sm:text-2xl md:text-3xl lg:text-5xl xl:text-6xl 2xl:text-7xl font-bold text-white leading-tight mb-2 sm:mb-3 lg:mb-6 break-words">
                   {slide.headline}
                 </h1>
 
                 {/* Description */}
-                <p className="text-xs sm:text-sm md:text-base lg:text-lg text-slate-300 leading-relaxed max-w-2xl mb-4 sm:mb-5 lg:mb-7">
+                <p className="text-[11px] sm:text-xs md:text-sm lg:text-lg text-slate-300 leading-relaxed max-w-2xl mb-3 sm:mb-4 lg:mb-7 break-words">
                   {slide.description}
                 </p>
 
                 {/* CTA Buttons */}
-                <div className="flex flex-col sm:flex-row flex-wrap gap-2 sm:gap-3 lg:gap-4 mb-4 sm:mb-5 lg:mb-7 relative z-20">
+                <div className="flex flex-col sm:flex-row flex-wrap gap-2 sm:gap-3 lg:gap-4 mb-3 sm:mb-4 lg:mb-7 relative z-20">
                   <Link
                     to="/contact"
                     className="group px-4 sm:px-5 lg:px-6 xl:px-8 py-2.5 sm:py-3 lg:py-4 bg-fosroc-orange text-white font-semibold text-xs sm:text-sm lg:text-base rounded-lg hover:shadow-2xl hover:shadow-orange-500/50 active:scale-95 transition-all duration-300 hover:scale-105 flex items-center justify-center gap-2 relative z-20 touch-manipulation"
@@ -233,15 +233,15 @@ const HeroSlideshow = () => {
                 </div>
 
                 {/* Trust Badges */}
-                <div className="flex flex-wrap gap-3 sm:gap-4 lg:gap-6 pt-4 sm:pt-5 lg:pt-7 border-t border-white/10">
+                <div className="flex flex-wrap gap-2 sm:gap-3 lg:gap-6 pt-3 sm:pt-4 lg:pt-7 border-t border-white/10">
                   {trustBadges.map((badge, i) => (
-                    <div key={i} className="flex items-center gap-2 sm:gap-3">
-                      <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-fosroc-orange/10 border border-fosroc-orange/30 flex items-center justify-center text-fosroc-orange flex-shrink-0">
-                        {badge.icon}
+                    <div key={i} className="flex items-center gap-1.5 sm:gap-2 lg:gap-3">
+                      <div className="w-8 h-8 sm:w-10 lg:w-12 sm:h-10 lg:h-12 rounded-full bg-fosroc-orange/10 border border-fosroc-orange/30 flex items-center justify-center text-fosroc-orange flex-shrink-0">
+                        <span className="text-xs sm:text-sm lg:text-base">{badge.icon}</span>
                       </div>
                       <div>
-                        <div className="text-white font-bold text-base sm:text-lg">{badge.label}</div>
-                        <div className="text-slate-400 text-xs sm:text-sm">{badge.sublabel}</div>
+                        <div className="text-white font-bold text-sm sm:text-base lg:text-lg leading-tight">{badge.label}</div>
+                        <div className="text-slate-400 text-[10px] sm:text-xs lg:text-sm leading-tight">{badge.sublabel}</div>
                       </div>
                     </div>
                   ))}
@@ -251,61 +251,61 @@ const HeroSlideshow = () => {
           </div>
 
           {/* Right Content Section - Stats Card */}
-          <div className="hidden lg:block">
+          <div className="w-full lg:w-auto">
             <div className="relative">
-              {/* Floating Stats Card */}
-              <div className="relative bg-white/10 backdrop-blur-xl rounded-2xl border border-white/20 p-5 xl:p-6 2xl:p-8 shadow-2xl">
-                <div className="absolute -top-3 -right-3 w-24 h-24 bg-gradient-to-br from-fosroc-orange to-fosroc-orange-dark rounded-full blur-3xl opacity-50" />
-                <div className="absolute -bottom-3 -left-3 w-32 h-32 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full blur-3xl opacity-30" />
+              {/* Floating Stats Card - Mobile Optimized */}
+              <div className="relative bg-white/10 backdrop-blur-xl rounded-xl sm:rounded-2xl border border-white/20 p-3 sm:p-4 lg:p-5 xl:p-6 2xl:p-8 shadow-2xl">
+                <div className="absolute -top-2 -right-2 sm:-top-3 sm:-right-3 w-16 h-16 sm:w-24 sm:h-24 bg-gradient-to-br from-fosroc-orange to-fosroc-orange-dark rounded-full blur-3xl opacity-50" />
+                <div className="absolute -bottom-2 -left-2 sm:-bottom-3 sm:-left-3 w-20 h-20 sm:w-32 sm:h-32 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full blur-3xl opacity-30" />
                 
-                <div className="relative space-y-5 xl:space-y-6">
+                <div className="relative space-y-3 sm:space-y-4 lg:space-y-5 xl:space-y-6">
                   {/* Header */}
-                  <div className="flex items-center gap-3 pb-5 xl:pb-6 border-b border-white/10">
-                    <FaQuoteLeft className="text-fosroc-orange text-xl xl:text-2xl" />
-                    <h3 className="text-xl xl:text-2xl font-bold text-white">Our Impact</h3>
+                  <div className="flex items-center gap-2 sm:gap-3 pb-3 sm:pb-4 lg:pb-5 xl:pb-6 border-b border-white/10">
+                    <FaQuoteLeft className="text-fosroc-orange text-base sm:text-lg lg:text-xl xl:text-2xl" />
+                    <h3 className="text-base sm:text-lg lg:text-xl xl:text-2xl font-bold text-white">Our Impact</h3>
                   </div>
 
                   {/* Stats Grid */}
-                  <div className="grid grid-cols-2 gap-4 xl:gap-6">
-                    <div className="text-center p-4 xl:p-6 bg-white/5 rounded-xl border border-white/10 hover:bg-white/10 transition-all duration-300">
-                      <div className="text-3xl xl:text-4xl font-bold text-fosroc-orange mb-2">500+</div>
-                      <div className="text-slate-300 text-xs xl:text-sm font-medium">Projects Delivered</div>
+                  <div className="grid grid-cols-2 gap-2 sm:gap-3 lg:gap-4 xl:gap-6">
+                    <div className="text-center p-2 sm:p-3 lg:p-4 xl:p-6 bg-white/5 rounded-lg sm:rounded-xl border border-white/10 hover:bg-white/10 transition-all duration-300">
+                      <div className="text-xl sm:text-2xl lg:text-3xl xl:text-4xl font-bold text-fosroc-orange mb-1 sm:mb-2 leading-tight">500+</div>
+                      <div className="text-slate-300 text-[10px] sm:text-xs lg:text-xs xl:text-sm font-medium leading-tight break-words">Projects</div>
                     </div>
-                    <div className="text-center p-4 xl:p-6 bg-white/5 rounded-xl border border-white/10 hover:bg-white/10 transition-all duration-300">
-                      <div className="text-3xl xl:text-4xl font-bold text-fosroc-orange mb-2">30+</div>
-                      <div className="text-slate-300 text-xs xl:text-sm font-medium">Years Excellence</div>
+                    <div className="text-center p-2 sm:p-3 lg:p-4 xl:p-6 bg-white/5 rounded-lg sm:rounded-xl border border-white/10 hover:bg-white/10 transition-all duration-300">
+                      <div className="text-xl sm:text-2xl lg:text-3xl xl:text-4xl font-bold text-fosroc-orange mb-1 sm:mb-2 leading-tight">30+</div>
+                      <div className="text-slate-300 text-[10px] sm:text-xs lg:text-xs xl:text-sm font-medium leading-tight break-words">Years</div>
                     </div>
-                    <div className="text-center p-4 xl:p-6 bg-white/5 rounded-xl border border-white/10 hover:bg-white/10 transition-all duration-300">
-                      <div className="text-3xl xl:text-4xl font-bold text-fosroc-orange mb-2">100%</div>
-                      <div className="text-slate-300 text-xs xl:text-sm font-medium">Genuine Products</div>
+                    <div className="text-center p-2 sm:p-3 lg:p-4 xl:p-6 bg-white/5 rounded-lg sm:rounded-xl border border-white/10 hover:bg-white/10 transition-all duration-300">
+                      <div className="text-xl sm:text-2xl lg:text-3xl xl:text-4xl font-bold text-fosroc-orange mb-1 sm:mb-2 leading-tight">100%</div>
+                      <div className="text-slate-300 text-[10px] sm:text-xs lg:text-xs xl:text-sm font-medium leading-tight break-words">Genuine</div>
                     </div>
-                    <div className="text-center p-4 xl:p-6 bg-white/5 rounded-xl border border-white/10 hover:bg-white/10 transition-all duration-300">
-                      <div className="text-3xl xl:text-4xl font-bold text-fosroc-orange mb-2">24/7</div>
-                      <div className="text-slate-300 text-xs xl:text-sm font-medium">Expert Support</div>
+                    <div className="text-center p-2 sm:p-3 lg:p-4 xl:p-6 bg-white/5 rounded-lg sm:rounded-xl border border-white/10 hover:bg-white/10 transition-all duration-300">
+                      <div className="text-xl sm:text-2xl lg:text-3xl xl:text-4xl font-bold text-fosroc-orange mb-1 sm:mb-2 leading-tight">24/7</div>
+                      <div className="text-slate-300 text-[10px] sm:text-xs lg:text-xs xl:text-sm font-medium leading-tight break-words">Support</div>
                     </div>
                   </div>
 
                   {/* Contact Card */}
-                  <div className="mt-6 xl:mt-8 p-5 xl:p-6 bg-gradient-to-br from-fosroc-orange/20 to-fosroc-orange-dark/10 rounded-xl border border-fosroc-orange/30 relative z-20">
-                    <p className="text-white font-semibold mb-4 text-center text-sm xl:text-base">Get Expert Consultation</p>
-                    <div className="flex gap-3">
+                  <div className="mt-3 sm:mt-4 lg:mt-6 xl:mt-8 p-3 sm:p-4 lg:p-5 xl:p-6 bg-gradient-to-br from-fosroc-orange/20 to-fosroc-orange-dark/10 rounded-lg sm:rounded-xl border border-fosroc-orange/30 relative z-20">
+                    <p className="text-white font-semibold mb-2 sm:mb-3 lg:mb-4 text-center text-xs sm:text-sm lg:text-sm xl:text-base">Get Expert Consultation</p>
+                    <div className="flex gap-2 sm:gap-3">
                       <a 
                         href="tel:+917829531999" 
-                        className="flex-1 py-2.5 xl:py-3 bg-white/90 hover:bg-white text-slate-900 font-semibold rounded-lg transition-all duration-300 flex items-center justify-center gap-2 hover:scale-105 text-sm xl:text-base relative z-20"
+                        className="flex-1 py-2 sm:py-2.5 xl:py-3 bg-white/90 hover:bg-white text-slate-900 font-semibold rounded-lg transition-all duration-300 flex items-center justify-center gap-1 sm:gap-2 hover:scale-105 text-xs sm:text-sm lg:text-sm xl:text-base relative z-20 touch-manipulation"
                         onClick={(e) => e.stopPropagation()}
                       >
-                        <FaPhone className="text-sm" />
-                        Call
+                        <FaPhone className="text-xs sm:text-sm" />
+                        <span className="hidden sm:inline">Call</span>
                       </a>
                       <a 
                         href="https://wa.me/917829531999" 
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="flex-1 py-2.5 xl:py-3 bg-green-500 hover:bg-green-600 text-white font-semibold rounded-lg transition-all duration-300 flex items-center justify-center gap-2 hover:scale-105 text-sm xl:text-base relative z-20"
+                        className="flex-1 py-2 sm:py-2.5 xl:py-3 bg-green-500 hover:bg-green-600 text-white font-semibold rounded-lg transition-all duration-300 flex items-center justify-center gap-1 sm:gap-2 hover:scale-105 text-xs sm:text-sm lg:text-sm xl:text-base relative z-20 touch-manipulation"
                         onClick={(e) => e.stopPropagation()}
                       >
-                        <FaWhatsapp />
-                        WhatsApp
+                        <FaWhatsapp className="text-xs sm:text-sm" />
+                        <span className="hidden sm:inline">WhatsApp</span>
                       </a>
                     </div>
                   </div>
@@ -317,10 +317,10 @@ const HeroSlideshow = () => {
       </div>
 
       {/* Swipe Indicator for Mobile */}
-      <div className="lg:hidden absolute top-6 sm:top-3 left-1/2 transform -translate-x-1/2 z-30">
-        <div className="flex items-center gap-2 px-3 py-1.5 bg-white/10 backdrop-blur-md rounded-full">
-          <span className="text-white text-xs font-medium">Swipe to navigate</span>
-          <div className="flex gap-1">
+      <div className="lg:hidden absolute top-3 sm:top-4 left-1/2 transform -translate-x-1/2 z-30">
+        <div className="flex items-center gap-1.5 sm:gap-2 px-2 sm:px-3 py-1 sm:py-1.5 bg-white/10 backdrop-blur-md rounded-full">
+          <span className="text-white text-[10px] sm:text-xs font-medium">Swipe to navigate</span>
+          <div className="flex gap-0.5 sm:gap-1">
             <div className="w-1 h-1 rounded-full bg-white/50 animate-pulse" style={{ animationDelay: '0ms' }} />
             <div className="w-1 h-1 rounded-full bg-white/50 animate-pulse" style={{ animationDelay: '150ms' }} />
             <div className="w-1 h-1 rounded-full bg-white/50 animate-pulse" style={{ animationDelay: '300ms' }} />
@@ -329,7 +329,7 @@ const HeroSlideshow = () => {
       </div>
 
       {/* Navigation Controls */}
-      <div className="absolute bottom-4 sm:bottom-4 lg:bottom-6 left-1/2 transform -translate-x-1/2 z-20 w-full px-4">
+      <div className="absolute bottom-2 sm:bottom-3 lg:bottom-6 left-1/2 transform -translate-x-1/2 z-20 w-full px-3 sm:px-4">
         <div className="flex items-center justify-center gap-3 sm:gap-4 lg:gap-6 max-w-md mx-auto bg-white/10 backdrop-blur-md rounded-full px-3 sm:px-4 lg:px-6 py-2 sm:py-2.5 lg:py-3">
           {/* Navigation Arrows - Mobile */}
           <button
