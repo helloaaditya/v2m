@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { FaPhone, FaArrowRight, FaWhatsapp, FaCheckCircle, FaShieldAlt, FaTruck, FaHeadset } from 'react-icons/fa';
+import { stats } from '../config/stats';
 
 const CTASection = () => {
   const [hoveredCard, setHoveredCard] = useState(null);
@@ -148,11 +149,11 @@ const CTASection = () => {
             </div>
             <div className="flex items-center gap-2">
               <FaCheckCircle className="text-green-500" />
-              <span className="text-sm font-medium">15+ Years Experience</span>
+              <span className="text-sm font-medium">{stats.yearsExperience}+ Years Experience</span>
             </div>
             <div className="flex items-center gap-2">
               <FaCheckCircle className="text-green-500" />
-              <span className="text-sm font-medium">500+ Projects Delivered</span>
+              <span className="text-sm font-medium">{stats.projectsCompleted}+ Projects Delivered</span>
             </div>
             <div className="flex items-center gap-2">
               <FaCheckCircle className="text-green-500" />

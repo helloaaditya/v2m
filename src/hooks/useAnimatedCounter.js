@@ -2,70 +2,105 @@ import { useState, useEffect, useRef } from 'react';
 
 /**
  * Custom hook for animating numbers from 0 to target value
- * @param {number} target - The target number to animate to
- * @param {number} duration - Animation duration in milliseconds (default: 2000)
- * @param {boolean} startOnMount - Whether to start animation on mount (default: true)
- * @returns {number} - Current animated value
+ * Production-ready version with better error handling
  */
 export const useAnimatedCounter = (target, duration = 2000, startOnMount = true) => {
   const [count, setCount] = useState(0);
-  const [hasStarted, setHasStarted] = useState(false);
+  const animationRef = useRef(null);
   const startTimeRef = useRef(null);
-  const animationFrameRef = useRef(null);
+  const mountedRef = useRef(true);
 
   useEffect(() => {
-    if (!startOnMount) return;
+    mountedRef.current = true;
+    return () => {
+      mountedRef.current = false;
+    };
+  }, []);
 
-    // Start animation when component mounts
-    const startAnimation = () => {
-      setHasStarted(true);
-      startTimeRef.current = performance.now();
+  useEffect(() => {
+    if (!startOnMount || !target || target <= 0) {
+      setCount(target || 0);
+      return;
+    }
 
-      const animate = (currentTime) => {
-        if (!startTimeRef.current) {
-          startTimeRef.current = currentTime;
-        }
+    // Reset
+    setCount(0);
+    startTimeRef.current = null;
 
-        const elapsed = currentTime - startTimeRef.current;
-        const progress = Math.min(elapsed / duration, 1);
+    // Clear any existing animation
+    if (animationRef.current) {
+      if (typeof cancelAnimationFrame === 'function') {
+        cancelAnimationFrame(animationRef.current);
+      }
+      animationRef.current = null;
+    }
 
-        // Easing function for smooth animation (ease-out)
-        const easeOut = 1 - Math.pow(1 - progress, 3);
-        const currentValue = Math.floor(easeOut * target);
+    const animate = (timestamp) => {
+      if (!mountedRef.current) {
+        return;
+      }
 
+      if (!startTimeRef.current) {
+        startTimeRef.current = timestamp;
+      }
+
+      const elapsed = timestamp - startTimeRef.current;
+      const progress = Math.min(elapsed / duration, 1);
+
+      // Ease-out cubic function
+      const easeOut = 1 - Math.pow(1 - progress, 3);
+      const currentValue = Math.floor(easeOut * target);
+
+      if (mountedRef.current) {
         setCount(currentValue);
+      }
 
-        if (progress < 1) {
-          animationFrameRef.current = requestAnimationFrame(animate);
-        } else {
-          // Ensure we end at exactly the target value
+      if (progress < 1) {
+        animationRef.current = requestAnimationFrame(animate);
+      } else {
+        // Ensure final value is exact
+        if (mountedRef.current) {
           setCount(target);
         }
-      };
-
-      animationFrameRef.current = requestAnimationFrame(animate);
+        animationRef.current = null;
+      }
     };
 
-    // Small delay to ensure component is mounted
-    const timeoutId = setTimeout(startAnimation, 100);
+    // Start animation after a short delay to ensure component is ready
+    const timeoutId = setTimeout(() => {
+      if (mountedRef.current && typeof requestAnimationFrame === 'function') {
+        animationRef.current = requestAnimationFrame(animate);
+      } else {
+        // Fallback: set final value immediately
+        if (mountedRef.current) {
+          setCount(target);
+        }
+      }
+    }, 100);
 
     return () => {
       clearTimeout(timeoutId);
-      if (animationFrameRef.current) {
-        cancelAnimationFrame(animationFrameRef.current);
+      if (animationRef.current) {
+        if (typeof cancelAnimationFrame === 'function') {
+          cancelAnimationFrame(animationRef.current);
+        }
+        animationRef.current = null;
       }
+      startTimeRef.current = null;
     };
   }, [target, duration, startOnMount]);
 
   // Reset and restart animation
   const restart = () => {
     setCount(0);
-    setHasStarted(false);
-    if (animationFrameRef.current) {
-      cancelAnimationFrame(animationFrameRef.current);
-    }
     startTimeRef.current = null;
+    if (animationRef.current) {
+      if (typeof cancelAnimationFrame === 'function') {
+        cancelAnimationFrame(animationRef.current);
+      }
+      animationRef.current = null;
+    }
   };
 
-  return { count, hasStarted, restart };
+  return { count, restart };
 };
