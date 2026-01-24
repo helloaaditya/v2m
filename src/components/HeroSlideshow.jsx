@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { FaPhone, FaWhatsapp, FaChevronLeft, FaChevronRight, FaQuoteLeft, FaAward, FaShieldAlt, FaClock } from 'react-icons/fa';
+import { stats } from '../config/stats';
+import { useAnimatedCounter } from '../hooks/useAnimatedCounter';
 
 const HeroSlideshow = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -9,6 +11,11 @@ const HeroSlideshow = () => {
   const [touchStart, setTouchStart] = useState(null);
   const [touchEnd, setTouchEnd] = useState(null);
   const [swipeOffset, setSwipeOffset] = useState(0);
+
+  // Animated counters for stats
+  const projectsCount = useAnimatedCounter(stats.projectsCompleted, 2000);
+  const yearsCount = useAnimatedCounter(stats.yearsExperience, 2000);
+  const genuineCount = useAnimatedCounter(stats.genuineProducts, 2000);
 
   const slides = [
     {
@@ -136,10 +143,11 @@ const HeroSlideshow = () => {
     setSwipeOffset(0);
   };
 
+  // Trust badges with animated counters
   const trustBadges = [
-    { icon: <FaAward className="w-5 h-5" />, label: '30+ Years', sublabel: 'Experience' },
-    { icon: <FaShieldAlt className="w-5 h-5" />, label: '100%', sublabel: 'Genuine' },
-    { icon: <FaClock className="w-5 h-5" />, label: '24/7', sublabel: 'Support' }
+    { icon: <FaAward className="w-5 h-5" />, label: `${yearsCount.count}+ Years`, sublabel: 'Experience' },
+    { icon: <FaShieldAlt className="w-5 h-5" />, label: `${genuineCount.count}%`, sublabel: 'Genuine' },
+    { icon: <FaClock className="w-5 h-5" />, label: stats.supportHours, sublabel: 'Support' }
   ];
 
   return (
@@ -268,19 +276,19 @@ const HeroSlideshow = () => {
                   {/* Stats Grid */}
                   <div className="grid grid-cols-2 gap-2 sm:gap-3 lg:gap-4 xl:gap-6">
                     <div className="text-center p-2 sm:p-3 lg:p-4 xl:p-6 bg-white/5 rounded-lg sm:rounded-xl border border-white/10 hover:bg-white/10 transition-all duration-300">
-                      <div className="text-xl sm:text-2xl lg:text-3xl xl:text-4xl font-bold text-fosroc-orange mb-1 sm:mb-2 leading-tight">500+</div>
+                      <div className="text-xl sm:text-2xl lg:text-3xl xl:text-4xl font-bold text-fosroc-orange mb-1 sm:mb-2 leading-tight">{projectsCount.count}+</div>
                       <div className="text-slate-300 text-[10px] sm:text-xs lg:text-xs xl:text-sm font-medium leading-tight break-words">Projects</div>
                     </div>
                     <div className="text-center p-2 sm:p-3 lg:p-4 xl:p-6 bg-white/5 rounded-lg sm:rounded-xl border border-white/10 hover:bg-white/10 transition-all duration-300">
-                      <div className="text-xl sm:text-2xl lg:text-3xl xl:text-4xl font-bold text-fosroc-orange mb-1 sm:mb-2 leading-tight">30+</div>
+                      <div className="text-xl sm:text-2xl lg:text-3xl xl:text-4xl font-bold text-fosroc-orange mb-1 sm:mb-2 leading-tight">{yearsCount.count}+</div>
                       <div className="text-slate-300 text-[10px] sm:text-xs lg:text-xs xl:text-sm font-medium leading-tight break-words">Years</div>
                     </div>
                     <div className="text-center p-2 sm:p-3 lg:p-4 xl:p-6 bg-white/5 rounded-lg sm:rounded-xl border border-white/10 hover:bg-white/10 transition-all duration-300">
-                      <div className="text-xl sm:text-2xl lg:text-3xl xl:text-4xl font-bold text-fosroc-orange mb-1 sm:mb-2 leading-tight">100%</div>
+                      <div className="text-xl sm:text-2xl lg:text-3xl xl:text-4xl font-bold text-fosroc-orange mb-1 sm:mb-2 leading-tight">{genuineCount.count}%</div>
                       <div className="text-slate-300 text-[10px] sm:text-xs lg:text-xs xl:text-sm font-medium leading-tight break-words">Genuine</div>
                     </div>
                     <div className="text-center p-2 sm:p-3 lg:p-4 xl:p-6 bg-white/5 rounded-lg sm:rounded-xl border border-white/10 hover:bg-white/10 transition-all duration-300">
-                      <div className="text-xl sm:text-2xl lg:text-3xl xl:text-4xl font-bold text-fosroc-orange mb-1 sm:mb-2 leading-tight">24/7</div>
+                      <div className="text-xl sm:text-2xl lg:text-3xl xl:text-4xl font-bold text-fosroc-orange mb-1 sm:mb-2 leading-tight">{stats.supportHours}</div>
                       <div className="text-slate-300 text-[10px] sm:text-xs lg:text-xs xl:text-sm font-medium leading-tight break-words">Support</div>
                     </div>
                   </div>

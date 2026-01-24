@@ -1,9 +1,16 @@
 import React, { useState } from 'react';
 import { FaCheck, FaAward, FaShieldAlt, FaUsers, FaTruck, FaHandshake, FaStar, FaArrowRight, FaCheckCircle, FaRocket, FaBullseye } from 'react-icons/fa';
 import SEO from '../components/SEO';
+import { stats } from '../config/stats';
+import { useAnimatedCounter } from '../hooks/useAnimatedCounter';
 
 const About = () => {
   const [hoveredIndex, setHoveredIndex] = useState(null);
+
+  // Animated counters for stats
+  const yearsCount = useAnimatedCounter(stats.yearsExperience, 2000);
+  const projectsCount = useAnimatedCounter(stats.projectsCompleted, 2000);
+  const genuineCount = useAnimatedCounter(stats.genuineProducts, 2000);
 
   const credentials = [
     {
@@ -155,15 +162,15 @@ const About = () => {
               </p>
               <div className="flex gap-2 sm:gap-3 lg:gap-4 xl:gap-6 mt-4 sm:mt-6 lg:mt-8">
                 <div className="text-center flex-1 p-2 sm:p-3 lg:p-4 bg-white rounded-lg sm:rounded-xl shadow-md border border-slate-200">
-                  <div className="text-xl sm:text-2xl lg:text-3xl xl:text-4xl font-bold text-fosroc-orange mb-1 sm:mb-2">30+</div>
+                  <div className="text-xl sm:text-2xl lg:text-3xl xl:text-4xl font-bold text-fosroc-orange mb-1 sm:mb-2">{yearsCount.count}+</div>
                   <div className="text-[10px] sm:text-xs lg:text-sm text-slate-600 font-medium">Years</div>
                 </div>
                 <div className="text-center flex-1 p-2 sm:p-3 lg:p-4 bg-white rounded-lg sm:rounded-xl shadow-md border border-slate-200">
-                  <div className="text-xl sm:text-2xl lg:text-3xl xl:text-4xl font-bold text-fosroc-orange mb-1 sm:mb-2">500+</div>
+                  <div className="text-xl sm:text-2xl lg:text-3xl xl:text-4xl font-bold text-fosroc-orange mb-1 sm:mb-2">{projectsCount.count}+</div>
                   <div className="text-[10px] sm:text-xs lg:text-sm text-slate-600 font-medium">Projects</div>
                 </div>
                 <div className="text-center flex-1 p-2 sm:p-3 lg:p-4 bg-white rounded-lg sm:rounded-xl shadow-md border border-slate-200">
-                  <div className="text-xl sm:text-2xl lg:text-3xl xl:text-4xl font-bold text-fosroc-orange mb-1 sm:mb-2">100%</div>
+                  <div className="text-xl sm:text-2xl lg:text-3xl xl:text-4xl font-bold text-fosroc-orange mb-1 sm:mb-2">{genuineCount.count}%</div>
                   <div className="text-[10px] sm:text-xs lg:text-sm text-slate-600 font-medium">Genuine</div>
                 </div>
               </div>
@@ -273,10 +280,10 @@ const About = () => {
 
       {/* Mission & Vision */}
       <section className="relative py-6 sm:py-10 lg:py-16 xl:py-20 bg-white overflow-hidden">
-        <div className="container mx-auto px-3 sm:px-4 lg:px-6 xl:px-8 max-w-7xl">
+        <div className="container mx-auto px-3 sm:px-4 lg:px-6 xl:px-8 max-w-7xl overflow-hidden">
           {/* Mission */}
           <div className="grid lg:grid-cols-2 gap-4 sm:gap-6 lg:gap-10 xl:gap-12 items-center mb-8 sm:mb-12 lg:mb-16 xl:mb-20">
-            <div className="text-fosroc-orange relative rounded-xl sm:rounded-2xl overflow-hidden shadow-2xl h-[250px] sm:h-[300px] lg:h-[350px] xl:h-[400px] flex items-center justify-center group w-full">
+            <div className="text-fosroc-orange relative rounded-xl sm:rounded-2xl overflow-hidden shadow-2xl h-[250px] sm:h-[300px] lg:h-[350px] xl:h-[400px] flex items-center justify-center group w-full max-w-full">
               {/* Background Image */}
               <img 
                 src="https://images.unsplash.com/photo-1590650153855-d9e808231d41?w=800&auto=format&fit=crop&q=80" 
@@ -285,11 +292,11 @@ const About = () => {
               />
               {/* Subtle dark overlay for text readability - no red color */}
               <div className="absolute inset-0 bg-gradient-to-br from-black/20 via-black/10 to-transparent"></div>
-              <div className="relative z-10 text-center text-white px-4">
+              <div className="relative z-10 text-center text-white px-3 sm:px-4 w-full">
                 <div className="w-14 h-14 sm:w-16 lg:w-20 sm:h-16 lg:h-20 bg-fosroc-orange rounded-xl sm:rounded-2xl flex items-center justify-center text-white text-2xl sm:text-3xl lg:text-4xl mx-auto mb-3 sm:mb-4 lg:mb-6 shadow-xl transform group-hover:scale-110 transition-transform duration-300">
                   <FaBullseye />
                 </div>
-                <p className="text-fosroc-orange  text-base sm:text-lg lg:text-xl xl:text-2xl font-bold break-words drop-shadow-lg">Building Excellence</p>
+                <p className="text-fosroc-orange text-sm sm:text-base lg:text-lg xl:text-xl 2xl:text-2xl font-bold break-words drop-shadow-lg px-2">Building Excellence</p>
               </div>
             </div>
             <div className="w-full">
@@ -315,8 +322,8 @@ const About = () => {
           </div>
 
           {/* Vision */}
-          <div className="relative py-4 sm:py-6 lg:py-12 grid lg:grid-cols-2 gap-4 sm:gap-6 lg:gap-10 xl:gap-12 items-center">
-            <div className="text-fosroc-orange relative rounded-xl sm:rounded-2xl overflow-hidden shadow-2xl h-[250px] sm:h-[300px] lg:h-[350px] xl:h-[400px] flex items-center justify-center group w-full order-2 lg:order-1">
+          <div className="relative py-4 sm:py-6 lg:py-12 grid lg:grid-cols-2 gap-4 sm:gap-6 lg:gap-10 xl:gap-12 items-center overflow-hidden">
+            <div className="text-fosroc-orange relative rounded-xl sm:rounded-2xl overflow-hidden shadow-2xl h-[250px] sm:h-[300px] lg:h-[350px] xl:h-[400px] flex items-center justify-center group w-full max-w-full order-2 lg:order-1">
               {/* Background Image */}
               <img 
                 src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=800&auto=format&fit=crop&q=80" 
@@ -325,11 +332,11 @@ const About = () => {
               />
               {/* Subtle dark overlay for text readability - no red color */}
               <div className="absolute inset-0 bg-gradient-to-br from-black/20 via-black/10 to-transparent"></div>
-              <div className="relative z-10 text-center text-white px-4">
+              <div className="relative z-10 text-center text-white px-3 sm:px-4 w-full">
                 <div className="w-14 h-14 sm:w-16 lg:w-20 sm:h-16 lg:h-20 bg-fosroc-orange rounded-xl sm:rounded-2xl flex items-center justify-center text-white text-2xl sm:text-3xl lg:text-4xl mx-auto mb-3 sm:mb-4 lg:mb-6 shadow-xl transform group-hover:scale-110 transition-transform duration-300">
                   <FaBullseye />
                 </div>
-                <p className="text-fosroc-orange text-base sm:text-lg lg:text-xl xl:text-2xl font-bold break-words drop-shadow-lg">Future Forward</p>
+                <p className="text-fosroc-orange text-sm sm:text-base lg:text-lg xl:text-xl 2xl:text-2xl font-bold break-words drop-shadow-lg px-2">Future Forward</p>
               </div>
             </div>
             <div className="w-full order-1 lg:order-2">
@@ -419,11 +426,11 @@ const About = () => {
 
       {/* Why Choose Us */}
       <section className="relative py-6 sm:py-10 lg:py-16 xl:py-20 bg-white overflow-hidden">
-        <div className="container mx-auto px-3 sm:px-4 lg:px-6 xl:px-8 max-w-7xl">
+        <div className="container mx-auto px-3 sm:px-4 lg:px-6 xl:px-8 max-w-7xl overflow-hidden">
           <div className="grid lg:grid-cols-2 gap-4 sm:gap-6 lg:gap-10 xl:gap-12 items-center">
             {/* Left: Info Card */}
-            <div className="relative w-full order-2 lg:order-1">
-              <div className="relative rounded-xl sm:rounded-2xl overflow-hidden shadow-2xl h-[250px] sm:h-[300px] lg:h-[400px] xl:h-[500px] flex items-center justify-center group">
+            <div className="relative w-full order-2 lg:order-1 max-w-full overflow-hidden">
+              <div className="relative rounded-xl sm:rounded-2xl overflow-hidden shadow-2xl h-[250px] sm:h-[300px] lg:h-[400px] xl:h-[500px] flex items-center justify-center group w-full">
                 {/* Background Image */}
                 <img 
                   src="https://images.unsplash.com/photo-1566576721346-d4a3b4eaeb55?w=800&auto=format&fit=crop&q=80" 
@@ -432,16 +439,16 @@ const About = () => {
                 />
                 {/* Subtle dark overlay for text readability - no red color */}
                 <div className="absolute inset-0 bg-gradient-to-br from-black/20 via-black/10 to-transparent"></div>
-                <div className="relative z-10 text-center text-white p-4 sm:p-6 lg:p-8">
-                  <div className="w-16 h-16 sm:w-20 lg:w-24 sm:h-20 lg:h-24 bg-fosroc-red rounded-xl sm:rounded-2xl flex items-center justify-center text-white text-3xl sm:text-4xl lg:text-5xl mx-auto mb-3 sm:mb-4 lg:mb-6 shadow-xl transform group-hover:scale-110 transition-transform duration-300">
+                <div className="relative z-10 text-center text-white p-3 sm:p-4 lg:p-6 xl:p-8 w-full">
+                  <div className="w-14 h-14 sm:w-16 lg:w-20 xl:w-24 sm:h-16 lg:h-20 xl:h-24 bg-fosroc-red rounded-xl sm:rounded-2xl flex items-center justify-center text-white text-2xl sm:text-3xl lg:text-4xl xl:text-5xl mx-auto mb-2 sm:mb-3 lg:mb-4 xl:mb-6 shadow-xl transform group-hover:scale-110 transition-transform duration-300">
                     <FaStar />
                   </div>
-                  <h3 className="text-fosroc-orange text-lg sm:text-xl lg:text-2xl xl:text-3xl font-bold mb-2 sm:mb-3 lg:mb-4">Why Us?</h3>
-                  <p className="text-fosroc-orange text-sm sm:text-base lg:text-lg mb-3 sm:mb-4 lg:mb-6">Trusted by 500+ Projects</p>
-                  <div className="flex items-center justify-center gap-1 sm:gap-2">
+                  <h3 className="text-fosroc-orange text-base sm:text-lg lg:text-xl xl:text-2xl 2xl:text-3xl font-bold mb-1.5 sm:mb-2 lg:mb-3 xl:mb-4 px-2 break-words">Why Us?</h3>
+                  <p className="text-fosroc-orange text-xs sm:text-sm lg:text-base xl:text-lg mb-2 sm:mb-3 lg:mb-4 xl:mb-6 px-2 break-words">Trusted by {projectsCount.count}+ Projects</p>
+                  <div className="flex items-center justify-center gap-1 sm:gap-2 px-2">
                     <div className="flex -space-x-1 sm:-space-x-2">
                       {[1, 2, 3, 4].map((i) => (
-                        <div key={i} className="w-7 h-7 sm:w-8 lg:w-10 sm:h-8 lg:h-10 rounded-full bg-fosroc-orange border-2 border-white flex items-center justify-center text-white font-bold text-xs sm:text-sm">
+                        <div key={i} className="w-6 h-6 sm:w-7 lg:w-8 xl:w-10 sm:h-7 lg:h-8 xl:h-10 rounded-full bg-fosroc-orange border-2 border-white flex items-center justify-center text-white font-bold text-[10px] sm:text-xs lg:text-sm">
                           {i}
                         </div>
                       ))}
