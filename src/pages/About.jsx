@@ -283,6 +283,15 @@ const About = () => {
         <div className="container mx-auto px-3 sm:px-4 lg:px-6 xl:px-8 max-w-7xl overflow-hidden">
           {/* Mission */}
           <div className="grid lg:grid-cols-2 gap-4 sm:gap-6 lg:gap-10 xl:gap-12 items-center mb-8 sm:mb-12 lg:mb-16 xl:mb-20">
+            {/* Mobile: Icon and Text Above Image */}
+            <div className="lg:hidden w-full mb-4 text-center">
+              <div className="w-16 h-16 bg-fosroc-orange rounded-xl flex items-center justify-center text-white text-3xl mx-auto mb-3 shadow-xl">
+                <FaBullseye />
+              </div>
+              <p className="text-fosroc-orange text-xl font-bold">Building Excellence</p>
+            </div>
+
+            {/* Image Card - Mobile shows below icon/text, Desktop shows with overlay */}
             <div className="text-fosroc-orange relative rounded-xl sm:rounded-2xl overflow-hidden shadow-2xl h-[250px] sm:h-[300px] lg:h-[350px] xl:h-[400px] flex items-center justify-center group w-full max-w-full">
               {/* Background Image */}
               <img 
@@ -292,7 +301,8 @@ const About = () => {
               />
               {/* Subtle dark overlay for text readability - no red color */}
               <div className="absolute inset-0 bg-gradient-to-br from-black/20 via-black/10 to-transparent"></div>
-              <div className="relative z-10 text-center text-white px-3 sm:px-4 w-full">
+              {/* Desktop: Icon and Text Overlay */}
+              <div className="hidden lg:flex relative z-10 text-center text-white px-3 sm:px-4 w-full items-center justify-center flex-col">
                 <div className="w-14 h-14 sm:w-16 lg:w-20 sm:h-16 lg:h-20 bg-fosroc-orange rounded-xl sm:rounded-2xl flex items-center justify-center text-white text-2xl sm:text-3xl lg:text-4xl mx-auto mb-3 sm:mb-4 lg:mb-6 shadow-xl transform group-hover:scale-110 transition-transform duration-300">
                   <FaBullseye />
                 </div>
@@ -323,6 +333,15 @@ const About = () => {
 
           {/* Vision */}
           <div className="relative py-4 sm:py-6 lg:py-12 grid lg:grid-cols-2 gap-4 sm:gap-6 lg:gap-10 xl:gap-12 items-center overflow-hidden">
+            {/* Mobile: Icon and Text Above Image */}
+            <div className="lg:hidden w-full order-1 mb-4 text-center">
+              <div className="w-16 h-16 bg-fosroc-orange rounded-xl flex items-center justify-center text-white text-3xl mx-auto mb-3 shadow-xl">
+                <FaBullseye />
+              </div>
+              <p className="text-fosroc-orange text-xl font-bold">Future Forward</p>
+            </div>
+
+            {/* Image Card - Mobile shows below icon/text, Desktop shows with overlay */}
             <div className="text-fosroc-orange relative rounded-xl sm:rounded-2xl overflow-hidden shadow-2xl h-[250px] sm:h-[300px] lg:h-[350px] xl:h-[400px] flex items-center justify-center group w-full max-w-full order-2 lg:order-1">
               {/* Background Image */}
               <img 
@@ -332,14 +351,15 @@ const About = () => {
               />
               {/* Subtle dark overlay for text readability - no red color */}
               <div className="absolute inset-0 bg-gradient-to-br from-black/20 via-black/10 to-transparent"></div>
-              <div className="relative z-10 text-center text-white px-3 sm:px-4 w-full">
+              {/* Desktop: Icon and Text Overlay */}
+              <div className="hidden lg:flex relative z-10 text-center text-white px-3 sm:px-4 w-full items-center justify-center">
                 <div className="w-14 h-14 sm:w-16 lg:w-20 sm:h-16 lg:h-20 bg-fosroc-orange rounded-xl sm:rounded-2xl flex items-center justify-center text-white text-2xl sm:text-3xl lg:text-4xl mx-auto mb-3 sm:mb-4 lg:mb-6 shadow-xl transform group-hover:scale-110 transition-transform duration-300">
                   <FaBullseye />
                 </div>
                 <p className="text-fosroc-orange text-sm sm:text-base lg:text-lg xl:text-xl 2xl:text-2xl font-bold break-words drop-shadow-lg px-2">Future Forward</p>
               </div>
             </div>
-            <div className="w-full order-1 lg:order-2">
+            <div className="w-full order-3 lg:order-2">
               <div className="inline-flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-1.5 sm:py-2 bg-orange-50 border border-orange-200 rounded-full mb-3 sm:mb-4 lg:mb-6">
                 <FaCheckCircle className="text-fosroc-orange text-xs sm:text-sm" />
                 <span className="text-fosroc-orange font-semibold text-xs sm:text-sm tracking-wide uppercase">
