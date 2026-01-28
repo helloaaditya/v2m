@@ -3,6 +3,7 @@ import { FaPhone, FaWhatsapp, FaCheck, FaArrowRight, FaStar, FaAward, FaShieldAl
 import HeroSlideshow from '../components/HeroSlideshow';
 import SolutionsSection from '../components/SolutionsSection';
 import BenefitsSection from '../components/BenefitsSection';
+import AwardsSection from '../components/AwardsSection';
 import CTASection from '../components/CTASection';
 import SEO from '../components/SEO';
 
@@ -38,6 +39,7 @@ const Home = () => {
       <HeroSlideshow/>
       <SolutionsSection/>
       <BenefitsSection/>
+      <AwardsSection/>
       <CTASection/>
       
 

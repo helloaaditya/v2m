@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { FaCheck, FaAward, FaShieldAlt, FaUsers, FaTruck, FaHandshake, FaStar, FaArrowRight, FaCheckCircle, FaRocket, FaBullseye } from 'react-icons/fa';
+import { FaCheck, FaAward, FaShieldAlt, FaUsers, FaTruck, FaHandshake, FaStar, FaArrowRight, FaCheckCircle, FaRocket, FaBullseye, FaUserTie } from 'react-icons/fa';
 import SEO from '../components/SEO';
 import { stats } from '../config/stats';
 import { useAnimatedCounter } from '../hooks/useAnimatedCounter';
@@ -194,6 +194,226 @@ const About = () => {
                   <h3 className="text-fosroc-orange font-bold text-lg sm:text-xl lg:text-2xl xl:text-3xl mb-2 sm:mb-3">Authorized Dealer</h3>
                   <p className="text-fosroc-orange text-sm sm:text-base lg:text-lg">Official Fosroc Partner</p>
                   
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Visionary Leadership Section */}
+      <section className="relative py-6 sm:py-10 lg:py-16 xl:py-20 bg-white overflow-hidden">
+        <div className="container mx-auto px-3 sm:px-4 lg:px-6 xl:px-8 max-w-7xl">
+          {/* Header */}
+          <div className="text-center mb-6 sm:mb-10 lg:mb-12 xl:mb-16">
+            <div className="inline-flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-1.5 sm:py-2 bg-orange-50 border border-orange-200 rounded-full mb-3 sm:mb-4 lg:mb-6">
+              <FaUserTie className="text-fosroc-orange text-xs sm:text-sm" />
+              <span className="text-fosroc-orange font-semibold text-xs sm:text-sm tracking-wide uppercase">
+                Leadership
+              </span>
+            </div>
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-3 sm:mb-4 lg:mb-6 text-slate-900 leading-tight px-2">
+              Visionary{' '}
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-fosroc-orange to-fosroc-orange-light">
+                Leadership
+              </span>
+            </h2>
+            <div className="flex items-center justify-center gap-2 sm:gap-3 mb-3 sm:mb-4 lg:mb-6">
+              <div className="h-px w-8 sm:w-12 lg:w-16 bg-gradient-to-r from-transparent to-fosroc-orange" />
+              <div className="w-1.5 sm:w-2 h-1.5 sm:h-2 rounded-full bg-fosroc-orange" />
+              <div className="h-px w-8 sm:w-12 lg:w-16 bg-gradient-to-l from-transparent to-fosroc-orange" />
+            </div>
+          </div>
+
+          {/* Mr. Chandrappa B R */}
+          <div className="mb-8 sm:mb-12 lg:mb-16 xl:mb-20">
+            <div className="grid lg:grid-cols-2 gap-4 sm:gap-6 lg:gap-8 xl:gap-10 items-start">
+              {/* Left: Image */}
+              <div className="relative w-full">
+                <div className="relative rounded-xl sm:rounded-2xl overflow-hidden shadow-2xl bg-white min-h-[300px] sm:min-h-[350px] lg:min-h-[450px] xl:min-h-[500px] flex items-center justify-center">
+                  <img
+                    src="https://www.sanjanawaterproofing.com/assets/founder-DW-CjBB5.jpg"
+                    alt="Mr. Chandrappa B R"
+                    className="w-full h-auto max-h-[300px] sm:max-h-[350px] lg:max-h-[450px] xl:max-h-[500px] object-contain object-top"
+                    style={{ objectPosition: 'center top' }}
+                    onError={(e) => {
+                      e.target.src = 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&auto=format&fit=crop&q=80';
+                    }}
+                  />
+                  {/* Overlay Icon */}
+                  <div className="absolute bottom-4 left-4 w-12 h-12 sm:w-14 sm:h-14 bg-fosroc-red rounded-lg sm:rounded-xl flex items-center justify-center text-white text-xl sm:text-2xl shadow-xl z-10">
+                    <FaUserTie />
+                  </div>
+                </div>
+              </div>
+
+              {/* Right: Information Cards */}
+              <div className="space-y-4 sm:space-y-5 lg:space-y-6">
+                {/* Personal Information Card */}
+                <div className="bg-white rounded-xl sm:rounded-2xl p-4 sm:p-6 lg:p-8 shadow-lg border border-slate-200">
+                  <h3 className="text-xl sm:text-2xl lg:text-3xl font-bold text-slate-900 mb-2 sm:mb-3">
+                    Mr. Chandrappa B R
+                  </h3>
+                  <p className="text-fosroc-red text-base sm:text-lg lg:text-xl font-semibold mb-3 sm:mb-4">
+                    Founder & Managing Director
+                  </p>
+                  <p className="text-slate-600 text-sm sm:text-base leading-relaxed">
+                    Civil Engineering Applications Specialist, trained in Germany at TPH Bausysteme GmbH.
+                  </p>
+                </div>
+
+                {/* About our Founder Card */}
+                <div className="bg-white rounded-xl sm:rounded-2xl p-4 sm:p-6 lg:p-8 shadow-lg border border-slate-200">
+                  <h4 className="text-lg sm:text-xl lg:text-2xl font-bold text-slate-900 mb-3 sm:mb-4">
+                    About our Founder
+                  </h4>
+                  <ul className="space-y-2 sm:space-y-3">
+                    <li className="flex items-start gap-2 sm:gap-3">
+                      <FaCheckCircle className="text-fosroc-orange text-base sm:text-lg flex-shrink-0 mt-0.5" />
+                      <span className="text-slate-600 text-sm sm:text-base leading-relaxed">
+                        Qualified in Civil Engineering Applications, trained in Germany at TPH Bausysteme GmbH
+                      </span>
+                    </li>
+                    <li className="flex items-start gap-2 sm:gap-3">
+                      <FaCheckCircle className="text-fosroc-orange text-base sm:text-lg flex-shrink-0 mt-0.5" />
+                      <span className="text-slate-600 text-sm sm:text-base leading-relaxed">
+                        Over {yearsCount.count} years of expertise in waterproofing, industrial flooring, soil stabilization, and structural rehabilitation
+                      </span>
+                    </li>
+                    <li className="flex items-start gap-2 sm:gap-3">
+                      <FaCheckCircle className="text-fosroc-orange text-base sm:text-lg flex-shrink-0 mt-0.5" />
+                      <span className="text-slate-600 text-sm sm:text-base leading-relaxed">
+                        Successfully led projects for major industrial, commercial, and residential clients
+                      </span>
+                    </li>
+                  </ul>
+                </div>
+
+                {/* Member of Card */}
+                <div className="bg-white rounded-xl sm:rounded-2xl p-4 sm:p-6 lg:p-8 shadow-lg border border-slate-200">
+                  <h4 className="text-lg sm:text-xl lg:text-2xl font-bold text-slate-900 mb-3 sm:mb-4">
+                    Member of
+                  </h4>
+                  <ul className="space-y-2 sm:space-y-3">
+                    <li className="flex items-start gap-2 sm:gap-3">
+                      <div className="w-2 h-2 rounded-full bg-fosroc-red mt-2 flex-shrink-0" />
+                      <span className="text-slate-600 text-sm sm:text-base leading-relaxed">
+                        Indian Concrete Institute
+                      </span>
+                    </li>
+                    <li className="flex items-start gap-2 sm:gap-3">
+                      <div className="w-2 h-2 rounded-full bg-fosroc-red mt-2 flex-shrink-0" />
+                      <span className="text-slate-600 text-sm sm:text-base leading-relaxed">
+                        Founder & President – Association of Waterproofing Contractors
+                      </span>
+                    </li>
+                    <li className="flex items-start gap-2 sm:gap-3">
+                      <div className="w-2 h-2 rounded-full bg-fosroc-red mt-2 flex-shrink-0" />
+                      <span className="text-slate-600 text-sm sm:text-base leading-relaxed">
+                        INSTRUCT (Institute for Research, Development and Training)
+                      </span>
+                    </li>
+                    <li className="flex items-start gap-2 sm:gap-3">
+                      <div className="w-2 h-2 rounded-full bg-fosroc-red mt-2 flex-shrink-0" />
+                      <span className="text-slate-600 text-sm sm:text-base leading-relaxed">
+                        KASSIA (Karnataka Small Scale Industries Association)
+                      </span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Mrs. Vasantha R */}
+          <div className="mt-8 sm:mt-12 lg:mt-16 xl:mt-20">
+            <div className="grid lg:grid-cols-2 gap-4 sm:gap-6 lg:gap-8 xl:gap-10 items-start">
+              {/* Left: Image */}
+              <div className="relative w-full order-2 lg:order-1">
+                <div className="relative rounded-xl sm:rounded-2xl overflow-hidden shadow-2xl bg-white min-h-[300px] sm:min-h-[350px] lg:min-h-[450px] xl:min-h-[500px] flex items-center justify-center">
+                  <img
+                    src="https://ik.imagekit.io/hw07pfjb1/Mrs.%20Vasantha.jpg?updatedAt=1758794680449"
+                    alt="Mrs. Vasantha R"
+                    className="w-full h-auto max-h-[300px] sm:max-h-[350px] lg:max-h-[450px] xl:max-h-[500px] object-contain object-top"
+                    style={{ objectPosition: 'center top' }}
+                    onError={(e) => {
+                      e.target.src = 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=800&auto=format&fit=crop&q=80';
+                    }}
+                  />
+                  {/* Overlay Icon */}
+                  <div className="absolute bottom-4 left-4 w-12 h-12 sm:w-14 sm:h-14 bg-fosroc-red rounded-lg sm:rounded-xl flex items-center justify-center text-white text-xl sm:text-2xl shadow-xl z-10">
+                    <FaUserTie />
+                  </div>
+                </div>
+              </div>
+
+              {/* Right: Information Cards */}
+              <div className="space-y-4 sm:space-y-5 lg:space-y-6 order-1 lg:order-2">
+                {/* Personal Information Card */}
+                <div className="bg-white rounded-xl sm:rounded-2xl p-4 sm:p-6 lg:p-8 shadow-lg border border-slate-200">
+                  <h3 className="text-xl sm:text-2xl lg:text-3xl font-bold text-slate-900 mb-2 sm:mb-3">
+                    Mrs. Vasantha R
+                  </h3>
+                  <p className="text-fosroc-red text-base sm:text-lg lg:text-xl font-semibold mb-3 sm:mb-4">
+                    Co-Founder & Director
+                  </p>
+                  <p className="text-slate-600 text-sm sm:text-base leading-relaxed">
+                    A dedicated professional with extensive experience in business operations and customer relations, ensuring exceptional service delivery.
+                  </p>
+                </div>
+
+                {/* About Card */}
+                <div className="bg-white rounded-xl sm:rounded-2xl p-4 sm:p-6 lg:p-8 shadow-lg border border-slate-200">
+                  <h4 className="text-lg sm:text-xl lg:text-2xl font-bold text-slate-900 mb-3 sm:mb-4">
+                    About Mrs. Vasantha R
+                  </h4>
+                  <ul className="space-y-2 sm:space-y-3">
+                    <li className="flex items-start gap-2 sm:gap-3">
+                      <FaCheckCircle className="text-fosroc-orange text-base sm:text-lg flex-shrink-0 mt-0.5" />
+                      <span className="text-slate-600 text-sm sm:text-base leading-relaxed">
+                        Extensive experience in business operations and strategic planning
+                      </span>
+                    </li>
+                    <li className="flex items-start gap-2 sm:gap-3">
+                      <FaCheckCircle className="text-fosroc-orange text-base sm:text-lg flex-shrink-0 mt-0.5" />
+                      <span className="text-slate-600 text-sm sm:text-base leading-relaxed">
+                        Committed to maintaining the highest standards of customer service and satisfaction
+                      </span>
+                    </li>
+                    <li className="flex items-start gap-2 sm:gap-3">
+                      <FaCheckCircle className="text-fosroc-orange text-base sm:text-lg flex-shrink-0 mt-0.5" />
+                      <span className="text-slate-600 text-sm sm:text-base leading-relaxed">
+                        Plays a key role in building strong relationships with clients and partners
+                      </span>
+                    </li>
+                  </ul>
+                </div>
+
+                {/* Contributions Card */}
+                <div className="bg-white rounded-xl sm:rounded-2xl p-4 sm:p-6 lg:p-8 shadow-lg border border-slate-200">
+                  <h4 className="text-lg sm:text-xl lg:text-2xl font-bold text-slate-900 mb-3 sm:mb-4">
+                    Key Contributions
+                  </h4>
+                  <ul className="space-y-2 sm:space-y-3">
+                    <li className="flex items-start gap-2 sm:gap-3">
+                      <div className="w-2 h-2 rounded-full bg-fosroc-red mt-2 flex-shrink-0" />
+                      <span className="text-slate-600 text-sm sm:text-base leading-relaxed">
+                        Strategic business development and growth initiatives
+                      </span>
+                    </li>
+                    <li className="flex items-start gap-2 sm:gap-3">
+                      <div className="w-2 h-2 rounded-full bg-fosroc-red mt-2 flex-shrink-0" />
+                      <span className="text-slate-600 text-sm sm:text-base leading-relaxed">
+                        Customer relationship management and service excellence
+                      </span>
+                    </li>
+                    <li className="flex items-start gap-2 sm:gap-3">
+                      <div className="w-2 h-2 rounded-full bg-fosroc-red mt-2 flex-shrink-0" />
+                      <span className="text-slate-600 text-sm sm:text-base leading-relaxed">
+                        Operational efficiency and process optimization
+                      </span>
+                    </li>
+                  </ul>
                 </div>
               </div>
             </div>
